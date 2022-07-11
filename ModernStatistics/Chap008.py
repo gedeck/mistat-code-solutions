@@ -1,13 +1,20 @@
-#code start
-import pweave
-pweave.rcParams['chunk']['defaultoptions'].update({'f_pos': 'tbp'})
+## Chapter 8
+#
+# Modern Statistics: A Computer Based Approach with Python<br>
+# by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# Publisher: Springer International Publishing; 1st edition (September 15, 2022) <br>
+# ISBN-13: 978-3031075650
+# 
+# (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# The code needs to be executed in sequence.
 import warnings
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=OutdatedPackageWarning)
-#code end
+
 # Modern analytic methods: Part II
-#code start
 import networkx as nx
 
 import statsmodels.api as sm
@@ -17,9 +24,8 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import mistat
-#code end
+
 ## Functional Data Analysis
-#code start
 dissolution = mistat.load_data('DISSOLUTION.csv')
 
 fig, axes = plt.subplots(ncols=2, figsize=(5, 3))
@@ -36,8 +42,7 @@ axes[0].set_title('Reference')
 axes[1].set_title('Test')
 plt.tight_layout()
 plt.show()
-#code end
-#code start
+
 from skfda import FDataGrid
 from skfda.representation.interpolation import SplineInterpolation
 
@@ -57,15 +62,13 @@ fd = FDataGrid(np.array(data), grid_points,
        argument_names=['Time'],
        coordinate_names=['Dissolution'],
        interpolation=SplineInterpolation(2))
-#code end
-#code start
+
 from skfda.exploratory import stats
 
 mean_ref = stats.mean(fd[labels=='Reference'])
 mean_test = stats.mean(fd[labels=='Test'])
 means = mean_ref.concatenate(mean_test)
-#code end
-#code start
+
 group_colors = {'Reference': 'grey', 'Test': 'black'}
 
 fig, axes = plt.subplots(ncols=2)
@@ -86,13 +89,11 @@ for ax in axes:
   ax.set_ylabel('Dissolution')
 plt.tight_layout()
 plt.show()
-#code end
-#code start
+
 from skfda.preprocessing.registration import ShiftRegistration
 shift_registration = ShiftRegistration()
 fd_registered = shift_registration.fit_transform(fd)
-#code end
-#code start
+
 fig, axes = plt.subplots(ncols=2)
 fd_registered.plot(axes=[axes[0]], group=labels, group_colors=group_colors)
 
@@ -113,8 +114,7 @@ for ax in axes:
   ax.set_ylabel('Dissolution')
 plt.tight_layout()
 plt.show()
-#code end
-#code start
+
 from skfda.exploratory.outliers import IQROutlierDetector
 
 out_detector = IQROutlierDetector()
@@ -124,8 +124,7 @@ for name, outlier in zip(names, outliers):
   if outlier == 1:
     continue
   print('  ', name)
-#code end
-#code start
+
 from skfda.exploratory.visualization import Boxplot
 from matplotlib.colors import LinearSegmentedColormap
 
@@ -148,8 +147,7 @@ for ax in axes:
   ax.set_ylabel('Dissolution')
 plt.tight_layout()
 plt.show()
-#code end
-#code start
+
 from skfda.inference.anova import oneway_anova
 stat, p_val = oneway_anova(fd[labels==0], fd[labels==1], random_state=1)
 print("Statistic: {:.3f}".format(stat))
@@ -158,8 +156,7 @@ print("p-value: {:.3f}".format(p_val))
 qstat, p_val = oneway_anova(fd_registered[labels==0], fd_registered[labels==1], random_state=1)
 print("Statistic: {:.3f}".format(stat))
 print("p-value: {:.3f}".format(p_val))
-#code end
-#code start
+
 from skfda.preprocessing.dim_reduction.projection import FPCA
 fpca = FPCA(n_components=2)
 fpca.fit(fd)
@@ -183,13 +180,11 @@ outlier.plot.scatter(x='FPCA 1', y='FPCA 2', color='black',
 
 plt.tight_layout()
 plt.show()
-#code end
+
 ## Text Analytics
-#code start
 incidents = mistat.load_data('AIRCRAFTINCIDENTS.csv')
 print(incidents.shape)
-#code end
-#code start
+
 import re
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfTransformer
@@ -206,23 +201,19 @@ vectorizer = CountVectorizer(preprocessor=preprocessor,
 counts = vectorizer.fit_transform(incidents['Final Narrative'])
 print('shape of DTM', counts.shape)
 print('total number of terms', np.sum(counts))
-#code end
-#code start
+
 termCounts = np.array(counts.sum(axis=0)).flatten()
 topCounts = termCounts.argsort()
 terms = vectorizer.get_feature_names_out()
 for n in reversed(topCounts[-10:]):
   print(f'{terms[n]} & {termCounts[n]} \\\\')
-#code end
-#code start
+
 tfidfTransformer = TfidfTransformer(smooth_idf=False, norm=None)
 tfidf = tfidfTransformer.fit_transform(counts)
-#code end
-#code start
+
 narrative = incidents['Final Narrative'][0]
 narrative = '\n'.join(narrative.split('\n')[2:])
-#code end
-#code start
+
 terms = vectorizer.get_feature_names_out()
 docterms = counts[0,:].nonzero()[1]
 df = pd.DataFrame({
@@ -237,16 +228,14 @@ table = df.head(10).style
 table = table.format(precision=3)
 table = table.hide(axis='index')
 print(table.to_latex(hrules=True))
-#code end
-#code start
+
 from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import Normalizer
 svd = TruncatedSVD(10)
 tfidf = Normalizer().fit_transform(tfidf)
 lsa_tfidf = svd.fit_transform(tfidf)
 print(lsa_tfidf.shape)
-#code end
-#code start
+
 terms = vectorizer.get_feature_names_out()
 data = {}
 for i, component in enumerate(svd.components_, 1):
@@ -257,9 +246,8 @@ for i, component in enumerate(svd.components_, 1):
 df = pd.DataFrame(data)
 print(df.iloc[:, :10].style.format(precision=2).hide(axis='index').to_latex(hrules=True))
 print(df.iloc[:, 10:].style.format(precision=2).hide(axis='index').to_latex(hrules=True))
-#code end
+
 ## Bayesian Networks
-#code start
 from pgmpy.estimators import HillClimbSearch
 
 abc = mistat.load_data('ABC2.csv')
@@ -268,8 +256,7 @@ abc = abc.drop(columns=['ID'])
 est = HillClimbSearch(data=abc)
 model = est.estimate(max_indegree=4, max_iter=int(1e4), show_progress=False,
                      scoring_method='k2score')
-#code end
-#code start
+
 import pydotplus
 
 def layoutGraph(dot_data, pdfFile):
@@ -302,16 +289,14 @@ def createGraph(G, pdfFile):
      """
     return layoutGraph(s, pdfFile)
 
-#code end
-#code start
+
 from pgmpy.models import BayesianNetwork
 from pgmpy.estimators import MaximumLikelihoodEstimator
 
 # convert to BayesianNetwork and fit data
 model = BayesianNetwork(model.edges())
 model.fit(data=abc, estimator=MaximumLikelihoodEstimator)
-#code end
-#code start
+
 for cpd in model.get_cpds():
   df = pd.DataFrame(cpd.values)
   v0 = cpd.variables[0]
@@ -321,15 +306,13 @@ for cpd in model.get_cpds():
     df.columns = pd.MultiIndex.from_tuples([(v1, state) for state in cpd.state_names[v1]])
   print(df.round(3))
   break
-#code end
-#code start
+
 from pgmpy.inference import VariableElimination, BeliefPropagation
 infer = BeliefPropagation(model)
 results = {i: infer.query(variables=['Repurchase'],
                           evidence={'TechnicalSup': i}).values
            for i in range(1, 6)}
-#code end
-#code start
+
 fig, axes = plt.subplots(nrows=2,figsize=(4, 6))
 
 cmap = plt.get_cmap("gray")
@@ -352,8 +335,7 @@ ax.set_ylabel('p(Repurchase|SalesSup)')
 
 plt.tight_layout()
 plt.show()
-#code end
-#code start
+
 import itertools
 cmap = plt.get_cmap("gray")
 greyColors = [cmap(i/8) for i in reversed(range(1, 6))]
@@ -392,30 +374,25 @@ def plotInferAll(results):
         ax.set_ylim(0, 1)
     plt.tight_layout()
     plt.show()
-#code end
-#code start
+
 results = inferAll()
 plotInferAll(results)
-#code end
-#code start
+
 results = inferAll(evidence={'Recommendation': 5})
 plotInferAll(results)
-#code end
-#code start
+
 results = {i: infer.query(variables=['TechnicalSup'],
                           evidence={'country': i}).values
            for i in sorted(abc.country.unique())}
 df = pd.DataFrame(results, range(1,6))
-#code end
-#code start
+
 # sort columns by increasing estimated technical support score
 columns = sorted(df.columns, key=lambda c: np.sum(np.arange(1, 6) * df[c]))
 df = df[columns]
 df.transpose().plot(kind='bar', stacked=True, color=greyColors)
 plt.show()
-#code end
+
 ## Causality Models
-#code start
 from pgmpy.inference.CausalInference import CausalInference
 ci = CausalInference(model)
 ignore = ('Satisfaction', 'country', 'Recommendation', 'Repurchase')
@@ -425,8 +402,7 @@ ate = {c: ci.estimate_ate(c, 'Satisfaction', abc, missing='drop')
 ax = pd.Series(ate).plot.barh(color='grey')
 ax.set_xlabel('ATE')
 plt.show()
-#code end
-#code start
+
 distTower = mistat.load_data('DISTILLATION-TOWER.csv')
 distTower = distTower.set_index('Date')
 subset = ['VapourPressure', 'Temp1', 'Temp2', 'Temp3', 'Temp4', 'Temp5',
@@ -441,8 +417,7 @@ for c in subset[1:]:
                     for i, gc in gc_res.items()})
 df = pd.DataFrame(results, index=subset[1:])
 df['id'] = df.index
-#code end
-#code start
+
 df = pd.wide_to_long(df, 'lag ', 'id', 'VapourPressure')
 df = df.reset_index()
 df.columns = ('predictor', 'lag', 'p-value')
@@ -456,6 +431,6 @@ def plotLag(x, y, **kwargs):
 g = sns.FacetGrid(df, col="predictor", col_wrap=4, height=2)
 g.map(plotLag, 'lag', 'p-value', color='grey')
 plt.show()
-#code end
+
 ## Chapter Highlights
 ## Exercises

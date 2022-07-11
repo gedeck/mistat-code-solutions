@@ -1,22 +1,27 @@
-#code start
-import pweave
-pweave.rcParams['chunk']['defaultoptions'].update({'f_pos': 'tbp'})
+## Chapter 1
+#
+# Modern Statistics: A Computer Based Approach with Python<br>
+# by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# Publisher: Springer International Publishing; 1st edition (September 15, 2022) <br>
+# ISBN-13: 978-3031075650
+# 
+# (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# The code needs to be executed in sequence.
 import warnings
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=OutdatedPackageWarning)
-#code end
+
 # Analyzing Variability: Descriptive Statistics
 ## Random Phenomena and the Structure of Observations
-#code start
 pip install mistat
-#code end
-#code start
+
 import mistat
 data = mistat.load_data('CYCLT')
 print(data.head())
-#code end
-#code start
+
 import pandas as pd
 from itertools import zip_longest
 import mistat
@@ -34,8 +39,7 @@ for chunk in grouper(cyclt, 5):
     print(' & '.join([f'{v:.3f}' for v in chunk]))
     print('\\\\')
 print('\\bottomrule\\end{tabular}')
-#code end
-#code start
+
 from scipy.stats import binom
 import numpy as np
 np.random.seed(seed=1) # scipy uses numpy to create random numbers
@@ -44,22 +48,18 @@ X = binom.rvs(1, 0.5, size=40)
 
 print(', '.join([f'{v}' for v in X[:20]]) + ',\\\\')
 print(', '.join([f'{v}' for v in X[20:]]) + '.\\\\')
-#code end
-#code start
+
 np.set_printoptions(linewidth=60)
-#code end
-#code start
+
 from scipy.stats import binom
 import numpy as np
 
 X = binom.rvs(1, 0.5, size=50)
 
 print(X)
-#code end
-#code start
+
 np.set_printoptions(linewidth=75)
-#code end
-#code start
+
 import matplotlib.pyplot as plt
 
 steelrod = mistat.load_data('STEELROD')
@@ -69,8 +69,7 @@ ax = steelrod.plot(y='STEELROD', style='.', color='black')
 ax.set_xlabel('Index')            # set the x axis title
 ax.set_ylabel('Steel rod Length') # set the y axis title
 plt.show()
-#code end
-#code start
+
 steelrod[26:] = steelrod[26:] - 3
 
 ax = steelrod.plot(y='STEELROD', style='.', color='black')
@@ -79,11 +78,9 @@ ax.set_ylabel('Steel rod Length')
 ax.hlines(y=steelrod[:26].mean(), xmin=0, xmax=26)
 ax.hlines(y=steelrod[26:].mean(), xmin=26, xmax=len(steelrod))
 plt.show()
-#code end
-#code start
+
 np.random.seed(seed=1)
-#code end
-#code start
+
 import math
 from scipy.stats import norm
 
@@ -97,9 +94,8 @@ ax = pd.Series(x).plot(style='.', color='black')
 ax.set_ylabel('Values')
 ax.axhline(y=0, linestyle='--', color='darkgray')
 plt.show()
-#code end
+
 ## Accuracy and Precision of Measurements
-#code start
 np.random.seed(seed=1)
 
 x = np.concatenate([5 + norm.rvs(loc=0, scale=0.5, size=10),
@@ -117,19 +113,17 @@ ax.text(14, 3.5, 'B')
 ax.text(24, 6.5, 'C')
 ax.set_ylim(0, 8)
 plt.show()
-#code end
+
 ## The Population and the Sample
 ## Descriptive Analysis of Sample Values
 ### Frequency Distributions of Discrete Random Variables
-#code start
 X = pd.DataFrame({'x': [10, 20, 30, 40, 50],
                   'Frequency': [5, 13, 45, 25, 12]})
 ax = X.plot.bar(x='x', y='Frequency', rot=0, color='grey', legend=False)
 ax.set_xlabel('')
 ax.set_ylabel('Frequency')
 plt.show()
-#code end
-#code start
+
 X['Cumulative Frequency'] = np.cumsum(X['Frequency'])
 ax = X.plot.line(x='x', y='Cumulative Frequency', drawstyle='steps-post',
                  color='black', legend=False)
@@ -137,27 +131,21 @@ ax.set_xlabel('')
 ax.set_ylabel('Cumulative Frequency')
 ax.set_ylim(0, 110)
 plt.show()
-#code end
-#code start
+
 blemishes = mistat.load_data('BLEMISHES')
 X = blemishes['count']
 print(', '.join([f'{v}' for v in X[:len(X)//2]]) + ',\\\\')
 print(', '.join([f'{v}' for v in X[len(X)//2:]]) + '.\\\\')
-#code end
-#code start
+
 blemishes = mistat.load_data('BLEMISHES')
-#code end
-#code start
+
 blemishes.head(3)
-#code end
-#code start
+
 print(blemishes.iloc[1, 0])
 print(blemishes.iloc[2, 1])
-#code end
-#code start
+
 blemishes['count'].head(5)
-#code end
-#code start
+
 # use value_counts with normalize to get relative frequencies
 X = pd.DataFrame(blemishes['count'].value_counts(normalize=True))
 X.loc[4, 'count'] = 0  # there are no samples with 4 blemishes add a row
@@ -167,8 +155,7 @@ ax = X['count'].plot.bar(color='grey', legend=False)
 ax.set_xlabel('Number of blemishes')
 ax.set_ylabel('Proportional Frequency')
 plt.show()
-#code end
-#code start
+
 X['Number'] = X.index  # add number of blemishes as column
 X['Cumulative Frequency'] = X['count'].cumsum()
 ax = X.plot.line(x='Number', y='Cumulative Frequency', color='black',
@@ -177,15 +164,13 @@ ax.set_xlabel('Number of blemishes')
 ax.set_ylabel('Cumulative Frequency')
 ax.set_ylim(0, 1.1)
 plt.show()
-#code end
+
 ### Frequency Distributions of Continuous Random Variables
-#code start
 X = mistat.load_data('YARNSTRG')
 ax = X.plot.hist(bins=5, color='white', edgecolor='black', legend=False)
 ax.set_xlabel('Log yarn strength')
 plt.show()
-#code end
-#code start
+
 ecdf = pd.DataFrame({'Log yarn strength': X.sort_values(),
                      'Fn(x)': range(1, len(X) + 1)})
 ecdf['Fn(x)'] = ecdf['Fn(x)'] / len(X)
@@ -194,8 +179,7 @@ ax.axhline(y=0, color='grey', linestyle='--')
 ax.axhline(y=1, color='grey', linestyle='--')
 ax.set_ylabel('Fn(x)')
 plt.show()
-#code end
-#code start
+
 X = mistat.load_data('YARNSTRG')
 ax = X.plot.hist(bins=5, color='white', edgecolor='black', legend=False)
 ax.set_xlabel('Log yarn strength')
@@ -210,9 +194,8 @@ ax.axhline(y=0, color='grey', linestyle='--')
 ax.axhline(y=1, color='grey', linestyle='--')
 ax.set_ylabel('Fn(x)')
 plt.show()
-#code end
+
 ### Statistics of the Ordered Sample
-#code start
 ecdf = pd.DataFrame({'Log yarn strength': X.sort_values(ignore_index=True),
                      'Fn(x)': range(1, len(X) + 1)})
 ecdf['Fn(x)'] = ecdf['Fn(x)'] / len(X)
@@ -226,24 +209,19 @@ for i, y in enumerate([25, 50, 75], 1):
     ax.text(quartile + 0.05, 0.05, f'Q{i}')
 ax.set_ylabel('Fn(x)')
 plt.show()
-#code end
-#code start
+
 cyclt = mistat.load_data('CYCLT')
 
 print(cyclt.quantile(q=[0, 0.25, 0.5, 0.75, 1.0]))
-#code end
-#code start
+
 print(cyclt.mean())
-#code end
-#code start
+
 print(cyclt.describe())
-#code end
-#code start
+
 cyclt_min, q1, q2, q3, cyclt_max = [f'{f:.4f}' for f in cyclt.quantile(q=[0, 0.25, 0.5, 0.75, 1.0])]
 cyclt_mean = f'{cyclt.mean():.4f}'
-#code end
+
 ### Statistics of Location and Dispersion
-#code start
 X = mistat.load_data('YARNSTRG')
 print(f'Skewness {X.skew():.4f}')     # Computes the skewness
 print(f'Kurtosis {X.kurtosis():.4f}') # Computes the kurtosis
@@ -251,8 +229,7 @@ print(f'Kurtosis {X.kurtosis():.4f}') # Computes the kurtosis
 from scipy.stats import skew, kurtosis
 print(f'Skewness {skew(X):.4f}')     # Computes the skewness
 print(f'Kurtosis {kurtosis(X):.4f}') # Computes the kurtosis
-#code end
-#code start
+
 from scipy.stats import beta
 
 x = np.linspace(0, 1, 2000)
@@ -268,8 +245,7 @@ ax.text(0, 4, 'Positive \nSkewness')
 ax.text(0.4, 4, 'Symmetric')
 ax.text(0.8, 4, 'Negative \nSkewness')
 plt.show()
-#code end
-#code start
+
 from scipy.stats import beta, norm
 
 x = np.linspace(-3, 3, 200)
@@ -286,8 +262,7 @@ ax.text(0.5, 0.5, 'Steep')
 ax.text(1.0, 0.35, 'Normal')
 ax.text(2.0, 0.2, 'Flat')
 plt.show()
-#code end
-#code start
+
 X = mistat.load_data('YARNSTRG')
 yarn_mean = f'{X.mean():.4f}'
 yarn_geom = f'{math.exp(X.mean()):.4f}'
@@ -296,30 +271,26 @@ yarn_sd = f'{X.std():.4f}'
 yarn_kurt = f'{X.kurtosis():.4f}'
 yarn_skew = f'{X.skew():.4f}'
 yarn_gamma = f'{X.std()/X.mean():.4f}'
-#code end
+
 ## Prediction Intervals
 ## Additional Techniques of Exploratory Data Analysis
 ### Density Plots
-#code start
 X = mistat.load_data('YARNSTRG')
 X.plot.density()
-#code end
-#code start
+
 X = mistat.load_data('YARNSTRG')
 ax = X.plot.hist(bins=8, color='white', edgecolor='black', legend=False, density=True)
 X.plot.density(bw_method=0.2, ax=ax, color='black')
 ax.set_xlabel('Log yarn strength')
 plt.show()
-#code end
-#code start
+
 X = mistat.load_data('YARNSTRG')
 ax = X.plot.density(bw_method=0.1, ls=':', color='black')
 X.plot.density(bw_method=0.5, ax=ax, ls='--', color='black')
 X.plot.density(bw_method=1, ax=ax, color='black')
 ax.set_xlabel('Log yarn strength')
 plt.show()
-#code end
-#code start
+
 from KDEpy.bw_selection import improved_sheather_jones
 h = improved_sheather_jones(X.values.reshape(-1, 1))
 ax = X.plot.density(color='grey')
@@ -327,15 +298,13 @@ X.plot.density(bw_method=h, color='black', ax=ax)
 ax.set_xlabel('Log yarn strength')
 ax.set_ylabel(f'Density (h={h:.2f})')
 plt.show()
-#code end
+
 ### Box and Whiskers Plots
-#code start
 X = mistat.load_data('YARNSTRG')
 ax = X.plot.box(color='black')
 ax.set_ylabel('Log Yarn Strength')
 plt.show()
-#code end
-#code start
+
 X = mistat.load_data('YARNSTRG')
 yarn_q1, yarn_q3 = X.quantile(q=[0.25, 0.75])
 lw = f'{yarn_q1 - 1.5*(yarn_q3 - yarn_q1):.4f}'
@@ -346,9 +315,8 @@ yarn_min = f'{X.min():.4f}'
 yarn_max = f'{X.max():.4f}'
 yarn_mean = f'{X.mean():.4f}'
 yarn_std = f'{X.std():.4f}'
-#code end
+
 ### Quantile Plots
-#code start
 from scipy.stats import probplot, uniform
 
 ax = plt.subplot()
@@ -360,19 +328,16 @@ ax.get_lines()[0].set_color('grey')
 ax.get_lines()[0].set_markerfacecolor('none')
 ax.get_lines()[1].set_color('black')
 plt.show()
-#code end
+
 ### Stem-and-Leaf Diagrams
-#code start
 X = mistat.load_data('YARNSTRG')
 
 mistat.stemLeafDiagram(X, 2, leafUnit=0.1, latex=True)
-#code end
-#code start
+
 X = mistat.load_data('OELECT')
 mistat.stemLeafDiagram(X, 5, latex=True)
-#code end
+
 ### Robust Statistics for Location and Dispersion
-#code start
 from scipy.stats import trim_mean
 
 Oelect = mistat.load_data('OELECT')
@@ -398,14 +363,12 @@ def mySummary(x, trim=0):
     'SD': x.std(),
     'IQR': quantiles[3] - quantiles[1],
   })
-#code end
-#code start
+
 print(pd.DataFrame({
   'untrimmed': mySummary(Oelect),
   'trimmed': mySummary(Oelect, trim=0.05),
 }))
-#code end
-#code start
+
 # sort and reset the index
 OutVolt = Oelect.sort_values(ignore_index=True)
 # in Python index starts at 0, so the 99-th value is at position 98
@@ -414,8 +377,7 @@ print(pd.DataFrame({
   'untrimmed': mySummary(OutVolt),
   'trimmed': mySummary(OutVolt, trim=0.05),
 }))
-#code end
-#code start
+
 from scipy.stats import iqr
 
 def trim_std(data, alpha):
@@ -428,6 +390,6 @@ def trim_std(data, alpha):
 
 print('S_alpha', trim_std(OutVolt, 0.025))
 print('sigma:', iqr(OutVolt) / 1.349)
-#code end
+
 ## Chapter Highlights
 ## Exercises

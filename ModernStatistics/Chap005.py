@@ -1,13 +1,20 @@
-#code start
-import pweave
-pweave.rcParams['chunk']['defaultoptions'].update({'f_pos': 'tbp'})
+## Chapter 5
+#
+# Modern Statistics: A Computer Based Approach with Python<br>
+# by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# Publisher: Springer International Publishing; 1st edition (September 15, 2022) <br>
+# ISBN-13: 978-3031075650
+# 
+# (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# The code needs to be executed in sequence.
 import warnings
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=OutdatedPackageWarning)
-#code end
+
 # Sampling for Estimation of Finite Population Quantities
-#code start
 import random
 import numpy as np
 import pingouin as pg
@@ -15,25 +22,21 @@ import pandas as pd
 from scipy import stats
 import matplotlib.pyplot as plt
 import mistat
-#code end
+
 ## Sampling and the Estimation Problem
 ### Basic Definitions
 ### Drawing a Random Sample from a Finite Population
-#code start
 random.sample(range(1, 101), k=10)
-#code end
+
 ### Sample Estimates of Population Quantities and their Sampling Distribution
-#code start
 # range is a generator and needs to be converted to a list
 X = list(range(1, 101))
 Xsample = random.choices(X, k=20)
-#code end
-#code start
+
 df = pd.DataFrame({f'sample {i}': random.choices(X, k=20)
                   for i in range(1, 5)})
 df.agg(['mean', 'std'])
-#code end
-#code start
+
 np.random.seed(1)
 
 X = list(range(100))
@@ -48,14 +51,12 @@ B = pg.compute_bootci(X, func=stat_func, n_boot=1000,
                       return_dist=True, seed=1)
 print('Mean values of first three mean values: ', B[1][:3])
 pd.cut(B[1], bins=12).value_counts()
-#code end
-#code start
+
 ax = pd.Series(B[1]).hist(color='grey')
 ax.set_ylabel('Frequency')
 plt.show()
-#code end
+
 ## Estimation with Simple Random Samples
-#code start
 random.seed(2)
 population = list(range(1, 101))
 
@@ -80,17 +81,15 @@ rswr['mean'] = calcStats(rswr['mean'])
 rswr['var'] = calcStats(rswr['var'])
 rswor['mean'] = calcStats(rswor['mean'])
 rswor['var'] = calcStats(rswor['var'])
-#code end
-#code start
+
 print('RSWR')
 print(f" Est. mean: {rswr['mean'].X10:.2f} / {rswr['mean'].S2_10:.3f}")
 print(f" Est. var : {rswr['var'].X10:.2f} / {rswr['var'].S2_10:.2f}")
 print('RSWOR')
 print(f" Est. mean: {rswor['mean'].X10:.2f} / {rswor['mean'].S2_10:.3f}")
 print(f" Est. var : {rswor['var'].X10:.2f} / {rswor['var'].S2_10:.2f}")
-#code end
+
 ### Properties of $\bar X_n$ and $S^2_n$ under RSWR
-#code start
 place = mistat.load_data('PLACE')
 xDev = place['xDev'] / 1e-3
 N = len(xDev)
@@ -102,9 +101,8 @@ print(mu_N.round(4))
 print(sigma2_N.round(5))
 print(mu_3N.round(5))
 print(mu_4N.round(3))
-#code end
+
 ### Properties of $\bar X_n$ and $S^2_n$ under RSWOR
-#code start
 random.seed(1)
 X = list(range(1, 101))
 
@@ -133,11 +131,10 @@ print(sampled_confInt[:3])
 proportion_coverage = sum(ci[0] < 50.5 < ci[1] for ci in sampled_confInt)
 proportion_coverage = proportion_coverage / len(sampled_confInt)
 print(proportion_coverage)
-#code end
+
 ## Estimating the Mean with Stratified RSWOR
 ## Proportional and Optimal Allocation
 ## Prediction Models with Known Covariates
-#code start
 pred = mistat.load_data('PRED')
 
 def stat_func(x):
@@ -147,8 +144,7 @@ B = pg.compute_bootci(pred['x'], func=stat_func, n_boot=1000, return_dist=True, 
 ax = pd.Series(B[1]).hist(color='grey')
 ax.set_xlim(7, 8)
 plt.show()
-#code end
-#code start
+
 pred = mistat.load_data('PRED')
 
 def stat_func(x):
@@ -158,6 +154,6 @@ B = pg.compute_bootci(pred['x'], func=stat_func, n_boot=1000, return_dist=True, 
 ax = pd.Series(B[1]).hist(color='grey')
 ax.set_xlim(7, 8)
 plt.show()
-#code end
+
 ## Chapter Highlights
 ## Exercises

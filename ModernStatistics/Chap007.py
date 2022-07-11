@@ -1,13 +1,20 @@
-#code start
-import pweave
-pweave.rcParams['chunk']['defaultoptions'].update({'f_pos': 'tbp'})
+## Chapter 7
+#
+# Modern Statistics: A Computer Based Approach with Python<br>
+# by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# Publisher: Springer International Publishing; 1st edition (September 15, 2022) <br>
+# ISBN-13: 978-3031075650
+# 
+# (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# The code needs to be executed in sequence.
 import warnings
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=OutdatedPackageWarning)
-#code end
+
 # Modern analytic methods: Part I
-#code start
 import warnings
 import random
 import pandas as pd
@@ -24,12 +31,11 @@ import statsmodels.formula.api as smf
 from scipy import stats
 import matplotlib.pyplot as plt
 import mistat
-#code end
+
 ## Introduction to Computer Age Statistics
 ## Data Preparation
 ## The Information Quality Framework
 ## Determining Model Performance
-#code start
 from matplotlib.patches import Rectangle
 import matplotlib.patches as mpatches
 
@@ -96,8 +102,7 @@ ax.set_xlim(*xlim)
 ax.set_ylim(*ylim)
 plt.axis('off')
 plt.show()
-#code end
-#code start
+
 random.seed(2)
 
 xlim = (0, 19.1)
@@ -120,8 +125,7 @@ ax.set_xlim(*xlim)
 ax.set_ylim(*ylim)
 plt.axis('off')
 plt.show()
-#code end
-#code start
+
 fig, ax = plt.subplots(figsize=(5, 5.5))
 colorCh1 = 'FFFFEEEEDDDDCCCCBBBBAAAA'
 colorCh2 = 'FA84' * 10
@@ -141,8 +145,7 @@ ax.set_ylim(*ylim)
 plt.axis('off')
 plt.show()
 
-#code end
-#code start
+
 fig, ax = plt.subplots(figsize=(5, 5.5))
 # Dataset
 for nboot in reversed(range(10)):
@@ -160,8 +163,7 @@ ax.set_xlim(*xlim)
 ax.set_ylim(*ylim)
 plt.axis('off')
 plt.show()
-#code end
-#code start
+
 np.random.seed(0)
 yerr = 0.2
 yerr = 1
@@ -179,8 +181,7 @@ valid_df = createData(100)
 ax = valid_df.plot.scatter(x='x', y='y', color='lightgrey', marker='+')
 df.plot.scatter(x='x', y='y', ax=ax, color='black')
 plt.show()
-#code end
-#code start
+
 formula = 'y ~ 1 + x + np.power(x, 2)'
 def sample80(df):
   """ Sample 80% of the dataset using RSWR """
@@ -195,24 +196,21 @@ for _ in range(100):
     sample = sample80(df)
     model = smf.ols(formula=formula, data=sample).fit()
     sampleR2.append(model.rsquared)
-#code end
-#code start
+
 ax = pd.Series(stratR2).plot.density(color='black')
 pd.Series(sampleR2).plot.density(ax=ax, color='black', linestyle='--')
 ax.set_xlim(0, 1.0)
 ax.set_xlabel(r'$r^2$')
 plt.show()
-#code end
+
 ## Decision Trees
-#code start
 sensors = mistat.load_data('SENSORS.csv')
 dist = sensors['testResult'].value_counts()
 dist = dist.sort_index()
 ax = dist.plot.bar(color='lightgrey')
 ax.patches[dist.index.get_loc('Good')].set_facecolor('black')
 plt.show()
-#code end
-#code start
+
 from sklearn.tree import DecisionTreeClassifier, plot_tree, export_text
 
 predictors = [c for c in sensors.columns if c.startswith('sensor')]
@@ -227,12 +225,10 @@ clf.fit(X, y)
 # Visualization of tree
 plot_tree(clf, feature_names=list(X.columns))
 plt.show()
-#code end
-#code start
+
 # Text representation of tree
 print(export_text(clf, feature_names=list(X.columns)))
-#code end
-#code start
+
 from dtreeviz.trees import dtreeviz
 
 def viz2pdf(viz, pdfFile):
@@ -262,8 +258,7 @@ viz = dtreeviz(clf, X, y,
                feature_names=X.columns,
                class_names=['Fail', 'Pass'])
 warnings.simplefilter('default', category=UserWarning)
-#code end
-#code start
+
 sensor18 = np.array(sensors['sensor18'])
 status =  sensors['status']
 x = np.array(sorted(sensor18))
@@ -295,8 +290,7 @@ ax.set_ylabel('Quality of split')
 ax.text(2.2, 0.45, f'Entropy {split[np.argmin(entropy)]:.3f}')
 ax.text(3, 0.25, f'Gini {split[np.argmin(gini)]:.3f}')
 plt.show()
-#code end
-#code start
+
 # missclassification probabilities
 print('Probabilities of missclassified data points')
 print(clf.predict_proba(X.loc[clf.predict(X) != y,:]))
@@ -309,8 +303,7 @@ print(cm)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=clf.classes_)
 disp.plot(cmap=plt.cm.Blues)
 plt.show()
-#code end
-#code start
+
 # Code to analyze tree depth vs alpha
 clf = DecisionTreeClassifier(random_state=0)
 path = clf.cost_complexity_pruning_path(X, y)
@@ -331,9 +324,8 @@ ax.set_xlabel("Cost-complexity parameter (ccp_alpha)")
 ax.set_ylabel("Number of nodes")
 ax.axvline(0.012, color='grey')
 plt.show()
-#code end
+
 ## Ensemble Models
-#code start
 predictors = [c for c in sensors.columns if c.startswith('sensor')]
 outcome = 'status'
 X = sensors[predictors]
@@ -346,14 +338,12 @@ clf.fit(X, y)
 # actual in rows / predicted in columns
 print('Confusion matrix')
 print(confusion_matrix(y, clf.predict(X)))
-#code end
-#code start
+
 # On some versions of MACOS, running xgboost can fail. Uncomment the following
 # lines to avoid this.
 import os
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
-#code end
-#code start
+
 from xgboost import XGBClassifier
 
 predictors = [c for c in sensors.columns if c.startswith('sensor')]
@@ -370,9 +360,8 @@ xgb.fit(X, y)
 # actual in rows / predicted in columns
 print('Confusion matrix')
 print(confusion_matrix(y, xgb.predict(X)))
-#code end
+
 ## Na\"ive Bayes Classifier
-#code start
 abc = mistat.load_data('ABC.csv')
 all_questions = [c for c in abc.columns if c.startswith('q')]
 abc[all_questions] = abc[all_questions].astype('category')
@@ -403,8 +392,7 @@ for ax, question in zip(axes, questions):
   ax.set_title(question)
 plt.tight_layout()
 plt.show()
-#code end
-#code start
+
 predictors = list(all_questions)
 predictors.remove('q1')
 target = 'q1'
@@ -415,30 +403,24 @@ y = abc.loc[~q1_missing, target]
 
 imp = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
 X = imp.fit_transform(X)
-#code end
-#code start
+
 nb_model = MultinomialNB()
 nb_model.fit(X, y)
 print(confusion_matrix(y, nb_model.predict(X)))
 print(accuracy_score(y, nb_model.predict(X)))
-#code end
-#code start
+
 dt_model = DecisionTreeClassifier(ccp_alpha=0.014, random_state=0)
 _ = dt_model.fit(X, y)
-#code end
-#code start
+
 print(confusion_matrix(y, dt_model.predict(X)))
 print(accuracy_score(y, dt_model.predict(X)))
-#code end
-#code start
+
 rf_model = RandomForestClassifier(ccp_alpha=0.014, random_state=0)
 _ = rf_model.fit(X, y)
-#code end
-#code start
+
 print(confusion_matrix(y, rf_model.predict(X)))
 print(accuracy_score(y, rf_model.predict(X)))
-#code end
-#code start
+
 fig, axes = plt.subplots(ncols=3, figsize=(8, 3))
 axes[0].set_title(f'Naive Bayes {accuracy_score(y, nb_model.predict(X)):.2f}')
 ConfusionMatrixDisplay.from_estimator(nb_model, X, y, ax=axes[0],
@@ -451,9 +433,8 @@ ConfusionMatrixDisplay.from_estimator(rf_model, X, y, ax=axes[2],
   cmap=plt.cm.Greys, colorbar=False)
 plt.tight_layout()
 plt.show()
-#code end
+
 ## Neural Networks
-#code start
 abc = mistat.load_data('ABC.csv')
 all_questions = [c for c in abc.columns if c.startswith('q')]
 abc[all_questions] = abc[all_questions].astype('category')
@@ -467,8 +448,7 @@ y = abc.loc[~q1_missing, target]
 
 imp = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
 X = imp.fit_transform(X)
-#code end
-#code start
+
 # scale predictor variables to interval (0, 1)
 X = MinMaxScaler().fit_transform(X)
 
@@ -483,10 +463,9 @@ ConfusionMatrixDisplay.from_estimator(clf, X, y, ax=ax,
 
 ax.set_title(f'Neural network {accuracy_score(y, clf.predict(X)):.2f}')
 plt.tight_layout()
-#code end
+
 ## Clustering Methods
 ### Hierarchical Clustering
-#code start
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.preprocessing import StandardScaler
 from mistat import plot_dendrogram
@@ -503,9 +482,8 @@ fig, ax = plt.subplots()
 plot_dendrogram(model, ax=ax)
 ax.set_title('Dendrogram')
 plt.show()
-#code end
+
 ### $K$-means Clustering
-#code start
 from sklearn.cluster import KMeans
 
 almpin = mistat.load_data('ALMPIN.csv')
@@ -518,8 +496,7 @@ print(model.predict(X)[:2])
 print()
 print('Distance to cluster center (first two data points)')
 model.transform(X)[:2,:]
-#code end
-#code start
+
 from sklearn.decomposition import PCA
 from scipy.spatial import ConvexHull
 
@@ -560,9 +537,8 @@ for cl, x in df.groupby('cluster'):
     ax.add_patch(poly)
   ax.text(*cent, f'{cl}', fontsize='x-large')
 plt.show()
-#code end
+
 ### Cluster Number Selection
-#code start
 inertia = []
 
 for n_clusters in range(1, 15):
@@ -576,8 +552,7 @@ ax.set_ylabel('Average within-cluster\nsum of squared distances (WSS)')
 ax.set_ylim((0, 1.1 * inertias.inertia.max()))
 ax.legend().set_visible(False)
 plt.show()
-#code end
-#code start
+
 from sklearn import metrics
 
 ss = []
@@ -596,6 +571,6 @@ ax.scatter(range_n_clusters[opt_index], ss[opt_index], color='red')
 ax.set_xlabel(r'Number of cluster ($K$)')
 ax.set_ylabel('Davies-Bouldin index')
 plt.show()
-#code end
+
 ## Chapter Highlights
 ## Exercises

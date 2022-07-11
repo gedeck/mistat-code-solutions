@@ -1,12 +1,19 @@
-#code start
-import pweave
-pweave.rcParams['chunk']['defaultoptions'].update({'f_pos': 'tbp'})
+## Chapter 3
+#
+# Modern Statistics: A Computer Based Approach with Python<br>
+# by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# Publisher: Springer International Publishing; 1st edition (September 15, 2022) <br>
+# ISBN-13: 978-3031075650
+# 
+# (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# The code needs to be executed in sequence.
 import warnings
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=OutdatedPackageWarning)
-#code end
-#code start
+
 import random
 import numpy as np
 import pandas as pd
@@ -19,10 +26,9 @@ import matplotlib.pyplot as plt
 import bootstrapped.bootstrap as bs
 import bootstrapped.stats_functions as bs_stats
 import mistat
-#code end
+
 # Statistical Inference and Bootstrapping
 ## Sampling Characteristics of Estimators
-#code start
 np.random.seed(seed=1) # bootstrapped uses numpy to create random numbers
 
 rv = stats.norm(loc=50, scale=25)
@@ -36,8 +42,7 @@ ax = pd.Series(mean_results).hist(bins=9, color='grey')
 ax.set_xlabel(r'$\bar{x}$')
 ax.set_ylabel('Frequency')
 plt.show()
-#code end
-#code start
+
 np.random.seed(seed=1)
 import scipy.sparse as sparse
 
@@ -56,14 +61,13 @@ var_results = bs.bootstrap(x, stat_func=stat_func,
 ax = pd.Series(var_results).hist(bins=8, color='grey')
 ax.set_xlabel(r'$S^2$')
 plt.show()
-#code end
+
 ## Some Methods of Point Estimation
 ### Moment Equation Estimators
 ### The Method of Least Squares
 ### Maximum Likelihood Estimators
 ## Comparison of Sample Estimates
 ### Basic Concepts
-#code start
 data = []
 for x in range(11):
   data.append({
@@ -74,8 +78,7 @@ for x in range(11):
     'p25': stats.binom.cdf(x, 20, 0.25),
   })
 df = pd.DataFrame(data)
-#code end
-#code start
+
 s = df.style.hide(axis='index').format(precision=4).to_latex(column_format='ccccc', hrules=True)
 s = s.replace(' x ', ' $x$ ')
 s = s.replace(' p10 ', ' $p=.10$ ')
@@ -83,18 +86,16 @@ s = s.replace(' p15 ', ' $p=.15$ ')
 s = s.replace(' p20 ', ' $p=.20$ ')
 s = s.replace(' p25 ', ' $p=.25$ ')
 print(s)
-#code end
-#code start
+
 from mistat.acceptanceSampling import OperatingCharacteristics2c
 X = OperatingCharacteristics2c(20, 4, oc_type='binomial')
 df = pd.DataFrame({'p': X.pd, 'OC(p)': X.paccept})
 ax = df.plot(x='p', y='OC(p)', legend=False, color='black')
 ax.set_ylabel('OC(p)')
 plt.show()
-#code end
+
 ### Some Common One-Sample Tests of Hypotheses
 #### The $Z$-test:  Testing the Mean of a Normal Distribution, $\sigma^2$ Known
-#code start
 x = np.linspace(-3, 3, 401)
 y = stats.norm.pdf(x)
 
@@ -136,8 +137,7 @@ ax.text(zma, -0.152, r'$\mu_0 + z_{1-\alpha} \frac{\sigma}{\sqrt{n}}$', **option
 
 plt.axis('off')
 plt.show()
-#code end
-#code start
+
 data = []
 n = 100
 mu0 = 5
@@ -153,8 +153,7 @@ for mu in (5, 5.01, 5.02, 5.03, 5.04, 5.05):
     'OC': stats.norm.cdf(z),
   })
 df = pd.DataFrame(data)
-#code end
-#code start
+
 mapper =  {'mu': '{0:.2f}',
            'dsn': '{0:.1f}',
            'z': '{0:.3f}',
@@ -168,14 +167,12 @@ s = s.replace(' dsn ', ' $\delta\sqrt{n}$ ')
 s = s.replace(' z ', ' $z$ ')
 s = s.replace(' OC ', ' $\mbox{OC}(\mu)$ ')
 print(s)
-#code end
+
 #### The $t$-Test:  Testing the Mean of a Normal Distribution, $\sigma^2$ Unknown
 #### The Chi-Squared Test:  Testing the Variance of a Normal Distribution
 #### Testing Hypotheses About the Success Probability, $p$, in Binomial Trials
-#code start
 stats.binom(20, 0.2).ppf(0.95)
-#code end
-#code start
+
 np.random.seed(1)
 df = pd.DataFrame({'x': stats.norm(loc=10, scale=1).rvs(500)})
 
@@ -208,7 +205,7 @@ ax.axhline(10, linestyle='--', color='darkgrey')
 plt.show()
 
 nrCoverConfIntervals = sum(lower <= 10 <= upper for lower, upper in confIntervals)
-#code end
+
 ## Confidence Intervals
 ### Confidence Intervals for $\mu$; $\sigma$ Known
 ### Confidence Intervals for $\mu$; $\sigma$ Unknown
@@ -216,7 +213,6 @@ nrCoverConfIntervals = sum(lower <= 10 <= upper for lower, upper in confInterval
 ### Confidence Intervals for $p$
 ## Tolerance Intervals
 ### Tolerance Intervals for the Normal Distributions
-#code start
 np.random.seed(1)
 x = stats.norm(loc=10, scale=1).rvs(50)
 
@@ -226,9 +222,8 @@ ax.get_lines()[0].set_color('grey')
 ax.get_lines()[0].set_markerfacecolor('none')
 ax.get_lines()[1].set_color('black')
 plt.show()
-#code end
+
 ## Testing for Normality with Probability Plots
-#code start
 np.random.seed(1)
 x = stats.norm(loc=10, scale=1).rvs(50)
 fig, ax = plt.subplots(figsize=[5, 5])
@@ -240,8 +235,7 @@ ax.get_lines()[2].set_color('black')
 ax.get_lines()[3].set_color('grey')
 ax.get_lines()[4].set_color('grey')
 plt.show()
-#code end
-#code start
+
 np.random.seed(1)
 x = stats.lognorm.rvs(1, size=100)
 
@@ -262,8 +256,7 @@ res = stats.probplot(x)
 r2_normal = res[1][2] ** 2
 res = stats.probplot(x, dist=stats.lognorm, sparams=[1])
 r2_lognormal = res[1][2] ** 2
-#code end
-#code start
+
 np.random.seed(1)
 dist=stats.lognorm(s=0.1,loc=10)
 x = dist.rvs(100)
@@ -271,8 +264,7 @@ x = dist.rvs(100)
 fig, ax = plt.subplots(figsize=[5, 5])
 stats.probplot(x, dist=stats.lognorm, sparams=[0.1, 10, 1], plot=ax)
 plt.show()
-#code end
-#code start
+
 np.random.seed(1)
 x = np.array([*stats.norm.rvs(loc=10, size=50), *stats.norm.rvs(loc=15, size=50)])
 
@@ -281,8 +273,7 @@ ax.set_xlabel('x')
 ax.set_ylabel('Frequency')
 pd.Series(x).hist(bins=10, color='grey')
 plt.show()
-#code end
-#code start
+
 np.random.seed(1)
 x = np.array([*stats.norm.rvs(loc=10, size=50), *stats.norm.rvs(loc=15, size=50)])
 
@@ -298,19 +289,17 @@ plt.show()
 
 res = stats.probplot(x)
 r2_normal = res[1][2] ** 2
-#code end
+
 ## Tests of Goodness of Fit
 ### The Chi-Square Test (Large Samples)
 ### The Kolmogorov-Smirnov Test
-#code start
 oturb = mistat.load_data('OTURB')
 
 result = stats.kstest(oturb, 'norm',
           args=(np.mean(oturb), np.std(oturb, ddof=1)),
           alternative='two-sided')
-#code end
+
 ## Bayesian Decision Procedures
-#code start
 x = np.linspace(0, 1.0, 200)
 df = pd.DataFrame({
     'x': x,
@@ -318,9 +307,8 @@ df = pd.DataFrame({
 })
 ax = df.plot(x='x', y='p.d.f.', legend=False, color='black')
 plt.show()
-#code end
+
 ### Prior and Posterior Distributions
-#code start
 x = np.linspace(0, 1.0, 200)
 df = pd.DataFrame({
     'x': x,
@@ -328,8 +316,7 @@ df = pd.DataFrame({
 })
 ax = df.plot(x='x', y='p.d.f.', legend=False, color='black')
 plt.show()
-#code end
-#code start
+
 x = np.linspace(0, 1.0, 200)
 df = pd.DataFrame({
     'x': x,
@@ -351,10 +338,9 @@ arrow('X=7', 0.7, 1)
 arrow('X=6', 0.6, 2)
 ax.set_ylabel('p.d.f.')
 plt.show()
-#code end
+
 ### Bayesian Testing and Estimation
 #### Bayesian Testing
-#code start
 fig, ax = plt.subplots(figsize=[4, 4])
 ax.set_xlabel('$\pi$')
 ax.set_ylabel('Risk')
@@ -372,9 +358,8 @@ plt.show()
 #lines(rep(1/6, 2), c(0, 5*1/6), lty="dashed")
 #lines(c(0, 1/6), c(0, 5*1/6), lwd=2)
 #lines(c(1/6, 1), c(5*1/6, 0), lwd=2)
-#code end
+
 #### Bayesian Estimation
-#code start
 np.random.seed(1)
 pois = [rv + 1 for rv in stats.poisson(mu=2).rvs(3)]
 
@@ -399,10 +384,9 @@ ax.fill_between(x[x>conf_x[1]], y[x>conf_x[1]], color="lightgrey")
 ax.set_xlabel('x')
 ax.set_ylabel('h')
 plt.show()
-#code end
+
 ### Credibility Intervals For Real Parameters
 ## Random Sampling From Reference Distributions
-#code start
 random.seed(1)
 
 # Create a population of 90 0s and 10 1s
@@ -415,15 +399,13 @@ for m in range(1000):
   sample = random.choices(population, k=50)
   # keep the mean of the sample
   proportions.append(np.mean(sample))
-#code end
-#code start
+
 from collections import Counter
 from pprint import pprint
 
 frequencies = Counter(proportions)
 pprint(sorted(frequencies.items()))
-#code end
-#code start
+
 random.seed(1)
 
 # Load the dataset
@@ -439,15 +421,13 @@ for m in range(1000):
   means.append(0.005 * round(sample_mean/0.005))
 
 quant_001 = np.quantile(means, 0.01)
-#code end
-#code start
+
 counts = sorted(Counter(means).items())
 for k, v in counts:
   print(f'{k:.3f} & {v} \\\\')
-#code end
+
 ## Bootstrap Sampling
 ### The Bootstrap Method
-#code start
 etchrate = mistat.load_data('ETCHRATE')
 
 B = pg.compute_bootci(etchrate, func=np.mean, n_boot=1000,
@@ -456,8 +436,7 @@ B = pg.compute_bootci(etchrate, func=np.mean, n_boot=1000,
 ci, distribution = B
 print(f' Mean: {np.mean(distribution)}')
 print(f' 95%-CI: {ci[0]:.1f} - {ci[1]:.1f}')
-#code end
-#code start
+
 fig, axes = plt.subplots(figsize=[8, 3], ncols=2)
 etchrate.hist(ax=axes[0], color='grey')
 axes[1].axvspan(*ci, color='lightgrey')
@@ -468,13 +447,12 @@ axes[1].axvline(ci[0], color='black')
 axes[1].axvline(ci[1], color='black')
 axes[1].axvline(550, color='black', linewidth=2, linestyle='--')
 plt.show()
-#code end
+
 ### Examining the Bootstrap Method
 ### Harnessing The Bootstrap Method
 ## Bootstrap Testing of Hypotheses
 ### Bootstrap Testing and Confidence Intervals for the Mean
 ### Studentized Test For the Mean
-#code start
 hybrid1 = mistat.load_data('HYBRID1')
 
 ci = pg.compute_bootci(hybrid1, func='mean', n_boot=500,
@@ -498,9 +476,8 @@ ci, dist = pg.compute_bootci(hybrid1, func=stat_func, n_boot=500,
                        confidence=0.95, method='per',
                        seed=1, return_dist=True)
 sum(dist < stats.ttest_1samp(hybrid1, 2150).pvalue) / len(dist)
-#code end
+
 ### Studentized Test for The Difference of Two Means
-#code start
 random.seed(1)
 hybrid2 = mistat.load_data('HYBRID2')
 X = hybrid2['hyb1']
@@ -533,16 +510,14 @@ t0 = stat_func(X, Y)
 print(f't0 {t0:.3f}')
 pstar = (sum(tstar < -abs(t0)) + sum(abs(t0) < tstar)) / len(tstar)
 print(f'P*-value {pstar:.2f}')
-#code end
-#code start
+
 ax = pd.Series(tstar).hist()
 ax.axvline(t0, color='black', lw=2)
 ax.axvline(-t0, color='black', lw=2)
 ax.set_xlabel('t* values')
 plt.show()
-#code end
+
 ### Bootstrap Tests and Confidence Intervals for the Variance
-#code start
 # create random sample with standard deviation 24.8
 from statsmodels.distributions.empirical_distribution import ECDF
 np.random.seed(seed=150)
@@ -574,10 +549,9 @@ print(f'chi2-ci [{ci[0]}, {ci[1]}]')
 GMquant = np.quantile(GM, [1-alpha/2, alpha/2])
 ci = S20**4 / GMquant
 print(f'boot-ci [{ci[0]}, {ci[1]}]')
-#code end
+
 ### Comparing Statistics of Several Samples
 #### Comparing Variances of Several Samples
-#code start
 hybrid = mistat.load_data('HYBRID')
 
 # variance for each column
@@ -601,15 +575,13 @@ FBoot = Wi.max(axis=1) / Wi.min(axis=1)
 FBoot95 = np.quantile(FBoot, 0.95)
 print('FBoot 95%', FBoot95)
 print('ratio', sum(FBoot >= F0)/len(FBoot))
-#code end
-#code start
+
 ax = pd.Series(FBoot).hist(bins=14, color='grey')
 ax.axvline(F0, color='black', lw=2)
 ax.set_xlabel('F* values')
 plt.show()
-#code end
+
 #### Comparing Several Means:  The One-Way Analysis of Variance
-#code start
 hybrid = mistat.load_data('HYBRID')
 hybrid_long = pd.melt(hybrid, value_vars=hybrid.columns)
 
@@ -646,8 +618,7 @@ ax = pd.Series(Fstar).hist(bins=14, color='grey')
 ax.axvline(F0, color='black', lw=2)
 ax.set_xlabel('F* values')
 plt.show()
-#code end
-#code start
+
 def test_statistic_F(samples):
     return stats.f_oneway(*samples).statistic
 
@@ -670,13 +641,11 @@ for _ in range(Ns):
         Ysamples.append(Xstar - DBi)
     Fs = test_statistic_F(Ysamples)
     Fstar.append(Fs)
-#code end
+
 ## Bootstrap Tolerance Intervals
 ### Bootstrap Tolerance Intervals For Bernoulli Samples
-#code start
 stats.binom.ppf([0.025, 0.975], 50, 0.1)
-#code end
-#code start
+
 oelect = mistat.load_data('OELECT')
 
 elec_index = np.array([1 if 216 <= value <= 224 else 0
@@ -692,9 +661,8 @@ B_975 = pg.compute_bootci(elec_index, func=lambda x: qbinomBoot(x, p=0.975),
 tol_int = [np.quantile(B_025[1], 0.025),np.quantile(B_975[1], 0.975)]
 print(f'Tolerance interval ({tol_int[0]}, {tol_int[1]})')
 
-#code end
+
 ### Tolerance Interval for Continuous Variables
-#code start
 cyclt = mistat.load_data('CYCLT')
 cyclt = [*cyclt, *cyclt]  # create a dataset of size 100 by duplication
 
@@ -707,12 +675,11 @@ B_975 = pg.compute_bootci(cyclt, func=lambda x: getQuantile(x, p=0.975),
           n_boot=500, seed=1, return_dist=True)
 print('0.025%', np.quantile(B_025[1], 0.025))
 print('0.975%', np.quantile(B_975[1], 0.975))
-#code end
+
 ### Distribution Free Tolerance Intervals
 ## Non-Parametric Tests
 ### The Sign Test
 ### The Randomization Test
-#code start
 from itertools import permutations
 
 A = pd.Series([0.75, 0.60, 0.80, 1.5, 1.1, 1.8, ])
@@ -738,17 +705,15 @@ for block in (result.iloc[:10,], result.iloc[10:,]):
     print(f"{idx} & {' & '.join(row)} \\\\")
   print('\\bottomrule')
   print('\\addlinespace')
-#code end
-#code start
+
 oelect = mistat.load_data('OELECT')
 oelect1 = mistat.load_data('OELECT1')
 
 _ = mistat.randomizationTest(oelect, oelect1, np.mean,
                              aggregate_stats=lambda x: x[0] - x[1],
                              n_boot=500, seed=1)
-#code end
+
 ### The Wilcoxon Signed Rank Test
-#code start
 X = [0.188, 0.353, -0.257, 0.220, 0.168]
 Y = [1.240, 1.821, 2.500, 2.319, 2.190]
 
@@ -756,6 +721,6 @@ print('Wilcoxon signed-rank test (unsuitable for ties)')
 print(stats.ranksums(X, Y))
 print('Mann-Whitney U test (suitable for ties)')
 print(stats.mannwhitneyu(X, Y))
-#code end
+
 ## Chapter Highlights
 ## Exercises

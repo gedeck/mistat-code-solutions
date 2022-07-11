@@ -1,13 +1,20 @@
-#code start
-import pweave
-pweave.rcParams['chunk']['defaultoptions'].update({'f_pos': 'tbp'})
+## Chapter 4
+#
+# Modern Statistics: A Computer Based Approach with Python<br>
+# by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# Publisher: Springer International Publishing; 1st edition (September 15, 2022) <br>
+# ISBN-13: 978-3031075650
+# 
+# (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+# 
+# The code needs to be executed in sequence.
 import warnings
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=OutdatedPackageWarning)
-#code end
+
 # Variability in Several Dimensions and Regression Models
-#code start
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -19,18 +26,16 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 import mistat
-#code end
-#code start
+
 place = mistat.load_data('PLACE')
 ax = place.plot.scatter(x='xDev', y='yDev', marker = "$\u25ef$",
                         color='black')
 ax.set_xlim(-0.0035, 0.005)
 ax.set_ylim(-0.004, 0.0035)
 plt.show()
-#code end
+
 ## Graphical Display and Analysis
 ### Scatterplots
-#code start
 # The following command would be sufficient to create the scatterplot matrix
 # matplotlib has however a problem with scaling xDev
 sns.pairplot(place[['xDev', 'yDev', 'tDev']], markers=".",
@@ -47,11 +52,9 @@ sns.pairplot(place[['xDev', 'yDev', 'tDev']], markers=".",
 #g = sns.PairGrid(place[['xDev', 'yDev', 'tDev']])
 #g = g.map_offdiag(panelPlot)
 plt.show()
-#code end
-#code start
+
 ax = sns.histplot(place['tDev'], kde=True, color='black')
-#code end
-#code start
+
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
 
 fig = plt.figure(figsize=[6, 5])
@@ -68,9 +71,8 @@ ax.zaxis.labelpad = 20
 ax.tick_params(axis='z', which='major', pad=10)
 ax.dist = 13
 plt.show()
-#code end
+
 ### Multiple Box-Plots
-#code start
 fig, ax = plt.subplots(figsize=(8, 5))
 place.boxplot(column='xDev', by='crcBrd', color='black', ax=ax)
 ax.set_title('')
@@ -79,8 +81,7 @@ ax.set_xlabel('Board number')
 ax.set_ylabel('xDev')
 plt.show()
 
-#code end
-#code start
+
 place['code'] = [*['lDev'] * 9 * 16,
                  *['mDev'] * 3 * 16,
                  *['hDev'] * 14 * 16, ]
@@ -95,10 +96,9 @@ for code in ('lDev', 'mDev', 'hDev'):
 ax.set_xlabel('xDev')
 ax.set_ylabel('yDev')
 plt.show()
-#code end
+
 ## Frequency Distributions in Several Dimensions
 ### Bivariate Joint Frequency Distributions
-#code start
 almpin = mistat.load_data('ALMPIN')
 binned_almpin = pd.DataFrame({
   'lenWcp': pd.cut(almpin['lenWcp'], bins=np.arange(59.9, 60.2, 0.1)),
@@ -107,21 +107,17 @@ binned_almpin = pd.DataFrame({
 join_frequencies = pd.crosstab(binned_almpin['lenNocp'],
                                binned_almpin['lenWcp'])
 print(join_frequencies)
-#code end
-#code start
+
 print('Row Totals', join_frequencies.sum(axis=1))
 print('Column Totals', join_frequencies.sum(axis=0))
-#code end
-#code start
+
 mosaic(binned_almpin, ['lenWcp', 'lenNocp'], labelizer=lambda x: '')
 plt.show()
-#code end
-#code start
+
 hadpas = mistat.load_data('HADPAS')
 hadpas['res7fac'] = pd.cut(hadpas['res7'], bins=range(1300, 2500, 200))
 hadpas['res3'].groupby(hadpas['res7fac']).agg(['count', 'mean', 'std'])
-#code end
-#code start
+
 ax = hadpas.boxplot(column='res3', by='res7fac',
          color={'boxes':'grey', 'medians':'black', 'whiskers':'black'},
          patch_artist=True)
@@ -129,9 +125,8 @@ ax.set_title('')
 ax.get_figure().suptitle('')
 ax.set_xlabel('res7fac')
 plt.show()
-#code end
+
 ### Conditional Distributions
-#code start
 hadpas = mistat.load_data('HADPAS')
 binned_hadpas = pd.DataFrame({
   'res3': pd.cut(hadpas['res3'], bins=np.arange(1500, 2700, 200)),
@@ -139,53 +134,44 @@ binned_hadpas = pd.DataFrame({
 })
 res3_res7 = pd.crosstab(binned_hadpas['res3'], binned_hadpas['res7'])
 cond_dist = 100 * res3_res7 / res3_res7.sum(axis=0)
-#code end
+
 ## Correlation and Regression Analysis
 ### Covariances and Correlations
-#code start
 almpin = mistat.load_data('ALMPIN')
 sns.pairplot(almpin, plot_kws={'color': 'black'}, diag_kws={'color': 'grey'})
 plt.show()
-#code end
+
 ### Fitting Simple Regression Lines to Data
 #### The Least Squares Method
-#code start
 socell = mistat.load_data('SOCELL')
 socell.plot.scatter(x='t1', y='t2', color='black')
 plt.show()
-#code end
-#code start
+
 # ignore UserWarning for Kurtosis-test due to small dataset
 import warnings
 warnings.simplefilter('ignore', category=UserWarning)
-#code end
-#code start
+
 socell = mistat.load_data('SOCELL')
 model = smf.ols(formula='t2 ~ 1 + t1', data=socell).fit()
 print(model.summary2())
-#code end
-#code start
+
 # restore default setting
 warnings.simplefilter('default', category=UserWarning)
-#code end
-#code start
+
 sns.residplot(x=model.predict(socell), y=socell['t2'], lowess=False, color='black')
 plt.show()
-#code end
+
 #### Regression and Prediction Intervals
-#code start
 result = model.get_prediction(pd.DataFrame({'t1': [4.0,4.4,4.8,5.2]}))
 columns = ['mean', 'obs_ci_lower', 'obs_ci_upper']
 print(0.01)
 print(result.summary_frame(alpha=0.01)[columns].round(3))
 print(0.05)
 print(result.summary_frame(alpha=0.05)[columns].round(3))
-#code end
-#code start
+
 result = model.get_prediction(pd.DataFrame({'t1': [4.0,4.4,4.8,5.2]}))
 print(str(result.summary_frame(alpha=0.01)).replace('\\', '\\\\'))
-#code end
-#code start
+
 hadpas = mistat.load_data('HADPAS')
 ax = hadpas.plot.scatter(x='res7', y='res3', color='darkgrey')
 
@@ -201,40 +187,34 @@ predIntervals = predictions.summary_frame(alpha=0.01)
 ax.plot(newdata['res7'], predIntervals['obs_ci_upper'], color='red', linestyle='--')
 ax.plot(newdata['res7'], predIntervals['obs_ci_lower'], color='red', linestyle='--')
 plt.show()
-#code end
+
 ## Multiple Regression
 ### Regression on Two Variables
-#code start
 gasol = mistat.load_data('GASOL')
 # rename column 'yield' to 'Yield' as 'yield' is a special keyword in Python
 gasol = gasol.rename(columns={'yield': 'Yield'})
 model = smf.ols(formula='Yield ~ astm + endPt + 1', data=gasol).fit()
 print(model.summary2())
-#code end
-#code start
+
 # Covariance
 gasol[['astm', 'endPt', 'Yield']].cov()
 # Means
 gasol[['astm', 'endPt', 'Yield']].mean()
-#code end
-#code start
+
 ax = sns.residplot(x=model.predict(gasol), y=gasol['Yield'], lowess=False, color='black')
 ax.set_xlabel('Fitted value')
 ax.set_ylabel('Residuals')
 plt.show()
-#code end
+
 ### Partial Regression and Correlation
-#code start
 stage1 = smf.ols(formula='Yield ~ 1 + astm', data=gasol).fit()
 print(stage1.params)
 print('R2(y, astm)', stage1.rsquared)
-#code end
-#code start
+
 stage2 = smf.ols(formula='endPt ~ 1 + astm', data=gasol).fit()
 print(stage2.params)
 print('R2(endPt, astm)', stage2.rsquared)
-#code end
-#code start
+
 residuals = pd.DataFrame({
   'e1': stage1.resid,
   'e2': stage2.resid,
@@ -245,8 +225,7 @@ print(np.corrcoef(stage1.resid, stage2.resid))
 stage3 = smf.ols(formula='e1 ~ e2 - 1', data=residuals).fit()
 print(stage3.params)
 print('R2(e1, e2)', stage3.rsquared)
-#code end
-#code start
+
 plt.scatter(stage2.resid, stage1.resid, color='grey')
 ax = plt.gca()
 ax.set_xlabel(r'$e_2$')
@@ -254,31 +233,27 @@ ax.set_ylabel(r'$e_1$')
 xlim = np.array(ax.get_xlim())
 ax.plot(xlim, stage3.params[0] * xlim, color='black')
 plt.show()
-#code end
+
 ### Multiple Linear Regression
-#code start
 almpin = mistat.load_data('ALMPIN')
 # create the X matrix
 X = almpin[['diam1', 'diam2', 'diam3']]
 X = np.hstack((np.ones((len(X), 1)), X))
 # calculate the inverse of XtX
 np.linalg.inv(np.matmul(X.transpose(), X))
-#code end
-#code start
+
 almpin = mistat.load_data('ALMPIN')
 model = smf.ols('capDiam ~ 1 + diam1 + diam2 + diam3', data=almpin).fit()
 print(model.summary2())
 print()
 print(sms.anova.anova_lm(model))
-#code end
-#code start
+
 ax = sns.residplot(x=model.predict(almpin), y=almpin['capDiam'], lowess=False,
                    color='grey', line_kws={'color': 'black', 'linestyle': '--'})
 ax.set_xlabel('Fitted value')
 ax.set_ylabel('Residuals')
 plt.show()
-#code end
-#code start
+
 # load dataset and split into data for US and Asia
 car = mistat.load_data('CAR.csv')
 car_US = car[car['origin'] == 1].copy()
@@ -297,8 +272,7 @@ model_simple = smf.ols('mpg ~ 1 + turn', data=car_combined).fit()
 print('US\n', model_US.params)
 print('Europe\n', model_Asia.params)
 print(model_combined.summary2())
-#code end
-#code start
+
 # create visualization
 ax = car_US.plot.scatter(x='turn', y='mpg', color='gray', marker='o')
 car_Asia.plot.scatter(x='turn', y='mpg', ax=ax, color='gray', marker='^')
@@ -312,9 +286,8 @@ ax.plot(car_combined['turn'], model_simple.predict(car_combined),
         color='black', linestyle='-')
 plt.show()
 
-#code end
+
 ### Partial $F$-Tests and The Sequential SS
-#code start
 import warnings
 almpin = mistat.load_data('ALMPIN')
 model3 = smf.ols('capDiam ~ 1 + diam1+diam2+diam3', data=almpin).fit()
@@ -333,9 +306,8 @@ with warnings.catch_warnings():
     print('diam1:\n', sms.anova.anova_lm(model0, model1))
     print('diam2:\n', sms.anova.anova_lm(model1, model2))
     print('diam3:\n', sms.anova.anova_lm(model2, model3))
-#code end
+
 ### Model Construction:  Step-Wise Regression
-#code start
 gasol = mistat.load_data('GASOL')
 gasol = gasol.rename(columns={'yield': 'Yield'})
 
@@ -351,9 +323,8 @@ print()
 print('Final model')
 print(formula)
 print(model.params)
-#code end
+
 ### Regression Diagnostics
-#code start
 # load data and create modified dataset
 socell = mistat.load_data('SOCELL')
 socell = socell.sort_values(['t1'])
@@ -388,8 +359,7 @@ ax.scatter([t1_2], [t2_2+1], facecolors='none', edgecolors='black', marker='s')
 plt.annotate("", xytext=(t1_2, t2_2+d), xy=(t1_2, t2_2+1-d),
        arrowprops={'linestyle': ':', **prop})
 plt.show()
-#code end
-#code start
+
 socell = mistat.load_data('SOCELL')
 
 model = smf.ols(formula='t2 ~ 1 + t1', data=socell).fit()
@@ -398,37 +368,32 @@ influence = model.get_influence()
 # std. residuals: influence.resid_studentized
 # Cook-s distance: influence.cooks_distance[0]
 # DFIT: influence.dffits[0]
-#code end
-#code start
+
 sm.graphics.influence_plot(model)
 ax = plt.gca()
 ax.set_ylim(-2.4, 2.8)
 plt.show()
-#code end
-#code start
+
 leverage = influence.hat_matrix_diag
 print(f'average leverage: {np.mean(leverage):.3f}')
 print(f'point #8: {leverage[8]:.3f}')
 print(f'point #5: {leverage[5]:.3f}')
-#code end
-#code start
+
 influence = model.get_influence()
 plt.scatter(influence.hat_matrix_diag, influence.summary_frame()['cooks_d'])
 ax = plt.gca()
 ax.set_xlabel('Leverage $h_{ii}$')
 ax.set_ylabel('Cook''s distance')
 plt.show()
-#code end
+
 ## Quantal Response Analysis:  Logistic Regression
 ## The Analysis of Variance:  The Comparison of Means
 ### The Statistical Model
 ### The One-Way Analysis of Variance (ANOVA)
-#code start
 vendor = mistat.load_data('VENDOR')
 vendor_long = pd.melt(vendor, value_vars=vendor.columns)
 vendor_long['value'] = np.sqrt(vendor_long['value'])
-#code end
-#code start
+
 ax = vendor_long.boxplot(column='value', by='variable',
                     color={'boxes': 'grey', 'medians': 'black', 'whiskers': 'black'},
                     patch_artist=True)
@@ -444,18 +409,15 @@ print(err)
 ax.errorbar([1.2, 2.2, 3.2], model.params, yerr=err,
   fmt='o', color='darkgrey')
 plt.show()
-#code end
-#code start
+
 model = smf.ols('value ~ variable', data=vendor_long).fit()
 table = sm.stats.anova_lm(model, typ=1)
 print(table)
-#code end
-#code start
+
 model = smf.ols('value ~ -1 + variable', data=vendor_long).fit()
 print(model.conf_int())
-#code end
+
 ## Simultaneous Confidence Intervals:  Multiple Comparisons
-#code start
 hadpas = mistat.load_data('HADPAS')
 ax = hadpas.boxplot(column='res3', by='hyb',
                     color={'boxes': 'grey', 'medians': 'black', 'whiskers': 'black'},
@@ -464,31 +426,27 @@ ax.set_title('')
 ax.get_figure().suptitle('')
 ax.set_xlabel('hyb')
 plt.show()
-#code end
-#code start
+
 from statsmodels.stats.multicomp import pairwise_tukeyhsd
 hadpas = mistat.load_data('HADPAS')
 mod = pairwise_tukeyhsd(hadpas['res3'], hadpas['hyb'])
 print(mod)
-#code end
+
 ## Contingency Tables
 ### The Structure of Contingency Tables
-#code start
 insertion = mistat.load_data('INSERTION')
 insertion['percentage'] = 100 * insertion['fail'] / (insertion['fail']+insertion['succ'])
 ax = insertion.plot.bar(x='comp', y='percentage', color='grey')
 ax.set_ylabel('%')
 plt.show()
-#code end
-#code start
+
 car = mistat.load_data('CAR')
 count_table = car[['cyl', 'origin']].pivot_table(
              index='cyl', columns='origin', aggfunc=len, fill_value=0)
 print(count_table)
-#code end
+
 ### Indices of Association For Contingency Tables
 #### Two Interval Scaled Variables
-#code start
 # create binned data set
 bins_turn = np.array([27, 30.6, 34.2, 37.8, car['turn'].max()])
 bins_mpg = np.array([12, 18, 24, car['mpg'].max()])
@@ -516,29 +474,25 @@ rho2b = np.sqrt(np.sum(p_mpg*(center_mpg-mean_mpg)**2))
 rho = rho1 / (rho2a * rho2b)
 print(f"r_XY   {np.corrcoef(car['turn'], car['mpg'])[0][1]:.3f}")
 print(f'rho_XY {rho:.3f}')
-#code end
+
 #### Indices of Association for Categorical Variables
-#code start
 chi2 = stats.chi2_contingency(count_table)
 print(f'chi2 statistic {chi2[0]:.2f}')
-#code end
+
 ## Categorical Data Analysis
 ### Comparison of Binomial Experiments
-#code start
 df = pd.DataFrame({
   'i': [1, 2, 3, 4, 5, 6, 7, 8, 9],
   'Ji': [61, 34, 10, 23, 25, 9, 12, 3, 13],
   'ni': [108119,136640,107338,105065,108854,96873,107391,105854,180630],
   })
 df['Yi'] = 2*np.arcsin(np.sqrt((df['Ji'] + 3/8)/(df['ni'] + 3/4)))
-#code end
-#code start
+
 Ybar = np.sum(df['ni'] * df['Yi']) / np.sum(df['ni'])
 Q = np.sum(df['ni'] * (df['Yi'] - Ybar) ** 2)
 print(Q)
-#code end
-#code start
+
 stats.chi2.cdf(105.43, df=8)
-#code end
+
 ## Chapter Highlights
 ## Exercises

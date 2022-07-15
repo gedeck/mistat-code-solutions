@@ -7,3 +7,4 @@ matplotlib
 scipy
 statsmodels
 KDEpy
+seaborn

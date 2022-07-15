@@ -55,7 +55,7 @@ Once the library is installed, it will be listed under the installed packages.
 - xgboost: XGBoost is an optimized distributed gradient boosting library designed to be highly efficient, flexible and portable (https://xgboost.readthedocs.io/en/latest/)
 
 > Advanced: You can also install a library from the command line, which may be faster, by using the command:
-`conda install packagename`
+`conda install packagename` 
 
 Not all packages are available in anaconda. They need to be installed using the Python package manager `pip` (see below).
 

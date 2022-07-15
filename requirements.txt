@@ -1,0 +1,4 @@
+mistat
+numpy
+pandas
+jupyter

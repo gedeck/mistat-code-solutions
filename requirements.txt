@@ -12,3 +12,7 @@ pingouin
 bootstrapped
 dtreeviz
 scikit-fda
+xgboost
+networkx
+pgmpy
+pydotplus

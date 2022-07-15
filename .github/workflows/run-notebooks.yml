@@ -53,10 +53,10 @@ jobs:
       - name: Execute notebooks
         run: |
           # jupyter nbconvert --to notebook --execute ModernStatistics/Chap001.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/Chap002.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/Chap003.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/Chap004.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/Chap005.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/Chap006.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/Chap002.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/Chap003.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/Chap004.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/Chap005.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/Chap006.ipynb
           jupyter nbconvert --to notebook --execute ModernStatistics/Chap007.ipynb
           jupyter nbconvert --to notebook --execute ModernStatistics/Chap008.ipynb

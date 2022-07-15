@@ -29,9 +29,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
+      # matrix:
+      #   python-version: ["3.9", "3.10"]
+      #   os: [ubuntu-latest, windows-latest]
       matrix:
-        python-version: ["3.9", "3.10"]
-        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.9"]
+        os: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -48,4 +51,11 @@ jobs:
 
       - name: Execute notebooks
         run: |
-          jupyter nbconvert --to notebook --execute ModernStatistics/Chap001.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/Chap001.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/Chap002.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/Chap003.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/Chap004.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/Chap005.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/Chap006.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/Chap007.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/Chap008.ipynb

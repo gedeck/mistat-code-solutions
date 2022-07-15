@@ -5,3 +5,5 @@ jupyter
 outdated
 matplotlib
 scipy
+statsmodels
+KDEpy

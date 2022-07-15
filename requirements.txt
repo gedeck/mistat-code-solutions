@@ -3,3 +3,5 @@ numpy
 pandas
 jupyter
 outdated
+matplotlib
+scipy

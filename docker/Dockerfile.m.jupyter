@@ -1,0 +1,6 @@
+FROM mistat.m.python
+RUN pip install jupyter 
+
+WORKDIR /code
+
+EXPOSE 8895

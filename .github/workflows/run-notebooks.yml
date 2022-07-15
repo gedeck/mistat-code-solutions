@@ -13,6 +13,10 @@ on:
       - "images/**"
       - "*.md"
 
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     # We want to run on external PRs, but not on our own internal PRs as they'll be run

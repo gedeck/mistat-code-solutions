@@ -2,3 +2,4 @@ mistat
 numpy
 pandas
 jupyter
+outdated

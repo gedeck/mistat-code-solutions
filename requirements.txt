@@ -1,4 +1,3 @@
-wheel
 mistat
 numpy
 pandas
@@ -10,3 +9,4 @@ statsmodels
 KDEpy
 seaborn
 pingouin
+bootstrapped

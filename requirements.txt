@@ -8,3 +8,4 @@ scipy
 statsmodels
 KDEpy
 seaborn
+pingouin

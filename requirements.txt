@@ -10,3 +10,5 @@ KDEpy
 seaborn
 pingouin
 bootstrapped
+dtreeviz
+scikit-fda

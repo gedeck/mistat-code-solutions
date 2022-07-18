@@ -23,4 +23,5 @@ This part of the repository contains:
 - `notebooks`: Python code of individual chapters combined in a Jupyter notebook - [download all as notebooks.zip](notebooks.zip)
 - `code`: Python code for solutions as a plain Python filec - [download all as code.zip](solutions.zip)
 - `solutions`: Python code for solutions combined in a Jupyter notebook - [download all as solutions.zip](solutions.zip)
+- `all`: zip file with all three files combined - [download all as solutions.zip](all.zip)
 

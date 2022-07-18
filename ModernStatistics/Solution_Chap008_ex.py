@@ -12,6 +12,8 @@
 
 
 import warnings
+import os
+os.environ['OUTDATED_IGNORE'] = '1'
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=OutdatedPackageWarning)

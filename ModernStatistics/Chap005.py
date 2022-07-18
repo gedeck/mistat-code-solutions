@@ -9,6 +9,8 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+import os
+os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)

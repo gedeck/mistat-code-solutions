@@ -9,6 +9,8 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+import os
+os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
@@ -23,42 +25,25 @@ import statsmodels.stats.api as sms
 import statsmodels.api as sm
 import pingouin as pg
 import matplotlib.pyplot as plt
-import bootstrapped.bootstrap as bs
-import bootstrapped.stats_functions as bs_stats
 import mistat
 
 # Statistical Inference and Bootstrapping
 ## Sampling Characteristics of Estimators
-np.random.seed(seed=1) # bootstrapped uses numpy to create random numbers
+# The book figure was created using a different bootstrapping code and therefore looks different.
+np.random.seed(seed=1)
 
-rv = stats.norm(loc=50, scale=25)
-x = rv.rvs(100)
-
-mean_results = bs.bootstrap(x, stat_func=bs_stats.mean,
-                            num_iterations=100, iteration_batch_size=10, num_threads=-1,
-                            return_distribution=True)
+x = stats.norm(loc=50, scale=25).rvs(100)
+ci, mean_results = pg.compute_bootci(x, func=np.mean, n_boot=100, return_dist=True, seed=1)
 
 ax = pd.Series(mean_results).hist(bins=9, color='grey')
 ax.set_xlabel(r'$\bar{x}$')
 ax.set_ylabel('Frequency')
 plt.show()
 
-np.random.seed(seed=1)
-import scipy.sparse as sparse
+# The book figure was created using a different bootstrapping code and therefore looks different.
+B = pg.compute_bootci(x, func=np.var, n_boot=100, return_dist=True, seed=1)
 
-def stat_func(values, axis=1):
-    '''Returns the std of each row of a matrix'''
-    if isinstance(values, sparse.csr_matrix):
-        ret = values.var(axis=axis)
-        return ret.A1
-    else:
-        return np.var(np.asmatrix(values), axis=axis).A1
-
-var_results = bs.bootstrap(x, stat_func=stat_func,
-                           num_iterations=100, iteration_batch_size=10, # num_threads=-1,
-                           return_distribution=True)
-
-ax = pd.Series(var_results).hist(bins=8, color='grey')
+ax = pd.Series(B[1]).hist(bins=8, color='grey')
 ax.set_xlabel(r'$S^2$')
 plt.show()
 
@@ -173,34 +158,22 @@ print(s)
 #### Testing Hypotheses About the Success Probability, $p$, in Binomial Trials
 stats.binom(20, 0.2).ppf(0.95)
 
-np.random.seed(1)
+np.random.seed(seed=7) # bootstrapped uses numpy to create random numbers
+
 df = pd.DataFrame({'x': stats.norm(loc=10, scale=1).rvs(500)})
 
-
-# confintFunc
 model = smf.ols(formula='x ~ 1', data=df[1:10]).fit()
 model.conf_int(alpha=0.05).loc['Intercept', :]
 
-
-def stat_func(values, axis=1):
-    ''' Return the confidence interval for the intercept '''
-    if len(values.shape) > 1:
-        result = []
-        for row in values:
-            df = pd.DataFrame({'x': row[:10]})
-            model = smf.ols(formula='x ~ 1', data=df).fit()
-            result.append(model.conf_int(alpha=0.05).loc['Intercept', :])
-        return result
-    return [0]
-
-
-confIntervals = bs.bootstrap(df['x'].values, stat_func=stat_func,
-                           num_iterations=50, iteration_batch_size=10,
-                           return_distribution=True)
+confIntervals = []
+for _ in range(50):
+    df_sample = df.sample(10, replace=True)
+    model = smf.ols(formula='x ~ 1', data=df_sample).fit()
+    confIntervals.append(list(model.conf_int(alpha=0.05).loc['Intercept', :]))
 
 fig, ax = plt.subplots(figsize=[8, 6])
 for repeat, (lower, upper) in enumerate(confIntervals, 1):
-    ax.plot([repeat, repeat], [lower, upper], color='black')
+    ax.plot([repeat, repeat], [lower, upper], color='black' if lower < 10 < upper else 'red')
 ax.axhline(10, linestyle='--', color='darkgrey')
 plt.show()
 

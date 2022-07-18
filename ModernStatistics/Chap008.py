@@ -9,6 +9,8 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+import os
+os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
@@ -115,9 +117,9 @@ for ax in axes:
 plt.tight_layout()
 plt.show()
 
-from skfda.exploratory.outliers import IQROutlierDetector
+from skfda.exploratory.outliers import BoxplotOutlierDetector
 
-out_detector = IQROutlierDetector()
+out_detector = BoxplotOutlierDetector()
 outliers = out_detector.fit_predict(fd)
 print('Outlier:')
 for name, outlier in zip(names, outliers):
@@ -130,11 +132,11 @@ from matplotlib.colors import LinearSegmentedColormap
 
 def addBoxplot(fd, ax):
   cm = LinearSegmentedColormap.from_list('fda', ['grey', 'lightgrey'])
-  boxplot = Boxplot(fd)
+  boxplot = Boxplot(fd, axes=[ax])
   boxplot.barcol = 'black'
   boxplot.outliercol = 'black'
   boxplot.colormap = cm
-  boxplot.plot(axes=[ax])
+  boxplot.plot()
 
 fig, axes = plt.subplots(ncols=2)
 addBoxplot(fd[labels=='Reference'], axes[0])

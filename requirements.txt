@@ -11,6 +11,7 @@ seaborn
 pingouin
 bootstrapped
 dtreeviz
+svglib
 scikit-fda
 xgboost
 networkx

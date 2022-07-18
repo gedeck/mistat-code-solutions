@@ -6,9 +6,13 @@ RUN apt-get update && \
     mkdir /src
 
 RUN apt -y install graphviz
+RUN apt-get update
+RUN apt -y install build-essential
+
 
 COPY ./requirements.txt /requirements.txt
 
+RUN pip install torch
 RUN pip install --requirement /requirements.txt
 
 WORKDIR /code

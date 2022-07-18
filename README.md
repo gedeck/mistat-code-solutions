@@ -1,7 +1,7 @@
 # Code repository
 <table>
 <tr>
-<td><img src="images/ModernStatistics.png" width=300></td>
+<td><img src="img/ModernStatistics.png" width=300></td>
 <td>
 Modern Statistics: A Computer Based Approach with Python
 

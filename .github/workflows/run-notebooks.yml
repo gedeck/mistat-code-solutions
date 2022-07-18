@@ -52,19 +52,19 @@ jobs:
 
       - name: Execute notebooks
         run: |
-          jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap001.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap002.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap003.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap004.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap005.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap006.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap007.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap008.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap001.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap002.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap003.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap004.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap005.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap006.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap007.ipynb
-          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap008.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap001.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap002.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap003.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap004.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap005.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap006.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap007.ipynb
+          # jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap008.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap001_ex.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap002_ex.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap003_ex.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap004_ex.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap005_ex.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap006_ex.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap007_ex.ipynb
+          jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap008_ex.ipynb

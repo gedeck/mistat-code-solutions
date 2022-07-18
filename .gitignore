@@ -128,3 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 Untitled.ipynb
+
+
+ModernStatistics/Solution_*
+ModernStatistics/Chap_*
+

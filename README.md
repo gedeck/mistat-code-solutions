@@ -14,6 +14,8 @@ Buy on
 <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
 
 <!-- Errata: http://oreilly.com/catalog/errata.csp?isbn=9781492072942 -->
+  
+  Code and solutions for Modern Statistics are <a href="ModernStatistics">here</a>.
 </td>
 </tr>
 </table>

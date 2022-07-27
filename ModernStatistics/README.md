@@ -25,6 +25,16 @@ This part of the repository contains:
 - `solutions`: Python code for solutions combined in a Jupyter notebook - [download all as solutions.zip](solutions.zip)
 - `all`: zip file with all three files combined - [download all as all.zip](all.zip)
 
+# Table of contents
+
+<a href='#chapter-1-analyzing-variability-descriptive-statistics'>Chapter 1: Analyzing Variability: Descriptive Statistics</a><br>
+<a href='#chapter-2-probability-models-and-distribution-functions'>Chapter 2: Probability Models and Distribution Functions</a><br>
+<a href='#chapter-3-statistical-inference-and-bootstrapping'>Chapter 3: Statistical Inference and Bootstrapping</a><br>
+<a href='#chapter-4-variability-in-several-dimensions-and-regression-models'>Chapter 4: Variability in Several Dimensions and Regression Models</a><br>
+<a href='#chapter-5-sampling-for-estimation-of-finite-population-quantities'>Chapter 5: Sampling for Estimation of Finite Population Quantities</a><br>
+<a href='#chapter-6-time-series-analysis-and-prediction'>Chapter 6: Time Series Analysis and Prediction</a><br>
+<a href='#chapter-7-and-8-modern-analytic-methods-part-i-and-ii'>Chapter 7: Modern analytic methods: Part I</a><br>
+<a href='#chapter-7-and-8-modern-analytic-methods-part-i-and-ii'>Chapter 8: Modern analytic methods: Part II</a><br>
 
 
 # Introductory videos

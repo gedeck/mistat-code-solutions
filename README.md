@@ -1,3 +1,5 @@
+![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
+
 # Code repository
 <table>
 <tr>

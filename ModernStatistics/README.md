@@ -7,12 +7,14 @@
     vertical-align: top;
   }
 </style>
+![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
+
 # Code repository
 <table>
 <tr>
-<td><img src="../img/ModernStatistics.png" width=300></td>
+<td><img src="../img/ModernStatistics.png" width=250></td>
 <td>
-Modern Statistics: A Computer Based Approach with Python
+  <b>Modern Statistics: A Computer Based Approach with Python</b>
 
 by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 
@@ -41,8 +43,14 @@ This part of the repository contains:
   [download all as solutions.zip](solutions.zip)
 - `all`: zip file with all three files combined - [download all as all.zip](all.zip)
 
+All the Python applications referred to in this book are contained in a package called `mistat` available 
+for installation from the Python package index ([[https://](https://pypi.org/project/mistat/)](https://pypi.org/project/mistat/).
+The `mistat` packages is maintained in a GitHub repository at \url{https://github.com/gedeck/mistat}.
+
 # Installation instructions
 Instructions on installing Python and required packages are <a href="../doc/installPython.md">here</a>.
+
+
 
 
 # Table of contents

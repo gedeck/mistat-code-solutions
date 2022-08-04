@@ -26,6 +26,9 @@ This part of the repository contains:
 - `solutions`: Python code for solutions combined in a Jupyter notebook - [download all as solutions.zip](solutions.zip)
 - `all`: zip file with all three files combined - [download all as all.zip](all.zip)
 
+# Installation instructions
+Instructions on installing Python and required packages are <a href="../doc/installPython.md">here</a>.
+
 
 # Table of contents
 

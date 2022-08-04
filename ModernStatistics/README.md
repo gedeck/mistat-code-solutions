@@ -64,7 +64,8 @@ statistical inference, including Bayesian process monitoring and
 Bayesian reliability presented in Chapter 3 and Chapter 9, 
 respectively (in the Industrial Statistics book).
 
-https://user-images.githubusercontent.com/8720575/180794620-207dc1ca-3932-41d2-8140-087984ec5595.mp4
+<video src="https://user-images.githubusercontent.com/8720575/180794620-207dc1ca-3932-41d2-8140-087984ec5595.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 ## Chapter 3: Statistical Inference and Bootstrapping
 In this chapter we introduce basic concepts and methods of statistical inference.  The focus is on
@@ -73,7 +74,8 @@ and of testing hypotheses about them. Problems of
 testing if certain distributions fit observed data
 are also considered.
 
-https://user-images.githubusercontent.com/8720575/180794659-7e870498-7b03-4754-a18b-80ebee7fc4f3.mp4
+<video src="https://user-images.githubusercontent.com/8720575/180794659-7e870498-7b03-4754-a18b-80ebee7fc4f3.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 ## Chapter 4: Variability in Several Dimensions and Regression Models
 When surveys or experiments are performed, measurements are
@@ -92,7 +94,8 @@ analysis studies the association between qualitative
 (categorical) variables, on which
 we cannot apply the usual regression methods.
 
-https://user-images.githubusercontent.com/8720575/180794686-7fed67fa-207c-4f05-84be-658ac8fa2e0e.mp4
+<video src="https://user-images.githubusercontent.com/8720575/180794686-7fed67fa-207c-4f05-84be-658ac8fa2e0e.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 ## Chapter 5: Sampling for Estimation of Finite Population Quantities
 Techniques for sampling finite populations and estimating population
@@ -104,7 +107,8 @@ optimal allocation are provided and demonstrated with case studies.
 The chapter is concluded with a section on
 prediction models with known covariates.
 
-https://user-images.githubusercontent.com/8720575/180794750-f21c7beb-3086-4f51-87d9-3dd1970ff540.mp4
+<video src="https://user-images.githubusercontent.com/8720575/180794750-f21c7beb-3086-4f51-87d9-3dd1970ff540.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 ## Chapter 6: Time Series Analysis and Prediction
 In this chapter, we present essential parts of time series analysis,
@@ -114,7 +118,8 @@ series, which do not change their stochastic characteristics as time proceeds.
 We develop and illustrate time series which are of both types, namely
 covariance stationary, and non-stationary.
 
-https://user-images.githubusercontent.com/8720575/180794728-102532ae-be22-41ff-96de-4c7e7c11b91e.mp4
+<video src="https://user-images.githubusercontent.com/8720575/180794728-102532ae-be22-41ff-96de-4c7e7c11b91e.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 
 ## Chapter 7 and 8: Modern analytic methods: Part I and II
@@ -128,5 +133,6 @@ insights, not always available in standard texts.
 The chapter covers functional data analysis, text analytics,
 reinforcement learning, Bayesian networks, and causality models.
  
-https://user-images.githubusercontent.com/8720575/180794703-c6f05f40-eefd-4e1a-93f9-42cb78e6a6b4.mp4
+<video src="https://user-images.githubusercontent.com/8720575/180794703-c6f05f40-eefd-4e1a-93f9-42cb78e6a6b4.mp4" controls="controls" style="max-width: 730px;">
+</video>
 

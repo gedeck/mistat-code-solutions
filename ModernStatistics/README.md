@@ -1,8 +1,8 @@
 # Code repository
-<table>
-<tr>
-<td><img src="../img/ModernStatistics.png" width=300></td>
-<td>
+<table style="border: 0px;vertical-align: top;">
+<tr style="border: 0px;vertical-align: top;">
+<td style="border: 0px;vertical-align: top;"><img src="../img/ModernStatistics.png" width=300></td>
+<td style="border: 0px;vertical-align: top;">
 Modern Statistics: A Computer Based Approach with Python
 
 by Ron Kenett, Shelemyahu Zacks, Peter Gedeck

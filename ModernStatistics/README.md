@@ -20,15 +20,15 @@ Buy on
 
 This part of the repository contains:
 
-- `notebooks`: Python code of individual chapters combined in 
+- `notebooks`: Python code of individual chapters in 
   [Jupyter notebooks](https://github.com/gedeck/mistat-code-solutions/new/main/ModernStatistics/notebooks) - 
   [download all as notebooks.zip](notebooks.zip)
-- `code`: Python code for solutions as a plain 
-  [Python files](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/code - 
+- `code`: Python code for solutions as plain 
+  [Python files](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/code) - 
   [download all as code.zip](code.zip)
 - `solutions manual`: [Solutions_Modernstatistics.pdf](Solutions_Modernstatistics.pdf): solutions of exercises
-- `solutions`: Python code for solutions combined in Jupyter 
-  [notebook](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/solutions) - 
+- `solutions`: Python code for solutions in Jupyter 
+  [notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/solutions) - 
   [download all as solutions.zip](solutions.zip)
 - `all`: zip file with all three files combined - [download all as all.zip](all.zip)
 

@@ -4,7 +4,7 @@
   }
   td {
     border: 0px;
-    vertial-align: top;
+    vertical-align: top;
   }
 </style>
 # Code repository

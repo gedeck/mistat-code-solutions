@@ -51,7 +51,8 @@ represent random phenomena.  Various characteristics of location and
 dispersion of frequency distributions are defined.  The elements of
 exploratory data analysis are presented.
 
-https://user-images.githubusercontent.com/8720575/180794305-25b0ee4d-6b15-4cd8-86cc-a60d555add9b.mp4
+<video src="https://user-images.githubusercontent.com/8720575/180794305-25b0ee4d-6b15-4cd8-86cc-a60d555add9b.mp4" controls="controls" style="max-width: 730px;">
+</video>
 
 ## Chapter 2: Probability Models and Distribution Functions
 The chapter provides the basics of probability theory and of the theory of 

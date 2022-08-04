@@ -20,8 +20,8 @@ Buy on
 
 This part of the repository contains:
 
-- [Solutions_Modernstatistics.pdf](Solutions_Modernstatistics.pdf): solutions of exercises
-- `notebooks`: Python code of individual chapters combined in a Jupyter notebook - [download all as notebooks.zip](notebooks.zip)
+- `solutions`: [Solutions_Modernstatistics.pdf](Solutions_Modernstatistics.pdf): solutions of exercises
+- `notebooks`: Python code of individual chapters combined in [Jupyter notebooks](notebooks) - [download all as notebooks.zip](notebooks.zip)
 - `code`: Python code for solutions as a plain Python filec - [download all as code.zip](code.zip)
 - `solutions`: Python code for solutions combined in a Jupyter notebook - [download all as solutions.zip](solutions.zip)
 - `all`: zip file with all three files combined - [download all as all.zip](all.zip)

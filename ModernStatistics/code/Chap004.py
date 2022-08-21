@@ -139,8 +139,8 @@ cond_dist = 100 * res3_res7 / res3_res7.sum(axis=0)
 
 ## Correlation and Regression Analysis
 ### Covariances and Correlations
-almpin = mistat.load_data('ALMPIN')
-sns.pairplot(almpin, plot_kws={'color': 'black'}, diag_kws={'color': 'grey'})
+almpin = mistat.load_data('ALMPIN') 
+sns.pairplot(almpin, plot_kws={'color': 'black'}, diag_kws={'color': 'grey'}, height=1.4)
 plt.show()
 
 ### Fitting Simple Regression Lines to Data

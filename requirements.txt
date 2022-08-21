@@ -2,6 +2,7 @@ mistat
 numpy
 pandas
 jupyter
+astroid
 outdated
 matplotlib
 scipy

@@ -334,10 +334,10 @@ plt.show()
 ### Stem-and-Leaf Diagrams
 X = mistat.load_data('YARNSTRG')
 
-mistat.stemLeafDiagram(X, 2, leafUnit=0.1, latex=True)
+mistat.stemLeafDiagram(X, 2, leafUnit=0.1)
 
 X = mistat.load_data('OELECT')
-mistat.stemLeafDiagram(X, 5, latex=True)
+mistat.stemLeafDiagram(X, 5)
 
 ### Robust Statistics for Location and Dispersion
 from scipy.stats import trim_mean

@@ -52,7 +52,7 @@ for installation from the Python package index ([[https://](https://pypi.org/pro
 The `mistat` packages is maintained in a GitHub repository at \url{https://github.com/gedeck/mistat}.
 
 # Installation instructions
-Instructions on installing Python and required packages are <a href="../doc/installPython.md">here</a>.
+Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
 
 
 

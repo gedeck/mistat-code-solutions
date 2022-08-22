@@ -56,6 +56,6 @@ The `mistat` packages is maintained in a GitHub repository at \url{https://githu
 -->
 
 # Installation instructions
-Instructions on installing Python and required packages are <a href="../doc/installPython.md">here</a>.
+Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
 
 

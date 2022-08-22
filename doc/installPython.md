@@ -11,6 +11,7 @@ Here is what you need to do:
   - macOS: double-click on the pkg file and follow the instructions using the default settings
   - Windows: run the exe file and follow the instructions using default settings
   - During installation of Anaconda, you are asked if you want to install DataSpell. This is optional, but can be a useful tool to get you started using Jupyter Notebooks.
+  
  <table width='100%'>
  <tr>
    <td>Once the application is installed, you can execute Anaconda Navigator from the Start Menu (Windows) and the Application folder (macOS)<td>

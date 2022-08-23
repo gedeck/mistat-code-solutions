@@ -45,7 +45,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           
       - name: Install graphviz
-        if: ${{ matrix.os == "ubuntu-latest" }}
+        if: matrix.os == 'ubuntu-latest'
         run: |
           apt install -y graphviz
 

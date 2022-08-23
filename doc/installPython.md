@@ -12,27 +12,18 @@ Here is what you need to do:
   - Windows: run the exe file and follow the instructions using default settings
   - During installation of Anaconda, you are asked if you want to install DataSpell. This is optional, but can be a useful tool to get you started using Jupyter Notebooks.
   
-<table width='100%'>
-<tr>
-<td>
-<p>Once the application is installed, you can execute Anaconda Navigator from the Start Menu (Windows) and the Application folder (macOS).</p>
+Once the application is installed, you can execute Anaconda Navigator from the Start Menu (Windows) and the Application folder (macOS).
 
-<p>If you don’t want to use Anaconda, you will find installation instructions for Windows 10 at the end of this document.</p>
-<td>
-<td><img src='images/logo.png' width=100></td>
-</tr>
-</table>
+If you don’t want to use Anaconda, you will find installation instructions for Windows 10 at the end of this document.
 
-
-
-## Anaconda Navigator – update and install packages
+## Anaconda Navigator – update and install packages <img src='images/logo.png' width=100>
 You can use _Anaconda Navigator_ to manage your Python installation and run the Jupyter application. 
 
 Use the _Environments_ tab to add packages to your Python installation. The package list looks like this:
 
 <img src='images/anaconda-environment.png' width=800>
 
-> Advanced: you can have custom environments for different projects. This is useful if you work on different projects. Click the _[+] Create_ link to create a new environment.
+**Advanced**: you can have custom environments for different projects. This is useful if you work on different projects. Click the <i>[+] Create</i> link to create a new environment.
 
 Click the [Update index…] button to refresh the package list. From time to time, it may ask you to update the Anaconda Navigator application. It’s good practice to update regularly. 
 If new versions become available, you will see that the version number changes. The version number of updatable packages are highlighted in blue and with an arrow next to the version number.
@@ -59,7 +50,7 @@ Once the library is installed, it will be listed under the installed packages.
 - statsmodels: Statistical computations and models for Python (https://www.statsmodels.org/)
 - xgboost: XGBoost is an optimized distributed gradient boosting library designed to be highly efficient, flexible and portable (https://xgboost.readthedocs.io/en/latest/)
 
-> Advanced: You can also install a library from the command line, which may be faster, by using the command:
+**Advanced**: You can also install a library from the command line which may be faster, by using the command:
 `conda install packagename` 
 
 Not all packages are available in anaconda. They need to be installed using the Python package manager `pip` (see below).

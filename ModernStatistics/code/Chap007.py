@@ -233,18 +233,6 @@ print(export_text(clf, feature_names=list(X.columns)))
 
 from dtreeviz.trees import dtreeviz
 
-def viz2pdf(viz, pdfFile):
-  from svglib.svglib import svg2rlg
-  from reportlab.graphics import renderPDF
-  from tempfile import NamedTemporaryFile
-  with NamedTemporaryFile(mode='w+', suffix='.svg') as f:
-    f.write(viz.svg())
-    f.flush()
-    f.seek(0)
-    drawing = svg2rlg(f.name)
-    renderPDF.drawToFile(drawing, pdfFile)
-
-
 # the dtreeviz methods requires the classifier to be trained with a numerical
 # representation of the classes
 X = sensors[predictors]
@@ -261,6 +249,22 @@ viz = dtreeviz(clf, X, y,
                class_names=['Fail', 'Pass'])
 warnings.simplefilter('default', category=UserWarning)
 
+display(viz)
+
+from dtreeviz.trees import dtreeviz
+
+def viz2pdf(viz, pdfFile):
+  from svglib.svglib import svg2rlg
+  from reportlab.graphics import renderPDF
+  from tempfile import NamedTemporaryFile
+  with NamedTemporaryFile(mode='w+', suffix='.svg') as f:
+    f.write(viz.svg())
+    f.flush()
+    f.seek(0)
+    drawing = svg2rlg(f.name)
+    renderPDF.drawToFile(drawing, pdfFile)
+
+warnings.simplefilter('default', category=UserWarning)
 sensor18 = np.array(sensors['sensor18'])
 status =  sensors['status']
 x = np.array(sorted(sensor18))

@@ -142,18 +142,24 @@ plot_pacf(dow1941_ts, lags=15, method='ywm', ax=axes[1])
 plt.tight_layout()
 plt.show()
 
+print(f'  k     rho(k)    rho*(k)')
+for i, (v1, v2) in enumerate(zip(dow_acf, dow_pacf)):
+  print(f'{i:3d}   {v1:8.4f}   {v2:8.4f}')
+
 for i, (v1, v2) in enumerate(zip(dow_acf, dow_pacf)):
   print(f'{i} & {v1:.4f} & {v2:.4f} \\\\')
-
 dow_acf = acf(model_3.resid, nlags=15, fft=True)
 fig, axes = plt.subplots(ncols=2, figsize=[8, 3.2])
 plot_acf(model_3.resid, lags=15, ax=axes[0])
 plot_pacf(model_3.resid, lags=15, method='ywm', ax=axes[1])
 plt.show()
 
+print(f'  k     rho(k)')
+for i, v1 in enumerate(dow_acf):
+  print(f'{i:3d}   {v1:8.4f}')
+
 for i, v1 in enumerate(dow_acf):
   print(f'{i} & {v1:.4f}  \\\\')
-
 ### Auto-Regressive Moving Averages Time Series
 ### Integrated Auto-Regressive Moving Average Time Series
 ### Applications with Python

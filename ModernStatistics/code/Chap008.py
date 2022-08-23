@@ -208,8 +208,13 @@ termCounts = np.array(counts.sum(axis=0)).flatten()
 topCounts = termCounts.argsort()
 terms = vectorizer.get_feature_names_out()
 for n in reversed(topCounts[-10:]):
-  print(f'{terms[n]} & {termCounts[n]} \\\\')
+  print(f'{terms[n]:10s}  {termCounts[n]:5d}')
 
+termCounts = np.array(counts.sum(axis=0)).flatten()
+topCounts = termCounts.argsort()
+terms = vectorizer.get_feature_names_out()
+for n in reversed(topCounts[-10:]):
+  print(f'{terms[n]} & {termCounts[n]} \\\\')
 tfidfTransformer = TfidfTransformer(smooth_idf=False, norm=None)
 tfidf = tfidfTransformer.fit_transform(counts)
 
@@ -226,11 +231,12 @@ df = pd.DataFrame({
 })
 df = df.sort_values('TF-IDF', ascending=False)
 
+df.head(10)
+
 table = df.head(10).style
 table = table.format(precision=3)
 table = table.hide(axis='index')
 print(table.to_latex(hrules=True))
-
 from sklearn.decomposition import TruncatedSVD
 from sklearn.preprocessing import Normalizer
 svd = TruncatedSVD(10)
@@ -246,9 +252,11 @@ for i, component in enumerate(svd.components_, 1):
   data[f'Topic {i}'] = [terms[n] for n in idx]
   data[f'Loading {i}'] = [component[n] for n in idx]
 df = pd.DataFrame(data)
+
+df.round(4).transpose()
+
 print(df.iloc[:, :10].style.format(precision=2).hide(axis='index').to_latex(hrules=True))
 print(df.iloc[:, 10:].style.format(precision=2).hide(axis='index').to_latex(hrules=True))
-
 ## Bayesian Networks
 from pgmpy.estimators import HillClimbSearch
 
@@ -261,12 +269,16 @@ model = est.estimate(max_indegree=4, max_iter=int(1e4), show_progress=False,
 
 import pydotplus
 
-def layoutGraph(dot_data, pdfFile):
+def layoutGraph(dot_data, pdfFile=None):
     graph = pydotplus.graph_from_dot_data(dot_data)
-    with open(pdfFile, 'wb') as f:
-      f.write(graph.create_pdf())
+    if pdfFile is not None:
+        with open(pdfFile, 'wb') as f:
+          f.write(graph.create_pdf())
+    else:
+        from IPython.display import Image
+        return Image(graph.create_png())
 
-def createGraph(G, pdfFile):
+def createGraph(G, pdfFile=None):
     sortedNodes = list(nx.topological_sort(G))
     commonSettings = """
     edge [ fontsize=11, color=gray55 ];
@@ -291,6 +303,7 @@ def createGraph(G, pdfFile):
      """
     return layoutGraph(s, pdfFile)
 
+createGraph(model)
 
 from pgmpy.models import BayesianNetwork
 from pgmpy.estimators import MaximumLikelihoodEstimator

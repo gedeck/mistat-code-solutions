@@ -35,13 +35,14 @@ def grouper(iterable, n, fillvalue=None):
     return zip_longest(*args, fillvalue=fillvalue)
 
 cyclt = mistat.load_data('CYCLT')
+for chunk in grouper(cyclt, 5):
+    print(' '.join([f'{v:.3f}' for v in chunk]))
 
 print('\\begin{tabular}{rrrrr}\\toprule')
 for chunk in grouper(cyclt, 5):
     print(' & '.join([f'{v:.3f}' for v in chunk]))
     print('\\\\')
 print('\\bottomrule\\end{tabular}')
-
 from scipy.stats import binom
 import numpy as np
 np.random.seed(seed=1) # scipy uses numpy to create random numbers
@@ -279,6 +280,7 @@ yarn_gamma = f'{X.std()/X.mean():.4f}'
 ### Density Plots
 X = mistat.load_data('YARNSTRG')
 X.plot.density()
+plt.show()
 
 X = mistat.load_data('YARNSTRG')
 ax = X.plot.hist(bins=8, color='white', edgecolor='black', legend=False, density=True)

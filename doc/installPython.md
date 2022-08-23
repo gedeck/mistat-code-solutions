@@ -12,14 +12,18 @@ Here is what you need to do:
   - Windows: run the exe file and follow the instructions using default settings
   - During installation of Anaconda, you are asked if you want to install DataSpell. This is optional, but can be a useful tool to get you started using Jupyter Notebooks.
   
- <table width='100%'>
- <tr>
-   <td>Once the application is installed, you can execute Anaconda Navigator from the Start Menu (Windows) and the Application folder (macOS)<td>
-  <td><img src='images/logo.png' width=200></td>
+<table width='100%'>
+<tr>
+<td>
+<p>Once the application is installed, you can execute Anaconda Navigator from the Start Menu (Windows) and the Application folder (macOS).</p>
+
+<p>If you don’t want to use Anaconda, you will find installation instructions for Windows 10 at the end of this document.</p>
+<td>
+<td><img src='images/logo.png' width=100></td>
 </tr>
 </table>
 
-If you don’t want to use Anaconda, you will find installation instructions for Windows 10 at the end of this document.
+
 
 ## Anaconda Navigator – update and install packages
 You can use _Anaconda Navigator_ to manage your Python installation and run the Jupyter application. 

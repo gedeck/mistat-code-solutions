@@ -64,6 +64,8 @@ for x in range(11):
   })
 df = pd.DataFrame(data)
 
+df.round(4)
+
 s = df.style.hide(axis='index').format(precision=4).to_latex(column_format='ccccc', hrules=True)
 s = s.replace(' x ', ' $x$ ')
 s = s.replace(' p10 ', ' $p=.10$ ')
@@ -71,7 +73,6 @@ s = s.replace(' p15 ', ' $p=.15$ ')
 s = s.replace(' p20 ', ' $p=.20$ ')
 s = s.replace(' p25 ', ' $p=.25$ ')
 print(s)
-
 from mistat.acceptanceSampling import OperatingCharacteristics2c
 X = OperatingCharacteristics2c(20, 4, oc_type='binomial')
 df = pd.DataFrame({'p': X.pd, 'OC(p)': X.paccept})
@@ -139,6 +140,8 @@ for mu in (5, 5.01, 5.02, 5.03, 5.04, 5.05):
   })
 df = pd.DataFrame(data)
 
+df.round(4)
+
 mapper =  {'mu': '{0:.2f}',
            'dsn': '{0:.1f}',
            'z': '{0:.3f}',
@@ -152,7 +155,6 @@ s = s.replace(' dsn ', ' $\delta\sqrt{n}$ ')
 s = s.replace(' z ', ' $z$ ')
 s = s.replace(' OC ', ' $\mbox{OC}(\mu)$ ')
 print(s)
-
 #### The $t$-Test:  Testing the Mean of a Normal Distribution, $\sigma^2$ Unknown
 #### The Chi-Squared Test:  Testing the Variance of a Normal Distribution
 #### Testing Hypotheses About the Success Probability, $p$, in Binomial Trials
@@ -397,8 +399,11 @@ quant_001 = np.quantile(means, 0.01)
 
 counts = sorted(Counter(means).items())
 for k, v in counts:
-  print(f'{k:.3f} & {v} \\\\')
+  print(f'{k:.3f}   {v}')
 
+counts = sorted(Counter(means).items())
+for k, v in counts:
+  print(f'{k:.3f} & {v} \\\\')
 ## Bootstrap Sampling
 ### The Bootstrap Method
 etchrate = mistat.load_data('ETCHRATE')
@@ -668,6 +673,9 @@ for perm in sorted(set(permutations('111222'))):
 columns = list(A)
 columns.append('D')
 result = pd.DataFrame(assignments, columns=columns)
+
+result
+
 for block in (result.iloc[:10,], result.iloc[10:,]):
   print('\\toprule')
   print('$A_{ij}$ & \\multicolumn{10}{c}{Assignments}\\\\\\midrule')
@@ -678,7 +686,6 @@ for block in (result.iloc[:10,], result.iloc[10:,]):
     print(f"{idx} & {' & '.join(row)} \\\\")
   print('\\bottomrule')
   print('\\addlinespace')
-
 oelect = mistat.load_data('OELECT')
 oelect1 = mistat.load_data('OELECT1')
 

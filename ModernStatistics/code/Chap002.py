@@ -86,6 +86,8 @@ df = pd.DataFrame({
     'B': rv.cdf(x),
 })
 
+df.round(4)
+
 table = df.round(4).iloc[8:28,]
 s = table.style.hide(axis='index')
 s = s.format(precision=4)
@@ -94,7 +96,6 @@ s = s.replace(' i ', ' $i$ ')
 s = s.replace(' b ', ' $b(i;30,.6)$ ')
 s = s.replace(' B ', ' $B(i;30,.6)$ ')
 print(s)
-
 stats.binom(30, 0.6).ppf(0.5)
 
 x = np.linspace(0, 50, 51)
@@ -122,6 +123,8 @@ df = pd.DataFrame({
     'H': rv.cdf(x),
 })
 
+df.round(4)
+
 table = df.style
 table = table.format(precision=4).hide(axis='index')
 s = table.to_latex(column_format='ccc', hrules=True)
@@ -129,7 +132,6 @@ s = s.replace(' j ', ' $j$ ')
 s = s.replace(' h ', ' $h(j;75,15,10)$ ')
 s = s.replace(' H ', ' $H(j;75,15,10)$ ')
 print(s)
-
 x = np.linspace(0, 100, 101)
 rv = stats.hypergeom(1200, 850, 100)
 distributions = pd.DataFrame({
@@ -146,13 +148,14 @@ df = pd.DataFrame({
     'b': stats.binom(20, 0.7).pmf(x),
 })
 
+df.round(5)
+
 table = df
 s = table.style.hide(axis='index').format(precision=5).to_latex(column_format='ccc', hrules=True)
 s = s.replace(' j ', ' $j$ ')
 s = s.replace(' h ', ' $h(i;500,350,20)$ ')
 s = s.replace(' b ', ' $b(i;20,0.7)$ ')
 print(s)
-
 ### The Poisson Distribution
 x = np.linspace(0, 50, 51)
 distributions = pd.DataFrame({

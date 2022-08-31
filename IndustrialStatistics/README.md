@@ -33,7 +33,7 @@ Buy on
 </tr>
 </table>
 
-<p><i>Industrial Statistics: A Computer Based Approach with Python</i> is Volume 2 of a two-volume publication. Volume 1 is titled: <a href="../ModernStatistics"><i>Modern Statistics: A Computer Based Approach with Python.</i></a></p>
+<p><i>Industrial Statistics: A Computer Based Approach with Python</i> is a companion volume to the book <a href="../ModernStatistics"><i>Modern Statistics: A Computer Based Approach with Python.</i></a></p>
 
 <!-- 
 This part of the repository contains:

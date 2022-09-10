@@ -1,0 +1,15 @@
+matplotlib
+numpy
+pandas
+scipy
+statsmodels
+seaborn
+pingouin
+lifelines
+doepy
+dtreeviz
+svglib
+pwlf
+pyDOE2
+pykriging
+mistat

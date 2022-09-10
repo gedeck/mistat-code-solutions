@@ -13,3 +13,5 @@ pwlf
 pyDOE2
 pykriging
 mistat
+#
+jupyter

@@ -6,12 +6,14 @@ on:
       - "docs/**"
       - "images/**"
       - "*.md"
+      - "IndustrialStatistics/**"
 
   pull_request:
     paths-ignore:
       - "docs/**"
       - "images/**"
       - "*.md"
+      - "IndustrialStatistics/**"
 
 concurrency:
   group: build-${{ github.ref }}

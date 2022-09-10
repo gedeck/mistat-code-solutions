@@ -1,0 +1,83 @@
+name: Test
+
+on:
+  push:
+    paths-ignore:
+      - "docs/**"
+      - "images/**"
+      - "*.md"
+      - "ModernStatistics/**"
+
+  pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "images/**"
+      - "*.md"
+      - "ModernStatistics/**"
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # We want to run on external PRs, but not on our own internal PRs as they'll be run
+    # by the push to the branch. Without this if check, checks are duplicated since
+    # internal PRs match both the push and pull_request events.
+    if:
+      github.event_name == 'push' || github.event.pull_request.head.repo.full_name !=
+      github.repository
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.10"]
+        os: [ubuntu-latest, windows-latest]
+      # matrix:
+      #   python-version: ["3.9"]
+      #   os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          
+      - name: Install graphviz
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt install -y graphviz
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install --upgrade wheel
+          pip install -r requirements.txt
+
+      - name: Execute notebooks
+        run: |
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap001.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap002.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap003.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap004.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap005.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap006.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap007.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap008.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap009.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap010.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap011.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap001_ex.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap002_ex.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap003_ex.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap004_ex.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap005_ex.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap006_ex.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap007_ex.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap008_ex.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap009_ex.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap010_ex.ipynb
+          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap011_ex.ipynb

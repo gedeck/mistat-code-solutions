@@ -114,7 +114,7 @@ jobs:
           pip install -r requirements-industrial.txt
       
       - name: Install dependency directly from github
-        if: matrix.python-version == "3.10"
+        if: ${{ matrix.python-version }} == '3.10'
         run: |
           pip install git+https://github.com/aarongarrett/inspyred.git
 

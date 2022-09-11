@@ -35,27 +35,41 @@ Buy on
 
 <p><i>Industrial Statistics: A Computer Based Approach with Python</i> is a companion volume to the book <a href="../ModernStatistics"><i>Modern Statistics: A Computer Based Approach with Python.</i></a></p>
 
-<!-- 
 This part of the repository contains:
 
 - `notebooks`: Python code of individual chapters in 
-  [Jupyter notebooks](https://github.com/gedeck/mistat-code-solutions/new/main/ModernStatistics/notebooks) - 
+  [Jupyter notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/IndustrialStatistics/notebooks) - 
   [download all as notebooks.zip](notebooks.zip)
 - `code`: Python code for solutions as plain 
-  [Python files](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/code) - 
+  [Python files](https://github.com/gedeck/mistat-code-solutions/tree/main/IndustrialStatistics/code) - 
   [download all as code.zip](code.zip)
-- `solutions manual`: [Solutions_Modernstatistics.pdf](Solutions_Modernstatistics.pdf): solutions of exercises
+- `solutions manual`: [Solutions_IndustrialStatistics.pdf](Solutions_IndustrialStatistics.pdf): solutions of exercises
 - `solutions`: Python code for solutions in Jupyter 
-  [notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/solutions) - 
+  [notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/IndustrialStatistics/solutions) - 
   [download all as solutions.zip](solutions.zip)
-- `all`: zip file with all three files combined - [download all as all.zip](all.zip)
+- `all`: zip file with all files combined - [download all as all.zip](all.zip)
 
 All the Python applications referred to in this book are contained in a package called `mistat` available 
-for installation from the Python package index ([[https://](https://pypi.org/project/mistat/)](https://pypi.org/project/mistat/).
-The `mistat` packages is maintained in a GitHub repository at \url{https://github.com/gedeck/mistat}.
--->
+for installation from the Python package index [https://pypi.org/project/mistat/](https://pypi.org/project/mistat/).
+The `mistat` packages is maintained in a GitHub repository at [https://github.com/gedeck/mistat](https://github.com/gedeck/mistat).
+
 
 # Installation instructions
 Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
 
-
+These Python packages are used in the code: 
+- numpy 
+- scipy 
+- statsmodels
+- pingouin
+- mistat
+- dtreeviz
+- svglib
+- pydotplus
+- matplotlib
+- seaborn
+- lifelines
+- doepy
+- pwlf
+- pyDOE2
+- pykriging (this works currently only with Python 3.9)

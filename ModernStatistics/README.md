@@ -54,7 +54,21 @@ The `mistat` packages is maintained in a GitHub repository at [https://github.co
 # Installation instructions
 Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
 
-
+These Python packages are used in the code: 
+- numpy 
+- scipy 
+- scikit-learn
+- statsmodels
+- pingouin
+- xgboost
+- KDEpy
+- networkx
+- scikit-fda
+- pgmpy
+- mistat
+- dtreeviz
+- svglib
+- pydotplus
 
 
 # Table of contents

@@ -60,15 +60,16 @@ Instructions on installing Python and required packages are <a href="../doc/inst
 These Python packages are used in the code: 
 - numpy 
 - scipy 
-- scikit-learn
 - statsmodels
 - pingouin
-- xgboost
-- KDEpy
-- networkx
-- scikit-fda
-- pgmpy
 - mistat
 - dtreeviz
 - svglib
 - pydotplus
+- matplotlib
+- seaborn
+- lifelines
+- doepy
+- pwlf
+- pyDOE2
+- pykriging (this works currently only with Python 3.9)

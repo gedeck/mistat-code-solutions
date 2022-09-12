@@ -28,12 +28,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
+      # 3.11-dev fails due to compilation of scipy
       matrix:
         python-version: ["3.9", "3.10", "3.11-dev"]
         os: [ubuntu-latest, windows-latest]
-      # matrix:
-      #   python-version: ["3.9"]
-      #   os: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -81,12 +79,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
+      # 3.10 currently fails due to a dependency
       matrix:
-        python-version: ["3.9"]
+        python-version: ["3.9", "3.10"]
         os: [ubuntu-latest, windows-latest]
-      # matrix:
-      #   python-version: ["3.10"]
-      #   os: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v3

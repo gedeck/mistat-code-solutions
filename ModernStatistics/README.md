@@ -54,7 +54,8 @@ The `mistat` packages is maintained in a GitHub repository at [https://github.co
 # Installation instructions
 Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
 
-These Python packages are used in the code: 
+These Python packages are used in the code examples of Modern Statistics: 
+- mistat
 - numpy 
 - scipy 
 - scikit-learn
@@ -65,7 +66,6 @@ These Python packages are used in the code:
 - networkx
 - scikit-fda
 - pgmpy
-- mistat
 - dtreeviz
 - svglib
 - pydotplus

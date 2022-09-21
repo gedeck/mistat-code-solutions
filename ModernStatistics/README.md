@@ -23,9 +23,10 @@ by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 
 Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer International Publishing; 1st edition (September 15, 2022)</a>
 ISBN-13: 978-3031075650
-Buy on 
-<a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
-<a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
+Buy at
+  <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer</a>, 
+  <a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
+  <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
 
 <!-- Errata: http://oreilly.com/catalog/errata.csp?isbn=9781492072942 -->
 </td>

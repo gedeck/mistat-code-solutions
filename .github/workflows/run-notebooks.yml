@@ -106,7 +106,8 @@ jobs:
           pip install --upgrade pip
           pip install --upgrade wheel
           pip install -r requirements-industrial.txt
-      
+          pip freeze
+
       - name: Execute notebooks
         run: |
           jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap001.ipynb

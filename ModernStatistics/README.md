@@ -54,7 +54,7 @@ The `mistat` packages is maintained in a GitHub repository at [https://github.co
 # Installation instructions
 Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
 
-These Python packages are used in the code examples of Modern Statistics: 
+These Python packages are used in the code examples of _Modern Statistics_: 
 - mistat (for access to data sets and additional functionality)
 - numpy 
 - scipy 

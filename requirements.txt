@@ -18,3 +18,6 @@ xgboost
 networkx
 pgmpy
 pydotplus
+
+pyDOE2
+diversipy

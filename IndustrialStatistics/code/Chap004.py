@@ -17,13 +17,14 @@ warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=OutdatedPackageWarning)
 
 # Multivariate Statistical Process Control
+from collections import defaultdict
 import mistat
 import pandas as pd
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn import metrics
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, Lasso
 import seaborn as sns
 
 ## Introduction
@@ -99,7 +100,7 @@ plt.show()
 ## Multivariate Process Capability Indices
 ## Advanced Applications of Multivariate Control Charts
 ### Multivariate Control Charts Scenarios
-### Internally Derived Targets
+### Internally Derived Target
 place = mistat.load_data('PLACE')
 
 columns = ['xDev', 'yDev', 'tDev']
@@ -112,8 +113,8 @@ mqcc = mistat.MultivariateQualityControlChart(calibration,
 mqcc.plot()
 plt.show()
 
-### Using an External Reference Sample
-### Externally Assigned Targets
+### External Reference Sample
+### Externally Assigned Target
 ### Measurement Units Considered as Batches
 ### Variable Decomposition and Monitoring Indices
 ## Multivariate Tolerance Specifications
@@ -152,5 +153,125 @@ plt.show()
 
 ## Tracking structural changes
 ### The Synthetic Control Method
+timeseries = mistat.load_data('SCM_TIMESERIES')
+columns = ['Healthy', '10 mm', '20 mm']
+index = list(range(len(timeseries['Healthy'])))
+# convert from wide to long format
+timeseries = pd.concat([pd.DataFrame({'index': index, 'sensor': timeseries[value], 'type': value}) 
+                        for value in columns])
+
+def plotTimeSeries(index, data, *args, **kwargs):
+    p = sns.histplot(x=index, y=data, **kwargs)
+    plt.setp(p.lines, alpha=.5)
+g = sns.FacetGrid(timeseries, col="type")
+g.map(plotTimeSeries, "index", "sensor", bins=90)
+axes = g.axes.flatten()
+axes[0].set_title('Healthy')
+axes[1].set_title('Wheel flat 10 mm')
+axes[2].set_title('Wheel flat 20 mm')
+g.set_axis_labels(x_var="Time", y_var="Vibration sensor")
+plt.tight_layout()
+
+order_psd = mistat.load_data('ORDER_PSD')
+def plotVibrations(colname, title, ax, ylabel=None):
+    ydata = order_psd[colname]
+    order_psd.plot(x='Order', y=colname, ax=ax, ylabel=ylabel, title=title)
+    ax.set_ylim(-17, 1)
+    ax.set_xlim(0, 20)
+    ax.get_legend().remove()
+    ax.axhline(ydata.median(), color='black')
+    ax.axhline(ydata.quantile(q=0.75), color='grey')
+    ax.axhline(ydata.quantile(q=0.25), color='grey')
+    
+fig, axes = plt.subplots(ncols=3, figsize=[10, 3])
+plotVibrations('Log[Healthy]', 'Healthy', axes[0], ylabel='Log[Vibration]')
+plotVibrations('Log[PSD - 10 mm]', 'Wheel flat 10 mm', axes[1])
+plotVibrations('Log[PSD - 20 mm]', 'Wheel flat 20 mm', axes[2])
+
+plt.tight_layout()
+
+data = mistat.load_data('SCM_WHEELS.csv')
+nr_wheels = 40
+scm_data = defaultdict(list)
+n = len(data)
+for i in range(1, nr_wheels+1):
+    scm_data['wheel'].extend([i] * n)
+    scm_data['time'].extend(range(1, n+1))
+    scm_data['vibrations'].extend(data[f'Wheel-{i}'])
+    scm_data['sensor A'].extend(data[f'SensorA-{i}'])
+    scm_data['sensor B'].extend(data[f'SensorB-{i}'])
+    scm_data['status'].extend([True if i == 1 else False] * n)
+    scm_data['after_event'].extend([False] * 59)
+    scm_data['after_event'].extend([True] * 41)
+
+scm_data = pd.DataFrame(scm_data).sort_values(by=['time', 'wheel'])
+
+mean_vibrations = scm_data.groupby(['time'])['vibrations'].aggregate(['mean', 'std'])
+mean_vibrations['upper'] = mean_vibrations['mean'] + mean_vibrations['std']
+mean_vibrations['lower'] = mean_vibrations['mean'] - mean_vibrations['std']
+
+fig, ax = plt.subplots()
+ax.fill_between(mean_vibrations.index, mean_vibrations['upper'], mean_vibrations['lower'], color='C0', alpha=0.5)
+ax.plot(mean_vibrations.index, mean_vibrations['mean'], color='C0')
+scm_data.query('status').groupby('wheel').plot(x='time', y='vibrations', ax=ax, legend=None, color='black')
+ax.set_ylabel('Vibration')
+ax.set_xlabel('Time')
+
+plt.tight_layout()
+plt.show()
+
+def train_predict_SCM_model(scm_data, wheel, event):
+    # convert data into a table with vibration and sensor data in rows and 
+    # wheels in columns
+    features = ['vibrations', 'sensor A', "sensor B"]
+    full_data = scm_data.pivot(index='wheel', columns='time')[features].T
+
+    # filter pre-damage event period (make a slice on the multi-index)
+    pre_event = full_data.loc[('vibrations', 1):('vibrations', event)]
+    
+    # train regularized regression model
+    X = pre_event.drop(columns=wheel).values  # other wheels
+    y = pre_event[wheel].values # selected wheel
+    model = Lasso(fit_intercept=False, max_iter=10_000, alpha=2, selection='random', random_state=1)
+    model.fit(X, y)
+
+    vibrations = full_data.loc['vibrations']
+    pred_y = model.predict(vibrations.drop(columns=wheel))
+    return pd.DataFrame({
+        'time': scm_data.query(f'wheel == {wheel}')['time'],
+        'vibrations': scm_data.query(f'wheel == {wheel}')['vibrations'],
+        'synthetic': pred_y,
+        'residual': scm_data.query(f'wheel == {wheel}')['vibrations'] - pred_y,
+    })
+
+scm_faulty = train_predict_SCM_model(scm_data, 1, 60)
+ax = scm_faulty.plot(x='time', y='synthetic', label='Synthetic data')
+scm_faulty.plot(x='time', y='vibrations', label='Vibration amplitude', ax=ax)
+plt.show()
+
+scm_healthy_predictions = [train_predict_SCM_model(scm_data, wheel, 60) for wheel in range(2, nr_wheels+1)]
+
+# calculate mean and standard deviation of residuals
+predictions = [scm_healthy['residual'] for scm_healthy in scm_healthy_predictions]
+predictions.append(scm_faulty['residual'])
+predictions = np.array(predictions)
+pred_mean = predictions.mean(axis=0)
+pred_std = predictions.std(axis=0)
+
+fig, ax = plt.subplots(figsize=(12, 7))
+
+for f in (1, 2, 3):
+    ax.fill_between(scm_faulty['time'], pred_mean+f*pred_std, pred_mean-f*pred_std, color='grey', alpha=0.2)
+for scm_healthy in scm_healthy_predictions:
+    ax.plot(scm_healthy['time'], scm_healthy['residual'], color='C5', alpha=0.3)
+
+ax.plot(scm_faulty['time'], scm_faulty['residual'], linewidth=3)
+ax.plot(scm_faulty['time'], pred_mean, color='black')
+
+ax.axvline(x=60, linestyle=':', lw=2, label='Wheel damage occurs')
+ax.set_ylabel('Residual of predictions')
+ax.set_xlabel('Time')
+plt.show()
+
 ## Chapter Highlights
 ## Exercises

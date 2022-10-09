@@ -104,11 +104,11 @@ print(anova.anova_lm(model))
 ## Full Factorial Experiments
 ### The Structure of Factorial Experiments
 ### The ANOVA for Full Factorial Designs
-from doepy.build import full_fact
+from mistat.design import doe
 np.random.seed(2)
 
 # Build design from factors
-FacDesign = full_fact({
+FacDesign = doe.full_fact({
     'k': [1500, 3000, 4500],
     's': [0.005, 0.0125, 0.02],
 })
@@ -189,7 +189,6 @@ df
 
 ### Estimating Main Effects and Interactions
 ### $2^m$ Factorial Designs
-from doepy.build import frac_fact_res
 d1 = {
     'A': [-1, 1],
     'B': [-1, 1],
@@ -197,9 +196,8 @@ d1 = {
     'D': [-1, 1],
     'E': [-1, 1],
 }
-mistat.addTreatments(frac_fact_res(d1, 4), mainEffects=['A', 'B', 'C', 'D', 'E'])
+mistat.addTreatments(doe.frac_fact_res(d1, 4), mainEffects=['A', 'B', 'C', 'D', 'E'])
 
-from doepy.build import full_fact
 d1 = {
     'A': [1, 2],
     'B': [1, 2],
@@ -207,7 +205,7 @@ d1 = {
     'D': [1, 2],
     'E': [1, 2],
 }
-Design = full_fact(d1)
+Design = doe.full_fact(d1)
 Design = mistat.addTreatments(Design, mainEffects=['A', 'B', 'C', 'D', 'E'])
 print(Design.head(3).round(0))
 print(Design.tail(3).round(0))
@@ -220,7 +218,7 @@ factors = {
   'k': [1000, 5000],
   't': [290, 296],
 }
-Design = full_fact(factors)
+Design = doe.full_fact(factors)
 
 # Randomize design
 Design = Design.sample(frac=1).reset_index(drop=True)
@@ -289,6 +287,10 @@ plt.show()
 mistat.interactionPlot(result[['m', 's', 'v0', 'k', 't', 'seconds']], 'seconds')
 plt.show()
 
+_, ax = plt.subplots(figsize=[10, 4])
+mistat.marginalInteractionPlot(result[['m', 's', 'v0', 'k', 't', 'seconds']], 'seconds', ax=ax)
+plt.show()
+
 ### $3^m$ Factorial Designs
 # ignore RuntimeWarning
 import warnings
@@ -316,27 +318,35 @@ mistat.interactionPlot(stress, 'stress')
 plt.show()
 
 ## Blocking and Fractional Replications of $2^m$ Factorial Designs
-def renderDesign(design, mainEffects):
+def renderDesign(design, mainEffects, to_latex=False):
     design = mistat.addTreatments(design, mainEffects)
     defining = set(design.columns) - set(mainEffects) - {'Treatments'}
     columns = [('Treatments', '')]
     columns.extend(('Main Effects', effect) for effect in mainEffects)
     columns.extend(('Defining Parameter', effect) for effect in design.columns if effect in defining)
     design.columns = pd.MultiIndex.from_tuples(columns, names=["first", "second"])
+    if not to_latex:
+        return design
     style = design.style.hide(axis='index')
     style = style.format(precision=0)
     return style.to_latex(hrules=True, column_format='c'+'r'*(len(columns)-1))
 
 from pyDOE2 import fracfact
 design = pd.DataFrame(fracfact('A B C ABC'), columns='A B C ABC'.split())
-print(renderDesign(design, 'A B C'.split()))
 
+renderDesign(design, 'A B C'.split())
+
+print(renderDesign(design, 'A B C'.split(), to_latex=True))
 from pyDOE2 import fracfact
 # define the generator
 generator = 'A B C ABC'
 design = pd.DataFrame(fracfact(generator), columns=generator.split())
 block_n = design[design['ABC'] == -1]
 block_p = design[design['ABC'] == 1]
+
+renderDesign(block_n, ['A', 'B', 'C'])
+
+renderDesign(block_p, ['A', 'B', 'C'])
 
 mistat.subgroupOfDefining(['ABCH', 'ABEFG', 'BDEFH'])
 
@@ -353,14 +363,13 @@ block1
 ### Some Specific Second Order Designs
 #### $3^k$-Designs
 #### Central Composite Designs
-from doepy.build import central_composite
 factors = {
   's': [0.01, 0.015],
   'v0': [0.00625, 0.00875],
   'k': [2000, 4000],
   't0': [345, 355],
 }
-Design = central_composite(factors, alpha='r', center=[4, 4])
+Design = doe.central_composite(factors, alpha='r', center=[4, 4])
 
 simulator = mistat.PistonSimulator(**Design, m=60, p0=110_000, t=296, 
                                    n_replicate=50, seed=2)
@@ -492,7 +501,6 @@ style = style.format(subset=['yhat'], precision=3)
 style = style.format(subset=['k', 't0'], precision=0)
 style = style.format(subset=['x1', 'x2', 'x3', 'x4'], precision=2)
 print(style.to_latex(hrules=True, column_format='cccccccccc'))
-
 ### Canonical Representation
 import matplotlib.cm as cm
 

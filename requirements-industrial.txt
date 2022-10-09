@@ -7,11 +7,13 @@ statsmodels
 seaborn
 pingouin
 lifelines
-doepy
 dtreeviz
 svglib
 pwlf
 pyDOE2
+diversipy
 pykriging
+pymc
+arviz
 #
 jupyter

@@ -341,7 +341,7 @@ warnings.filterwarnings('ignore', category=RuntimeWarning)
 def optimizeModelFit(model, data):
     fit = optimize.curve_fit(model, data['T'], data['CFC'])
     popt = fit[0]
-    # add the fit to the data set
+    # add the fit to the dataset
     data[model.__name__] = [model(t, *popt) for t in data['T']]
     return popt
 

@@ -28,11 +28,10 @@ import seaborn as sns
 import mistat
 from statsmodels.nonparametric.smoothers_lowess import lowess
 from itertools import chain
-from doepy.build import lhs
+from mistat.design import doe
 
 ## Introduction to Computer Experiments
 ## Designing Computer Experiments
-from doepy.build import lhs, space_filling_lhs
 np.random.seed(2)
 
 Factors = {
@@ -44,9 +43,9 @@ fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(8, 3))
 lim = [0.5, 5.5]
 for idx, ax in enumerate(axes, 1):
   if idx == 0:
-    Design = space_filling_lhs(Factors, num_samples=5)
+    Design = doe.space_filling_lhs(Factors, num_samples=5)
   else:
-    Design = lhs(Factors, num_samples=5)
+    Design = doe.lhs(Factors, num_samples=5)
 
   Design.plot.scatter(x='X1', y='X2', ax=ax)
   ax.set_xlim(lim)
@@ -58,14 +57,13 @@ plt.show()
 
 # various approaches to create Latin hypercube designs
 # Various methods
-from doepy import build
 designMethods = [
-    ('Latin Hypercube design', build.lhs),
-    ('space-filling Latin Hypercube design', build.space_filling_lhs),
-    ('random_k_means', build.random_k_means),
-    ('maximin', build.maximin),
-    ('halton', build.halton),
-    ('uniform_random', build.uniform_random)
+    ('Latin Hypercube design', doe.lhs),
+    ('space-filling Latin Hypercube design', doe.space_filling_lhs),
+    ('random_k_means', doe.random_k_means),
+    ('maximin', doe.maximin),
+    ('halton', doe.halton),
+    ('uniform_random', doe.uniform_random)
 ]
 
 num_samples = 5
@@ -92,7 +90,7 @@ for nmethod, (label, _) in enumerate(designMethods):
 # plt.tight_layout()
 plt.show()
 
-from doepy.build import lhs
+from mistat.design import doe
 np.random.seed(1)
 Factors = {
     'm': [30, 60],
@@ -103,7 +101,7 @@ Factors = {
     't': [290, 296],
     't0': [340, 360],
 }
-Design = lhs(Factors, num_samples=14)
+Design = doe.lhs(Factors, num_samples=14)
 
 # Randomize and create replicates
 nrepeat = 50
@@ -117,6 +115,8 @@ result = mistat.simulationGroup(result, nrepeat)
 
 mean_result = result.groupby('group').mean()
 
+mean_result
+
 style = mean_result.style
 style = style.format(subset=['k', 'p0'], precision=0)
 style = style.format(subset=['m', 't0'], precision=1)
@@ -125,9 +125,8 @@ style = style.format(subset=['seconds'], precision=3)
 style = style.format(subset=['s'], precision=4)
 style = style.format(subset=['v0'], precision=5)
 print(style.to_latex(hrules=True))
-
 np.random.seed(1)
-Design = lhs(Factors, num_samples=14)
+Design = doe.lhs(Factors, num_samples=14)
 
 def panelPlot(x, y, **kwargs):
     plt.scatter(x, y, **kwargs,
@@ -211,7 +210,7 @@ print(f'r2 {R2:.3f}', )
 
 random.seed(1)
 # create a large latin hypercube design
-Design = lhs(Factors, num_samples=500)
+Design = doe.lhs(Factors, num_samples=500)
 
 # for each row in the design, predict the cycle time using the kriging model
 predictions = []

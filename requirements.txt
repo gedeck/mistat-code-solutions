@@ -19,5 +19,6 @@ networkx
 pgmpy
 pydotplus
 
+seaborn==0.11.2
 pyDOE2
 diversipy

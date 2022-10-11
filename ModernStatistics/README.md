@@ -1,15 +1,3 @@
-<style>
-  table {
-    border: 0px;
-  }
-  td {
-    border: 0px;
-    vertical-align: top;
-  }
-  .inner {
-    max-width: 800px;
-  }
-</style>
 ![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
 
 # Code repository

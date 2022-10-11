@@ -271,7 +271,7 @@ def calculateRelVariance(design, fixedFactors):
         f: xf if f == freeFactor else fixedFactors[f] for f in design.columns
     })
 
-    XXm1 = np.linalg.inv(np.matmul(design.transpose(), design))
+    XXm1 = np.linalg.inv(np.matmul(design.transpose(), np.array(design)))
     
     relVar = []
     for _, x in data.iterrows():

@@ -281,7 +281,8 @@ def addSARIMAX_predictions(predictions, ax, label=None, linestyle=None):
     pred_ci = predictions.conf_int()
     pred_ci.index = pred_ci.index + 1
     ax.fill_between(pred_ci.index[1:],
-                    pred_ci['lower v0'][1:], pred_ci['upper v0'][1:], color='k', alpha=.2)
+                    pred_ci['lower v0'].iloc[1:], pred_ci['upper v0'].iloc[1:], 
+                    color='k', alpha=0.2)
 
 ax = sensorDataShort[['Measurement', 'v0']].plot(x='Measurement', y='v0', label='observed', 
                                                  color='grey', linestyle=':')

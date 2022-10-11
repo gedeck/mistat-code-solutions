@@ -1,4 +1,4 @@
-## Chapter 
+## Chapter 10
 #
 # Industrial Statistics: A Computer Based Approach with Python<br>
 # by Ron Kenett, Shelemyahu Zacks, Peter Gedeck

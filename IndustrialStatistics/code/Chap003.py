@@ -97,7 +97,7 @@ ax.scatter(coal.index, coal, color='black', zorder=2)
 ax.bar(coal.index, coal, color='lightgrey', zorder=1)
 plt.show()
 
-analysis = mistat.Cusum(coal[:50], center=1.82, std_dev=1, se_shift=0, decision_interval=4.19)
+analysis = mistat.Cusum(coal.iloc[:50], center=1.82, std_dev=1, se_shift=0, decision_interval=4.19)
 ax = pd.Series(analysis.neg).plot(color='lightgrey', marker='o',
       markerfacecolor='black', markeredgecolor='black')
 ax.set_xlabel('Group')

@@ -1,5 +1,5 @@
 mistat
-matplotlib
+matplotlib==3.6.0
 numpy
 pandas
 scipy

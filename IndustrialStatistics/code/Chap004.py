@@ -198,8 +198,6 @@ for i in range(1, nr_wheels+1):
     scm_data['wheel'].extend([i] * n)
     scm_data['time'].extend(range(1, n+1))
     scm_data['vibrations'].extend(data[f'Wheel-{i}'])
-    scm_data['sensor A'].extend(data[f'SensorA-{i}'])
-    scm_data['sensor B'].extend(data[f'SensorB-{i}'])
     scm_data['status'].extend([True if i == 1 else False] * n)
     scm_data['after_event'].extend([False] * 59)
     scm_data['after_event'].extend([True] * 41)
@@ -223,7 +221,7 @@ plt.show()
 def train_predict_SCM_model(scm_data, wheel, event):
     # convert data into a table with vibration and sensor data in rows and 
     # wheels in columns
-    features = ['vibrations', 'sensor A', "sensor B"]
+    features = ['vibrations']
     full_data = scm_data.pivot(index='wheel', columns='time')[features].T
 
     # filter pre-damage event period (make a slice on the multi-index)

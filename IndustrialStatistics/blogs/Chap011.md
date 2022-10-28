@@ -33,8 +33,8 @@ to simplify this procedure, it is common practice to set $n_2 = 2n_1$
 and $c_2 = c_3 = 3c_1$.  This reduces the problem to that of selecting
 just $n_1$ and $c_1$.  Every such selection will specify a particular
 double-sampling plan.  For example, if the lot consists of $N=150$
-items, and we choose a plan with $n_1 = 20$, $n_2 = 40$, $c_1 = 2$, $c_2
-= c_3 = 6$, we will achieve certain properties.  On the other hand, if
+items, and we choose a plan with $n_1 = 20$, $n_2 = 40$, $c_1 = 2$, 
+$c_2 = c_3 = 6$, we will achieve certain properties.  On the other hand, if
 we set $n_1 = 20$, $n_2 = 40$, $c_1 = 1$, $c_2 = c_3 = 3$, the plan will
 have different properties.
 

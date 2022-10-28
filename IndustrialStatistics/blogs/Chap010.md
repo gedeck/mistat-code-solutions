@@ -6,16 +6,12 @@ In order to define Bayes estimators we must first specify a
 involved in using the estimate $\hat{\mathbf \theta}$ when the true value is
 $\mathbf \theta$.  Often this loss is taken to be a function of the distance
 between the estimate and the true value, i.e., 
-$|\hat{\mathbf \theta} - \mathbf \theta|$.  In such cases, the loss function is written as
-
-$L( \hat{\mathbf\theta}, \mathbf\theta )$ = $W(|\hat{\mathbf \theta} - \mathbf \theta|) $.
-
-Examples of such loss functions are
+$|\hat{\mathbf \theta} - \mathbf \theta|$. Examples of such loss functions are
 
 - Squared-error loss: 
     $L( \hat{\mathbf\theta}, \mathbf\theta) = W(|\hat{\mathbf \theta} - \mathbf \theta|) = (\hat{\mathbf \theta} - \mathbf \theta)^2$,
 - Absolute-error loss:
-    $W(|\hat{\mathbf \theta} - \mathbf \theta|) = |\hat{\mathbf \theta} - \mathbf \theta|$.
+    $L( \hat{\mathbf\theta}, \mathbf\theta) = W(|\hat{\mathbf \theta} - \mathbf \theta|) = |\hat{\mathbf \theta} - \mathbf \theta|$.
 
 The loss function does not have to be symmetric.  For example, we may
 consider the function

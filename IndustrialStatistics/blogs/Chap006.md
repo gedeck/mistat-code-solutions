@@ -51,7 +51,7 @@ the target value of this characteristic and $K$ is a positive constant, which
 yields monetary or other utility value to the loss.  For example, suppose
 that $(M-\Delta,M+\Delta)$ is the **customer's tolerance interval** around
 the target.  When $y$ falls out of this interval the product has to be
-repaired or replaced at a cost of \$$A$.  Then, for this product,
+repaired or replaced at a cost of $ $A$.  Then, for this product,
 
 $A = K\Delta^2$
 
@@ -63,7 +63,7 @@ The **manufacturer's tolerance interval** is generally tighter than that of
 the customer, namely $(M-\delta,M+\delta)$, where $\delta < \Delta$.  One can
 obtain the value of $\delta$ in the following manner.  Suppose the cost to
 the manufacturer to repair a product that exceeds the customer's tolerance,
-before shipping the product, is $\$ B$, $B < A$.  Then
+before shipping the product, is $ $B$, $B < A$.  Then
 
 $B = \left(\frac{A}{\Delta^2}\right) (Y-M)^2,$
 
@@ -81,8 +81,9 @@ $(M-\delta,M+\delta)$ should be high.  See
 Fig. 6.1 for a schematic
 presentation of these relationships.
 
-# Figure QuadraticLossTolIntervals
-_Fig. 6.1 Quadratic Loss and Tolerance Intervals_
+<img src="Chap006_QuadraticLossTolIntervals_1.png" width="300">
+
+__Fig. 6.1 Quadratic Loss and Tolerance Intervals__
 
 Notice that the expected loss is
 

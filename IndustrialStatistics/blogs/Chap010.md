@@ -5,8 +5,8 @@ In order to define Bayes estimators we must first specify a
 **loss function**, $L(\hat{\mathbf \theta},\mathbf \theta)$, which represents the cost
 involved in using the estimate $\hat{\mathbf \theta}$ when the true value is
 $\mathbf \theta$.  Often this loss is taken to be a function of the distance
-between the estimate and the true value, i.e., $|\hat{\mathbf \theta} -
-\mathbf \theta|$.  In such cases, the loss function is written as
+between the estimate and the true value, i.e., 
+$|\hat{\mathbf \theta} - \mathbf \theta|$.  In such cases, the loss function is written as
 
 $L(\hat{\mathbf \theta},\mathbf \theta) = W(|\hat{\mathbf \theta} - \mathbf \theta|).$
 

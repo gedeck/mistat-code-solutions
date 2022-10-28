@@ -41,8 +41,14 @@ samples or subgroups of 5 consecutive piston cycle times. Within
 each subgroup we compute the subgroup average and standard
 deviation.
 
+<table>
+<tr><td>
 <img src="Chap002_PlotXbarChart50PistonCycleTimes_1.png" width=250>
-<img src="Chap002_PlotSChartPistonSpringCoefficient_1.png" width=250>
+</td><td>
+<img src="Chap002_PlotSChartPistonSpringCoefficient_1.png" 
+width=250>
+</td></tr>
+</table>
 
 ## Figure PlotXbarChart50PistonCycleTimes ##
 ## Figure PlotSChart50PistonCycleTimes ##

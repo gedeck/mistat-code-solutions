@@ -1,5 +1,3 @@
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
 # Digital Twin
 The term _digital twin_ is defined in different forms including as a
 high-fidelity simulation, a virtual organization, a virtual reality

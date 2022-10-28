@@ -41,9 +41,7 @@ have different properties.
 The formula of the OC function associated with a double-sampling plan
 $(n_1,n_2,c_1,c_2,c_3)$ is
 
-$    \text{OC}(p)
-      = H(c_1;N,M_p,n_1)\ +
-      \quad\sum^{c_2-1}_{j=c_1+1} h(j;N,M_p,n_1)H(c_3-j;N-n_1,M_p-j,n_2)$
+$\text{OC}(p)      = H(c_1;N,M_p,n_1)\ +       \quad\sum^{c_2-1}_{j=c_1+1} h(j;N,M_p,n_1)H(c_3-j;N-n_1,M_p-j,n_2)$
       
 where $M_p = [Np]$.  Obviously, we must have $c_2\geq c_1 + 2$, for
 otherwise the plan is a single-stage plan.

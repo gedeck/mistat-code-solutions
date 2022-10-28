@@ -10,8 +10,8 @@ parameters, there is no problem of reliability demonstration - one computes
 $R(t_0)$ exactly and determines whether $R(t_0) \geq R_0$.  If, as is
 generally the case, either the life distribution or its parameters are
 unknown, then the problem of reliability demonstration is that of obtaining
-suitable data and using them to test the statistical hypothesis that $R(t_0)
-\geq R_0$ versus the alternative that $R(t_0) < R_0$.  Thus, the theory of
+suitable data and using them to test the statistical hypothesis that 
+$R(t_0) \geq R_0$ versus the alternative that $R(t_0) < R_0$.  Thus, the theory of
 testing statistical hypotheses provides the tools for reliability
 demonstration.  In the present section we review some of the basic notions
 of hypothesis testing as they pertain to reliability demonstration.

@@ -1,0 +1,16 @@
+{% assign breadcrumb_page = nil %}
+{% for page in site.pages %}
+  {% if page.url == include.url %}
+    {% assign breadcrumb_page = page %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% assign breadcrumb_text = breadcrumb_page.breadcrumb_text | default: breadcrumb_page.title | default: include.default %}
+
+{% unless breadcrumb_page == nil %}
+  <a href="{{ breadcrumb_page.url | relative_url }}">{{ breadcrumb_text }}</a>
+{% else %}
+  {{ breadcrumb_text }}
+{% endunless %}
+>

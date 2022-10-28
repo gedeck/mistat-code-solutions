@@ -53,11 +53,11 @@ that $(M-\Delta,M+\Delta)$ is the **customer's tolerance interval** around
 the target.  When $y$ falls out of this interval the product has to be
 repaired or replaced at a cost of \$$A$.  Then, for this product,
 
-$  A = K\Delta^2$
+$A = K\Delta^2$
 
 or
 
-$  K = A/\Delta^2.$
+$K = A/\Delta^2.$
 
 The **manufacturer's tolerance interval** is generally tighter than that of
 the customer, namely $(M-\delta,M+\delta)$, where $\delta < \Delta$.  One can
@@ -65,15 +65,15 @@ obtain the value of $\delta$ in the following manner.  Suppose the cost to
 the manufacturer to repair a product that exceeds the customer's tolerance,
 before shipping the product, is $\$ B$, $B < A$.  Then
 
-$  B = \left(\frac{A}{\Delta^2}\right) (Y-M)^2,$
+$B = \left(\frac{A}{\Delta^2}\right) (Y-M)^2,$
 
 or
 
-$  Y = M \pm \Delta\left(\frac{B}{A}\right)^{1/2}.$
+$Y = M \pm \Delta\left(\frac{B}{A}\right)^{1/2}.$
 
 Thus,
 
-$  \delta = \Delta\left(\frac{B}{A}\right)^{1/2}.$
+$\delta = \Delta\left(\frac{B}{A}\right)^{1/2}.$
 
 The manufacturer should reduce the variability in the product performance
 characteristic so that process capability $C_{pk}$ for the tolerance interval
@@ -86,7 +86,7 @@ _Fig. 6.1 Quadratic Loss and Tolerance Intervals_
 
 Notice that the expected loss is
 
-$  E\{L(Y,M)\} = K(\text{Bias}^2 + \text{Variance})$
+$E\{L(Y,M)\} = K(\text{Bias}^2 + \text{Variance})$
 
 where Bias $= \mu - M$, $\mu = E\{Y\}$ and Variance $= E\{(Y-\mu)^2\}$.
 Thus, the objective is to have a manufacturing process with $\mu$ as close as

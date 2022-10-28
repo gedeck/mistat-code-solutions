@@ -10,7 +10,11 @@ $|\hat{\mathbf \theta} - \mathbf \theta|$.  In such cases, the loss function is 
 
 $L(\hat{\mathbf \theta}, \mathbf \theta) = W( |\hat{\mathbf \theta} - \mathbf \theta| ).$
 
-$L(\hat{\mathbf \theta}, \mathbf \theta) = W( |\hat{\mathbf \theta} - \mathbf \theta| )$.
+$L( \hat{\mathbf \theta}, \mathbf \theta ) = W( |\hat{\mathbf \theta} - \mathbf \theta| )$.
+
+$L( \hat{\mathbf \theta}, \mathbf \theta )$.
+
+$W( |\hat{\mathbf \theta} - \mathbf \theta| )$.
 
 Examples of such loss functions are
 

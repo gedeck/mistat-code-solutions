@@ -65,13 +65,13 @@ These Python packages are used in the code of _Industrial Statistics_:
 # Chapters
 
 Chapter 1: Introduction to Industrial Statistics (<a href="blogs/Chap001.md">sample</a>)<br>
-Chapter 2: Basic Tools and Principles of Process Control<br>
-Chapter 3: Advanced Methods of Statistical Process Control<br>
-Chapter 4: Multivariate Statistical Process Control<br>
-Chapter 5: Classical Design and Analysis of Experiments<br>
-Chapter 6: Quality by Design<br>
-Chapter 7: Computer Experiments<br>
-Chapter 8: Cybermanufacturing and Digital Twins<br>
-Chapter 9: Reliability Analysis<br>
-Chapter 10: Bayesian Reliability Estimation and Prediction<br>
-Chapter 11: Sampling Plans for Batch and Sequential Inspection<br>
+Chapter 2: Basic Tools and Principles of Process Control (<a href="blogs/Chap002.md">sample</a>)<br>
+Chapter 3: Advanced Methods of Statistical Process Control (<a href="blogs/Chap003.md">sample</a>)<br>
+Chapter 4: Multivariate Statistical Process Control (<a href="blogs/Chap004.md">sample</a>)<br>
+Chapter 5: Classical Design and Analysis of Experiments (<a href="blogs/Chap005.md">sample</a>)<br>
+Chapter 6: Quality by Design (<a href="blogs/Chap006.md">sample</a>)<br>
+Chapter 7: Computer Experiments (<a href="blogs/Chap007.md">sample</a>)<br>
+Chapter 8: Cybermanufacturing and Digital Twins (<a href="blogs/Chap008.md">sample</a>)<br>
+Chapter 9: Reliability Analysis (<a href="blogs/Chap009.md">sample</a>)<br>
+Chapter 10: Bayesian Reliability Estimation and Prediction (<a href="blogs/Chap010.md">sample</a>)<br>
+Chapter 11: Sampling Plans for Batch and Sequential Inspection (<a href="blogs/Chap011.md">sample</a>)<br>

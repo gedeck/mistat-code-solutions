@@ -42,7 +42,7 @@ for installation from the Python package index [https://pypi.org/project/mistat/
 The `mistat` packages is maintained in a GitHub repository at [https://github.com/gedeck/mistat](https://github.com/gedeck/mistat).
 
 
-# Table of contents
+# Table of contents (with sample excerpts from chapters)
 
 Chapter 1: Introduction to Industrial Statistics (<a href="blogs/Chap001">sample 1</a>)<br>
 Chapter 2: Basic Tools and Principles of Process Control (<a href="blogs/Chap002">sample 2</a>)<br>

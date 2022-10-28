@@ -1,2 +1,14 @@
 theme: jekyll-theme-slate
-include: doc/installPython.md IndustrialStatistics/blogs
+include: 
+  - doc/installPython.md 
+  - IndustrialStatistics/blogs/Chap001.md
+  - IndustrialStatistics/blogs/Chap002.md  
+  - IndustrialStatistics/blogs/Chap003.md  
+  - IndustrialStatistics/blogs/Chap004.md  
+  - IndustrialStatistics/blogs/Chap005.md  
+  - IndustrialStatistics/blogs/Chap006.md  
+  - IndustrialStatistics/blogs/Chap007.md  
+  - IndustrialStatistics/blogs/Chap008.md  
+  - IndustrialStatistics/blogs/Chap009.md  
+  - IndustrialStatistics/blogs/Chap010.md  
+  - IndustrialStatistics/blogs/Chap011.md  

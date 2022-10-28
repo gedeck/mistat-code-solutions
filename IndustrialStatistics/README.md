@@ -42,6 +42,21 @@ for installation from the Python package index [https://pypi.org/project/mistat/
 The `mistat` packages is maintained in a GitHub repository at [https://github.com/gedeck/mistat](https://github.com/gedeck/mistat).
 
 
+# Table of contents
+
+Chapter 1: Introduction to Industrial Statistics (<a href="blogs/Chap001">sample 1</a>)<br>
+Chapter 2: Basic Tools and Principles of Process Control (<a href="blogs/Chap002">sample 2</a>)<br>
+Chapter 3: Advanced Methods of Statistical Process Control (<a href="blogs/Chap003">sample 3</a>)<br>
+Chapter 4: Multivariate Statistical Process Control (<a href="blogs/Chap004">sample 4</a>)<br>
+Chapter 5: Classical Design and Analysis of Experiments (<a href="blogs/Chap005">sample 5</a>)<br>
+Chapter 6: Quality by Design (<a href="blogs/Chap006">sample 6</a>)<br>
+Chapter 7: Computer Experiments (<a href="blogs/Chap007">sample 7</a>)<br>
+Chapter 8: Cybermanufacturing and Digital Twins (<a href="blogs/Chap008">sample 8</a>)<br>
+Chapter 9: Reliability Analysis (<a href="blogs/Chap009">sample 9</a>)<br>
+Chapter 10: Bayesian Reliability Estimation and Prediction (<a href="blogs/Chap010">sample 10</a>)<br>
+Chapter 11: Sampling Plans for Batch and Sequential Inspection (<a href="blogs/Chap011">sample 11</a>)<br>
+
+
 # Installation instructions
 Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
 
@@ -61,17 +76,3 @@ These Python packages are used in the code of _Industrial Statistics_:
 - pwlf
 - pyDOE2
 - pykriging (this works currently only with Python 3.9)
-
-# Table of contents
-
-Chapter 1: Introduction to Industrial Statistics (<a href="blogs/Chap001">sample 1</a>)<br>
-Chapter 2: Basic Tools and Principles of Process Control (<a href="blogs/Chap002">sample 2</a>)<br>
-Chapter 3: Advanced Methods of Statistical Process Control (<a href="blogs/Chap003">sample 3</a>)<br>
-Chapter 4: Multivariate Statistical Process Control (<a href="blogs/Chap004">sample 4</a>)<br>
-Chapter 5: Classical Design and Analysis of Experiments (<a href="blogs/Chap005">sample 5</a>)<br>
-Chapter 6: Quality by Design (<a href="blogs/Chap006">sample 6</a>)<br>
-Chapter 7: Computer Experiments (<a href="blogs/Chap007">sample 7</a>)<br>
-Chapter 8: Cybermanufacturing and Digital Twins (<a href="blogs/Chap008">sample 8</a>)<br>
-Chapter 9: Reliability Analysis (<a href="blogs/Chap009">sample 9</a>)<br>
-Chapter 10: Bayesian Reliability Estimation and Prediction (<a href="blogs/Chap010">sample 10</a>)<br>
-Chapter 11: Sampling Plans for Batch and Sequential Inspection (<a href="blogs/Chap011">sample 11</a>)<br>

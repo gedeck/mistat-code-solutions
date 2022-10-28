@@ -1,4 +1,4 @@
-# Reliability Demonstration}
+# Reliability Demonstration
 
 Reliability demonstration is a procedure for testing whether the reliability
 of a given device (system) at a certain age is sufficiently high.  More

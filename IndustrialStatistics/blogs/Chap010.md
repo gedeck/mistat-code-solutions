@@ -1,21 +1,21 @@
-# Loss Functions and Bayes Estimators}
+# Loss Functions and Bayes Estimators
 
 
 In order to define Bayes estimators we must first specify a
-**loss function**, $L(\hat{\bm\theta},\bm\theta)$, which represents the cost
-involved in using the estimate $\hat{\bm\theta}$ when the true value is
-$\bm\theta$.  Often this loss is taken to be a function of the distance
-between the estimate and the true value, i.e., $|\hat{\bm\theta} -
-\bm\theta|$.  In such cases, the loss function is written as
+**loss function**, $L(\hat{\mathbf \theta},\mathbf \theta)$, which represents the cost
+involved in using the estimate $\hat{\mathbf \theta}$ when the true value is
+$\mathbf \theta$.  Often this loss is taken to be a function of the distance
+between the estimate and the true value, i.e., $|\hat{\mathbf \theta} -
+\mathbf \theta|$.  In such cases, the loss function is written as
 
-$  L(\hat{\bm\theta},\bm\theta) = W(|\hat{\bm\theta} - \bm\theta|).$
+$  L(\hat{\mathbf \theta},\mathbf \theta) = W(|\hat{\mathbf \theta} - \mathbf \theta|).$
 
 Examples of such loss functions are
 
 - Squared-error loss: 
-    $W(|\hat{\bm\theta} - \bm\theta|) = (\hat{\bm\theta} - \bm\theta)^2$,
+    $W(|\hat{\mathbf \theta} - \mathbf \theta|) = (\hat{\mathbf \theta} - \mathbf \theta)^2$,
 - Absolute-error loss:
-    $W(|\hat{\bm\theta} - \bm\theta|) = |\hat{\bm\theta} - \bm\theta|$.
+    $W(|\hat{\mathbf \theta} - \mathbf \theta|) = |\hat{\mathbf \theta} - \mathbf \theta|$.
 
 The loss function does not have to be symmetric.  For example, we may
 consider the function
@@ -27,9 +27,9 @@ if $\hat\theta > \theta$
 
 where $\alpha$ and $\beta$ are some positive constants.
 
-The **Bayes estimator** of $\bm\theta$, with respect to a loss function
-$L(\hat{\bm\theta},\bm\theta)$, is defined as the value of
-$\hat{\bm\theta}$ which minimizes the **posterior risk**, given $x$,
+The **Bayes estimator** of $\mathbf \theta$, with respect to a loss function
+$L(\hat{\mathbf \theta},\mathbf \theta)$, is defined as the value of
+$\hat{\mathbf \theta}$ which minimizes the **posterior risk**, given $x$,
 where the posterior risk is the expected loss with respect to the posterior
 distribution.  For example, suppose that the p.d.f. of $X$ depends on several
 parameters $\theta_1,\dots,\theta_k$, but we wish to derive a Bayes

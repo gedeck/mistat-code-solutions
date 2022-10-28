@@ -1,3 +1,5 @@
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
 # Off-Line Quality Control, Parameter Design and The Taguchi Method
 
 The performance of products or processes is typically quantified by

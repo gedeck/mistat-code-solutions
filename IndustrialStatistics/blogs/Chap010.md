@@ -8,13 +8,7 @@ $\mathbf \theta$.  Often this loss is taken to be a function of the distance
 between the estimate and the true value, i.e., 
 $|\hat{\mathbf \theta} - \mathbf \theta|$.  In such cases, the loss function is written as
 
-$L(\hat{\mathbf \theta}, \mathbf \theta) = W( |\hat{\mathbf \theta} - \mathbf \theta| ).$
-
-$L( \hat{\mathbf \theta}, \mathbf \theta ) = W( |\hat{\mathbf \theta} - \mathbf \theta| )$.
-
-$L( \hat{\mathbf \theta}, \mathbf \theta )$.
-
-$W( |\hat{\mathbf \theta} - \mathbf \theta| )$.
+$L( \hat{\mathbf \theta}, \mathbf \theta )$ = $W(|\hat{\mathbf \theta} - \mathbf \theta|)$.
 
 Examples of such loss functions are
 

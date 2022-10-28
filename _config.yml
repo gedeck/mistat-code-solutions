@@ -1,2 +1,2 @@
 theme: jekyll-theme-slate
-include: doc/installPython.md
+include: doc/installPython.md IndustrialStatistics/blogs/*.md

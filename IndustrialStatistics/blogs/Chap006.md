@@ -101,6 +101,6 @@ where the performance measure is the life length of a product, the
 objective might be to design the product to maximize the expected life
 length.  In the literature we may find the objective of minimizing
 $\frac{1}{n} \sum \frac{1}{y^j}$, which is an estimator of
-$E\left\{\frac{1}{Y}\right\}$.  This parameter, however, may not always exist
+$E\{\frac{1}{Y}\}$.  This parameter, however, may not always exist
 (e.g. when $Y$ has an exponential distribution), and this objective
 function might be senseless.

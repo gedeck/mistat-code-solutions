@@ -22,8 +22,8 @@ confidence intervals for $R(t_0)$, which were discussed in the previous
 sections, can be used to test hypotheses.  Specifically, the procedure
 involves computing the upper confidence limit of a $(1-2\alpha)$-level
 confidence interval for $R(t_0)$ and comparing it with the value $R_0$.  If
-the upper confidence limit exceeds $R_0$ then the null hypothesis $H_0 :
-R(t_0) > R_0$ is
+the upper confidence limit exceeds $R_0$ then the null hypothesis 
+$H_0 : R(t_0) > R_0$ is
 accepted, otherwise it is rejected.  This test will have a significance
 level of $\alpha$.
 

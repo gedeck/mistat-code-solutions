@@ -8,7 +8,7 @@ $\mathbf \theta$.  Often this loss is taken to be a function of the distance
 between the estimate and the true value, i.e., $|\hat{\mathbf \theta} -
 \mathbf \theta|$.  In such cases, the loss function is written as
 
-$  L(\hat{\mathbf \theta},\mathbf \theta) = W(|\hat{\mathbf \theta} - \mathbf \theta|).$
+$L(\hat{\mathbf \theta},\mathbf \theta) = W(|\hat{\mathbf \theta} - \mathbf \theta|).$
 
 Examples of such loss functions are
 
@@ -37,13 +37,13 @@ estimator of $\theta_1$ with respect to the squared-error loss function.  We
 consider the marginal posterior p.d.f. of $\theta_1$, given $\mathbf x$,
 $h(\theta_1\mid x)$.  The posterior risk is
 
-$  R(\hat\theta_1,\mathbf{x})    = \int(\hat\theta_1 - \theta_1)^2 h(\theta_1\mid\mathbf{x}) \,d\theta_1.$
+$R(\hat\theta_1,\mathbf{x})    = \int(\hat\theta_1 - \theta_1)^2 h(\theta_1\mid\mathbf{x}) \,d\theta_1.$
 
 It is easily shown that the value of $\hat\theta_1$ which minimizes the
 posterior risk $R(\hat\theta_1,\mathbf x)$ is the **posterior expectation**
 of $\theta_1$:
 
-$  E\{\theta_1\mid\mathbf{x}\}
+$E\{\theta_1\mid\mathbf{x}\}
     = \int \theta_1h(\theta_1\mid \mathbf{x}) \,d\theta_1.$
 
 If the loss function is

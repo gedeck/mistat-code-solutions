@@ -67,17 +67,17 @@ If all parameters of the underlying multivariate distribution are
 known and externally assigned, the $T^2$ value for a
 single multivariate observation of dimension $p$ is computed as
 
-$T^2 = ({\mathbf Y}-{\bm\mu})'\Sigma^{-1}({\mathbf Y}-{\bm\mu})$
+$T^2 = ({\mathbf Y}-{\mathbf \mu})'\Sigma^{-1}({\mathbf Y}-{\mathbf \mu})$
 
-where $\bm\mu$ and $\bm\Sigma$ are the expected value and covariance
+where $\mathbf \mu$ and $\mathbf \Sigma$ are the expected value and covariance
 matrix, respectively.
 
 The probability distribution of the $T^2$ statistic is a $\chi^2$
 distribution with $p$ degrees of freedom. Accordingly, the
 0.95 $UCL$ for $T^2$ is $UCL= \chi^2_{\nu,.95}$. When the data are
-grouped in subgroups of size $m$, and both $\bm\mu$ and $\bm\Sigma$
+grouped in subgroups of size $m$, and both $\mathbf \mu$ and $\mathbf \Sigma$
 are known, the $T^2$ value of the mean vector $\bar Y$ is
-$T^2 = m(\bar Y-{\bm\mu})'{\bm\Sigma}^{-1}(\bar Y-{\bm\mu})$
+$T^2 = m(\bar Y-{\mathbf \mu})'{\mathbf \Sigma}^{-1}(\bar Y-{\mathbf \mu})$
 with the same $UCL$ as above.
 
 ## Measurement Units Considered as Batches

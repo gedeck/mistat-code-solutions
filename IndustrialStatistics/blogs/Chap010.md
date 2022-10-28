@@ -43,8 +43,7 @@ It is easily shown that the value of $\hat\theta_1$ which minimizes the
 posterior risk $R(\hat\theta_1,\mathbf x)$ is the **posterior expectation**
 of $\theta_1$:
 
-$E\{\theta_1\mid\mathbf{x}\}
-    = \int \theta_1h(\theta_1\mid \mathbf{x}) \,d\theta_1.$
+$E\{\theta_1\mid\mathbf{x}\}  = \int \theta_1h(\theta_1\mid \mathbf{x}) \,d\theta_1.$
 
 If the loss function is
 $L(\hat\theta_1,\hat\theta) = |\hat\theta_1 - \theta_1|$,

@@ -44,11 +44,11 @@ deviation.
 <table>
 <tr><td>
 <img src="Chap002_PlotXbarChart50PistonCycleTimes_1.png" width=300><br>
-Fig. 2.5: _$X$-bar Chart of Cycle Times under Stable Operating Conditions_
+_Fig. 2.5: $X$-bar Chart of Cycle Times under Stable Operating Conditions_
 </td><td>
 <img src="Chap002_PlotSChart50PistonCycleTimes_1.png" 
 width=300><br>
-Fig. 2.6: _$S$ Chart of Cycle Times under Stable Operating Conditions_
+_Fig. 2.6: $S$ Chart of Cycle Times under Stable Operating Conditions_
 </td></tr>
 </table>
 

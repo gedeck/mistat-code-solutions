@@ -21,8 +21,7 @@ concurrency:
 jobs:
   build-modern:
     if:
-      github.event_name == 'push' || github.event.pull_request.head.repo.full_name !=
-      github.repository
+      github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
 
     runs-on: ${{ matrix.os }}
     strategy:
@@ -74,8 +73,7 @@ jobs:
 
   build-industrial:
     if:
-      github.event_name == 'push' || github.event.pull_request.head.repo.full_name !=
-      github.repository
+      github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
 
     runs-on: ${{ matrix.os }}
     strategy:

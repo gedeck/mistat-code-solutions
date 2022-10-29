@@ -78,6 +78,8 @@ response = pd.DataFrame([
 response['Ymean'] = response[['y1', 'y2', 'y3', 'y4']].mean(axis=1)
 response['S'] = response[['y1', 'y2', 'y3', 'y4']].std(ddof=0, axis=1)
 
+response
+
 style = response.style.hide(axis='index')
 style = style.format(subset='S', precision=4)
 style = style.format(subset='Ymean', precision=3)
@@ -88,7 +90,6 @@ s = s.replace('S', '$S$')
 for i in range(1, 5):
   s = s.replace(f'y{i}', f'$y_{i}$')
 print(s)
-
 model = smf.ols('Ymean ~ A + B + C', data=response).fit()
 print(f'rsquared: {model.rsquared:.3f}')
 model_S = smf.ols('S ~ A + B + C', data=response).fit()
@@ -111,11 +112,11 @@ Yvar = np.var(Ysimulated)
 delta = 2 * np.sqrt(Yvar / 500)
 CI = (Ymean - delta, Ymean + delta)
 
-from doepy.build import full_fact
+from mistat.design import doe
 np.random.seed(1)
 
 # Build design from factors
-FacDesign = full_fact({
+FacDesign = doe.full_fact({
     'R': [0.05, 5, 9.5],
     'L': [0.01, 0.02, 0.03],
 })
@@ -139,6 +140,8 @@ for _, (R, L) in FacDesign.iterrows():
   })
 results = pd.DataFrame(results)
 
+results
+
 style = results.style.hide(axis='index')
 style = style.format(subset=['Ymean', 'Yvar', 'R'], precision=3)
 style = style.format(subset=['MSE', 'L'], precision=2)
@@ -146,7 +149,6 @@ s = style.to_latex(hrules=True, column_format='ccrrr')
 s = s.replace('Ymean', '$\\bar{Y}_{500}$')
 s = s.replace('Yvar', '$S_{500}^2$')
 print(s)
-
 ## Taguchi's Designs
 fig, axes = plt.subplots(ncols=2, figsize=(8,4))
 
@@ -269,7 +271,7 @@ def calculateRelVariance(design, fixedFactors):
         f: xf if f == freeFactor else fixedFactors[f] for f in design.columns
     })
 
-    XXm1 = np.linalg.inv(np.matmul(design.transpose(), design))
+    XXm1 = np.linalg.inv(np.matmul(design.transpose(), np.array(design)))
     
     relVar = []
     for _, x in data.iterrows():
@@ -376,6 +378,9 @@ import warnings
 warnings.simplefilter('ignore', category=UserWarning)
 
 coefficients = ff_model.summary2().tables[1]
+coefficients
+
+coefficients = ff_model.summary2().tables[1]
 style = coefficients.style #.hide(axis='index')
 style = style.format(precision=1)
 style = style.format(subset=['t', 'P>|t|'], precision=3)
@@ -383,7 +388,6 @@ s = style.to_latex(hrules=True)
 s = s.replace('Blending_Time', 'Blending\\_Time')
 s = s.replace('Cooling_Time', 'Cooling\\_Time')
 print(s)
-
 fig, ax = plt.subplots(figsize=(5, 2))
 coefficients['Coef.'][1:][::-1].plot.barh(ax=ax)
 plt.show()
@@ -394,6 +398,9 @@ FFdesign['center'] = [1 if t == 0 else 0 for t in FFdesign['Temp']]
 formula = 'Viscosity ~ (Temp + Blending_Time + Cooling_Time)**2 + center'
 ff_model_center = smf.ols(formula=formula, data=FFdesign).fit()
 
+coefficients = ff_model.summary2().tables[1]
+coefficients
+
 coefficients = ff_model_center.summary2().tables[1]
 style = coefficients.style #.hide(axis='index')
 style = style.format(precision=1)
@@ -402,7 +409,6 @@ s = style.to_latex(hrules=True)
 s = s.replace('Blending_Time', 'Blending\\_Time')
 s = s.replace('Cooling_Time', 'Cooling\\_Time')
 print(s)
-
 # restore default setting
 warnings.simplefilter('default', category=UserWarning)
 
@@ -611,22 +617,28 @@ plt.tight_layout()
 plt.show()
 
 ## Tolerance Designs
-from doepy.build import frac_fact_res
 tolerances = [c for c in 'ABCDEFGHIJKLM']
 factors = {tl: [1, 2] for tl in tolerances}
 
-Design = frac_fact_res(factors, 4)
+Design = doe.frac_fact_res(factors, 4)
+Design.index = range(1, len(Design) + 1)
+Design = Design.astype(np.int64)
+
+Design
+
+tolerances = [c for c in 'ABCDEFGHIJKLM']
+factors = {tl: [1, 2] for tl in tolerances}
+
+Design = doe.frac_fact_res(factors, 4)
 Design.index = range(1, len(Design) + 1)
 Design = Design.astype(np.int64)
 print(Design.style.to_latex(hrules=True, column_format='rccccccccccccc'))
-
-from doepy.build import frac_fact_res
 np.random.seed(1)
 
 # Prepare design
 tolerances = [f'tl{c}' for c in 'ABCDEFGHIJKLM']
 factors = {tl: [5, 10] for tl in tolerances}
-Design = frac_fact_res(factors, 4)
+Design = doe.frac_fact_res(factors, 4)
 
 # Randomize and create replicates
 nrepeat = 100
@@ -660,24 +672,26 @@ table.index = range(1, len(table) + 1)
 table = table.round({'mean': 2, 'STD': 4, 'MSE': 4})
 table['TC'] = table['TC'].astype(np.int64)
 
+table.sort_values(by='MSE')
+
 style = table.sort_values(by='MSE').iloc[:16,:].style
 style = style.format(subset='mean', precision=2)
 style = style.format(subset=['STD', 'MSE'], precision=4)
 print(style.to_latex(hrules=True, column_format='rcccr'))
-
 style = table.sort_values(by='MSE').iloc[16:,:].style
 style = style.format(subset='mean', precision=2)
 style = style.format(subset=['STD', 'MSE'], precision=4)
 print(style.to_latex(hrules=True, column_format='rcccr'))
-
 ## Case Studies
-### The Quinlan Experiment at Flex Products, Inc.
+### The Quinlan Experiment
 flexprod = mistat.load_data('FLEXPROD')
 flexprod.index = range(1, len(flexprod) + 1)
+
+flexprod
+
 style = flexprod.style
 style = style.format(subset='SN', precision=2)
 print(style.to_latex(hrules=True, column_format='rcccccccccccccccr'))
-
 flexprod = mistat.load_data('FLEXPROD')
 mistat.mainEffectsPlot(flexprod, 'SN', col_wrap=8)
 
@@ -691,10 +705,12 @@ model.params
 ### Computer Response Time Optimization
 compuresp = mistat.load_data('COMPURESP')
 compuresp.index = range(1, len(compuresp) + 1)
+
+compuresp
+
 style = compuresp.style
 style = style.format(subset=['Mean', 'SN'], precision=2)
 print(style.to_latex(hrules=True, column_format='rcccccccccc'))
-
 compuresp = mistat.load_data('COMPURESP')
 mistat.mainEffectsPlot(compuresp, 'SN', factors='FBCDEAGH', col_wrap=4)
 

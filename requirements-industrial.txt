@@ -1,4 +1,5 @@
-matplotlib
+mistat
+matplotlib==3.6.0
 numpy
 pandas
 scipy
@@ -6,12 +7,13 @@ statsmodels
 seaborn
 pingouin
 lifelines
-doepy
 dtreeviz
 svglib
 pwlf
 pyDOE2
+diversipy
 pykriging
-mistat
+pymc
+arviz
 #
 jupyter

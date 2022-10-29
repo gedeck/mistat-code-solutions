@@ -1,0 +1,115 @@
+{% assign omit_home = include.omit_home %}
+{% if omit_home == nil %}
+  {% assign omit_home = site.breadcrumbs_omit_home %}
+{% endif %}
+
+{% assign omit_collection = include.omit_collection %}
+{% if omit_collection == nil %}
+  {% assign omit_collection = site.breadcrumbs_omit_collection %}
+{% endif %}
+
+{% assign omit_categories = include.omit_categories %}
+{% if omit_categories == nil %}
+  {% assign omit_categories = site.breadcrumbs_omit_categories %}
+{% endif %}
+
+{% assign omit_date = include.omit_date %}
+{% if omit_date == nil %}
+  {% assign omit_date = site.breadcrumbs_omit_date %}
+{% endif %}
+
+{% assign omit_year = include.omit_year %}
+{% if omit_year == nil %}
+  {% assign omit_year = site.breadcrumbs_omit_year %}
+{% endif %}
+
+{% assign omit_month = include.omit_month %}
+{% if omit_month == nil %}
+  {% assign omit_month = site.breadcrumbs_omit_month %}
+{% endif %}
+
+{% assign omit_day = include.omit_day %}
+{% if omit_day == nil %}
+  {% assign omit_day = site.breadcrumbs_omit_day %}
+{% endif %}
+
+{% assign breadcrumbs = "" | split: "" %}
+
+{% if page.url == "/" %}
+  {% assign is_front_page = true %}
+{% else %}
+  {% assign is_front_page = false %}
+{% endif %}
+
+{% unless is_front_page %}
+  {% assign page = include.page | default: page %}
+  {% unless omit_home %}
+    {% capture breadcrumb_text %}{% include breadcrumb_text.html url="/" default="Home" %}{% endcapture %}
+    {% assign breadcrumb_text = breadcrumb_text | split: "🗾" %}
+    {% assign breadcrumbs = breadcrumbs | concat: breadcrumb_text %}
+  {% endunless %}
+{% endunless %}
+
+{% unless omit_collection or page.collection == nil %}
+  {% assign collection_slug = page.collection | replace: " ", "-" | downcase | url_encode %}
+  {% assign collection_page_url = "/" | append: collection_slug | append: "/" %}
+  {% capture breadcrumb_text %}{% include breadcrumb_text.html url=collection_page_url default=page.collection %}{% endcapture %}
+  {% assign breadcrumb_text = breadcrumb_text | split: "🗾" %}
+  {% assign breadcrumbs = breadcrumbs | concat: breadcrumb_text %}
+{% endunless %}
+
+{% unless omit_categories %}
+  {% for category in page.categories %}
+    {% assign category_slug = category | replace: " ", "-" | downcase | url_encode %}
+    {% assign category_page_url = "/" | append: category_slug | append: "/" %}
+    {% capture breadcrumb_text %}{% include breadcrumb_text.html url=category_page_url default=category %}{% endcapture %}
+    {% assign breadcrumb_text = breadcrumb_text | split: "🗾" %}
+    {% assign breadcrumbs = breadcrumbs | concat: breadcrumb_text %}
+  {% endfor %}
+{% endunless %}
+
+{% unless omit_date or page.date == nil %}
+  {% assign year = page.date | date: "%Y" %}
+  {% assign year_page_url = "/" | append: year | append: "/" %}
+  {% assign month_int = page.date | date: "%m" %}
+  {% assign month_page_url = year_page_url | append: month_int | append: "/" %}
+  {% assign day_int = page.date | date: "%d" %}
+  {% assign day_page_url = month_page_url | append: day_int | append: "/" %}
+
+  {% unless omit_year %}
+    {% capture breadcrumb_text %}{% include breadcrumb_text.html url=year_page_url default=year %}{% endcapture %}
+    {% assign breadcrumb_text = breadcrumb_text | split: "🗾" %}
+    {% assign breadcrumbs = breadcrumbs | concat: breadcrumb_text %}
+  {% endunless %}
+
+  {% unless omit_month %}
+    {% assign month_str = page.date | date: "%b" %}
+    {% capture breadcrumb_text %}{% include breadcrumb_text.html url=month_page_url default=month_str %}{% endcapture %}
+    {% assign breadcrumb_text = breadcrumb_text | split: "🗾" %}
+    {% assign breadcrumbs = breadcrumbs | concat: breadcrumb_text %}
+  {% endunless %}
+
+  {% unless omit_day %}
+    {% assign day_str = page.date | date: "%e" %}
+    {% capture breadcrumb_text %}{% include breadcrumb_text.html url=day_page_url default=day_str %}{% endcapture %}
+    {% assign breadcrumb_text = breadcrumb_text | split: "🗾" %}
+    {% assign breadcrumbs = breadcrumbs | concat: breadcrumb_text %}
+  {% endunless %}
+{% endunless %}
+
+{% unless is_front_page %}
+  {% if page.title == nil %}
+    {% assign title = page.name %}
+  {% else %}
+    {% assign title = page.title %}
+  {% endif %}
+  {% capture breadcrumb_text %}<strong>{{ title }}</strong>{% endcapture %}
+  {% assign breadcrumb_text = breadcrumb_text | split: "🗾" %}
+  {% assign breadcrumbs = breadcrumbs | concat: breadcrumb_text %}
+{% endunless %}
+
+{% if breadcrumbs != empty %}
+  <nav style="display: inline-block;">
+    {% for breadcrumb in breadcrumbs %}{{ breadcrumb }}{% endfor %}
+  </nav>
+{% endif %}

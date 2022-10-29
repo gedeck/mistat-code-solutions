@@ -97,7 +97,7 @@ ax.scatter(coal.index, coal, color='black', zorder=2)
 ax.bar(coal.index, coal, color='lightgrey', zorder=1)
 plt.show()
 
-analysis = mistat.Cusum(coal[:50], center=1.82, std_dev=1, se_shift=0, decision_interval=4.19)
+analysis = mistat.Cusum(coal.iloc[:50], center=1.82, std_dev=1, se_shift=0, decision_interval=4.19)
 ax = pd.Series(analysis.neg).plot(color='lightgrey', marker='o',
       markerfacecolor='black', markeredgecolor='black')
 ax.set_xlabel('Group')
@@ -251,13 +251,14 @@ for i in range(0, len(dojo1935)):
     y_tm1 = y_t
 results = pd.DataFrame(results)
 
+results
+
 fig, ax = plt.subplots()
 # ax = dojo1935.plot(color='black')
 ax.plot(results['t'], results['y_t'], color='grey')
 ax.plot(results['t'], results['mu_t'], color='black')
 ax.set_ylabel('Dow Jones')
 plt.show()
-
 def renderResults(results):
   style = results.iloc[:25,].style.hide(axis='index')
   style = style.format(precision=2)
@@ -265,7 +266,7 @@ def renderResults(results):
   s = s.replace('y_t', '$y_t$').replace('mu_t', '$\\mu_t$')
   print(s)
 
-### Hoadley's QMP
+### The QMP tracking method
 soldef = mistat.load_data('SOLDEF')
 
 print('Batches above quality standard: ', sum(soldef > 100))
@@ -294,6 +295,8 @@ for i in range(2, len(soldef)):
     results.append(result)
 results = pd.DataFrame(results)
 
+results.iloc[7:18,:6]
+
 style = results.iloc[7:18,:6].style.hide(axis='index')
 style = style.format(precision=2)
 s = style.to_latex(hrules=True)
@@ -302,6 +305,8 @@ s = s.replace('S2_tm1', '$S^2_{t-1}$').replace(' t ', ' $t$ ')
 s = s.replace('Gamma_tm1', '$\\hat\\Lambda_{t-1}$')
 s = s.replace('nu_tm1', '$\\hat\\nu_{t-1}$')
 print(s)
+columns = ['t', 'lambda_t', 'lambda(0.01)', 'lambda(0.05)', 'lambda(0.95)', 'lambda(0.99)']
+results[columns].iloc[7:18,:]
 
 columns = ['t', 'lambda_t', 'lambda(0.01)', 'lambda(0.05)', 'lambda(0.95)', 'lambda(0.99)']
 style = results[columns].iloc[7:18,:].style.hide(axis='index')
@@ -311,7 +316,6 @@ s = s.replace('lambda_t', '$\\lambda_t$')
 for p in (0.01, 0.05, 0.95, 0.99):
   s = s.replace(f'lambda({p})', f'$\\lambda_{{t,{p}}}$')
 print(s)
-
 ## Automatic Process Control
 c_A = 100
 c_d = 1000
@@ -325,13 +329,14 @@ for t in range(14, 0, -1):
     q_tp1 = q_t
 result = pd.DataFrame(data)
 
+result
+
 result = pd.concat([pd.DataFrame({'t': [15]}), result]).reset_index(drop=True)
 style = result.style.hide(axis='index')
 style = style.format(na_rep='---', precision=3)
 s = style.to_latex(hrules=True)
 s = s.replace('q_t', '$q_t$').replace('p_t', '$p_t$')
 print(s)
-
 speed = mistat.load_data('FILMSP')
 
 groups = [y for x in range(1, 44) for y in [x]*5]

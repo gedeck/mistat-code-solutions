@@ -1,15 +1,3 @@
-<style>
-  table {
-    border: 0px;
-  }
-  td {
-    border: 0px;
-    vertical-align: top;
-  }
-  .inner {
-    max-width: 800px;
-  }
-</style>
 ![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
 
 # Code repository
@@ -21,11 +9,12 @@
 
 by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 
-Publisher: Springer International Publishing; 1st edition (September 15, 2022)
-ISBN-13: 978-3031075650
-Buy on 
-<a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
-<a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
+Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer International Publishing; 1st edition (September 15, 2022)</a><br>
+ISBN-13: 978-3-031-07565-0 (print), ISBN-13: 978-3-031-07566-7 (eBook).<br>
+Buy at
+  <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer</a>, 
+  <a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
+  <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
 
 <!-- Errata: http://oreilly.com/catalog/errata.csp?isbn=9781492072942 -->
 </td>
@@ -54,7 +43,8 @@ The `mistat` packages is maintained in a GitHub repository at [https://github.co
 # Installation instructions
 Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
 
-These Python packages are used in the code: 
+These Python packages are used in the code examples of _Modern Statistics_: 
+- mistat (for access to data sets and additional functionality)
 - numpy 
 - scipy 
 - scikit-learn
@@ -65,7 +55,6 @@ These Python packages are used in the code:
 - networkx
 - scikit-fda
 - pgmpy
-- mistat
 - dtreeviz
 - svglib
 - pydotplus

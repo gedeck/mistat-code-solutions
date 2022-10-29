@@ -12,8 +12,7 @@ business outcomes.
 The digital twin concept has been implemented by leading manufacturing
 companies. Ford Motor Company enhanced assembly line performance by
 evaluating and optimizing the designs using digital twins.
-Volvo Group Global \citeyear{volvogroupglobalVirtualTwinPlant2017}
-showed how to
+Volvo Group Globalshowed how to
 validate changes using a digital twin. General Electric developed
 digital twins of aircraft engines.  Major commercial software vendors
 support development of virtual factories via integrated solutions

@@ -177,15 +177,17 @@ print('Main effects', Ymean - Ymean.sum() / 3)
 
 Grand = Ymean.sum() / 3
 MainEffects = Ymean - Grand
+SEtau = np.sqrt(sigma2 / 30)
 
 Salpha = np.sqrt(2 * stats.f.ppf(0.95, 2, 42))
 
 tau = Ymean - Ymean.sum() / 3
 df = pd.DataFrame({
-  'lower limit': tau - sigma2*Salpha,
-  'upper limit': tau + sigma2*Salpha,
+  'tau': tau,
+  'lower limit': tau - SEtau*Salpha,
+  'upper limit': tau + SEtau*Salpha,
 })
-df
+df.round(4)
 
 ### Estimating Main Effects and Interactions
 ### $2^m$ Factorial Designs
@@ -292,30 +294,148 @@ mistat.marginalInteractionPlot(result[['m', 's', 'v0', 'k', 't', 'seconds']], 's
 plt.show()
 
 ### $3^m$ Factorial Designs
-# ignore RuntimeWarning
-import warnings
-warnings.simplefilter('ignore', category=RuntimeWarning)
-
-from itertools import product
-stress = mistat.load_data('STRESS')
-
-# formula = 'A + B + C '
-# formula += '+ I(A**2) + I(B**2) + I(C**2) '
-# formula += '+ A*B + A*C + B*C + A*B*C'
-
-formula = '(A+B+C+I(A**2)+I(B**2)+I(C**2))**3'
-model = smf.ols(f"stress ~ {formula}", data=stress).fit()
-print(model.summary2())
-
-# restore warnings
-warnings.simplefilter('default', category=RuntimeWarning)
+def getStandardOrder(levels, labels):
+    parameter = ''
+    omega = 0
+    for i, (level, label) in enumerate(zip(levels, labels), 1):
+        omega += level * 3**(i-1)
+        if level == 1:
+            parameter = f'{parameter}{label}'
+        elif level == 2:
+            parameter = f'{parameter}{label}2'
+    if parameter == '':
+        parameter = 'Mean'
+    return {'omega': omega, 'Parameter': parameter}
 
 stress = mistat.load_data('STRESS')
+standardOrder = pd.DataFrame(getStandardOrder(row[['A','B','C']], 'ABC') 
+                             for _, row in stress.iterrows())
+
+# add information to dataframe stress and sort in standard order 
+stress.index = standardOrder['omega']
+stress['Parameter'] = standardOrder['Parameter']
+stress = stress.sort_index()
+
+def get_psi3m(m):
+    psi31 = np.array([[1, -1, 1], [1, 0, -2], [1, 1, 1]] )
+    if m == 1:
+        return psi31
+    psi3m1 = get_psi3m(m-1)
+    return np.kron(psi31, psi3m1)
+
+Y_3m = stress['stress']
+
+psi3m = get_psi3m(3)
+delta3m = np.matmul(psi3m.transpose(), psi3m)
+inv_delta3m = np.diag(1/np.diag(delta3m))
+gamma_3m = np.matmul(inv_delta3m, np.matmul(psi3m.transpose(), Y_3m))
+
+estimate = pd.DataFrame({
+    'Parameter': stress['Parameter'],
+    'LSE': gamma_3m,
+})
+# determine Lambda0 set as interactions that include quadratic terms
+lambda0 = [term for term in stress['Parameter'] if '2' in term and len(term) > 2]
+estimate['Significance'] = ['n.s.' if p in lambda0 else '' 
+                            for p in estimate['Parameter']]
+
+# estimate sigma2 using non-significant terms in lambda0
+sigma2 = 0
+for idx, row in estimate.iterrows():
+    p = row['Parameter']
+    if p not in lambda0:
+        continue
+    idx = int(idx)
+    sigma2 += row['LSE']**2 * np.sum(psi3m[:, idx]**2)
+K0 = len(lambda0)
+sigma2 = sigma2 / K0
+table = estimate.style.hide(axis='index')
+table = table.format(precision=3)
+s = table.to_latex(hrules=True, column_format='lrcr')
+s = s.replace('A2', 'A$^2$').replace('B2', 'B$^2$').replace('C2', 'C$^2$')
+print(s)
+Y_3m = stress['stress']
+
+psi3m = get_psi3m(3)
+delta3m = np.matmul(psi3m.transpose(), psi3m)
+inv_delta3m = np.diag(1/np.diag(delta3m))
+gamma_3m = np.matmul(inv_delta3m, np.matmul(psi3m.transpose(), Y_3m))
+
+estimate = pd.DataFrame({
+    'Parameter': stress['Parameter'],
+    'LSE': gamma_3m,
+})
+
+# determine Lambda0 set as interactions that include quadratic terms
+lambda0 = [term for term in stress['Parameter'] if '2' in term and len(term) > 2]
+print(f'lambda0 : {lambda0}')
+estimate['Significance'] = ['n.s.' if p in lambda0 else '' 
+                            for p in estimate['Parameter']]
+
+# estimate sigma2 using non-significant terms in lambda0
+sigma2 = 0
+for idx, row in estimate.iterrows():
+    p = row['Parameter']
+    if p not in lambda0:
+        continue
+    idx = int(idx)
+    sigma2 += row['LSE']**2 * np.sum(psi3m[:, idx]**2)
+K0 = len(lambda0)
+sigma2 = sigma2 / K0
+print(f'K0 = {K0}')
+print(f'sigma2 = {sigma2.round(2)}')
+
+n = len(psi3m)
+variance = sigma2 / (n * np.sum(psi3m**2, axis=0))
+estimate['S.E.'] = np.sqrt(n * variance)
+
+estimate.round(3)
+
+stress = mistat.load_data('STRESS')
+
+# convert factor levels from (0,1,2) to (-1,0,1)
+stress['A'] = stress['A'] - 1
+stress['B'] = stress['B'] - 1
+stress['C'] = stress['C'] - 1
+
 mistat.mainEffectsPlot(stress, 'stress')
 plt.show()
 
 mistat.interactionPlot(stress, 'stress')
 plt.show()
+
+_, ax = plt.subplots(figsize=[7, 4])
+mistat.marginalInteractionPlot(stress[['A', 'B', 'C', 'stress']], 'stress', ax=ax)
+ax.set_ylabel('stress')
+plt.show()
+
+stress = mistat.load_data('STRESS')
+
+# convert factor levels from (0,1,2) to (-1,0,1)
+stress['A'] = stress['A'] - 1
+stress['B'] = stress['B'] - 1
+stress['C'] = stress['C'] - 1
+
+# train a model including interactions and quadratic terms
+formula = ('stress ~ A + B + C + A:B + A:C + B:C + A:B:C + ' +
+           'I(A**2) + I(B**2) + I(C**2)')
+model = smf.ols(formula, data=stress).fit()
+table = model.summary2().tables[1].style.hide(axis='index')
+table = table.format(precision=3)
+s = table.to_latex(hrules=True, column_format='lrrrrrr')
+print(s)
+stress = mistat.load_data('STRESS')
+
+# convert factor levels from (0,1,2) to (-1,0,1)
+stress['A'] = stress['A'] - 1
+stress['B'] = stress['B'] - 1
+stress['C'] = stress['C'] - 1
+
+# train a model including interactions and quadratic terms
+formula = ('stress ~ A + B + C + A:B + A:C + B:C + A:B:C + ' +
+           'I(A**2) + I(B**2) + I(C**2)')
+model = smf.ols(formula, data=stress).fit()
+model.summary2()
 
 ## Blocking and Fractional Replications of $2^m$ Factorial Designs
 def renderDesign(design, mainEffects, to_latex=False):

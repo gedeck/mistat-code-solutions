@@ -15,6 +15,7 @@ import warnings
 from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=OutdatedPackageWarning)
+warnings.filterwarnings('ignore', category=UserWarning)
 
 # Bayesian Reliability Estimation and Prediction
 import random
@@ -68,7 +69,7 @@ print(f'Updated beta distributions:\n{result.distributions}')
 ### Distribution-Free Reliability Estimation
 ### Exponential Reliability Estimation
 ### Prediction Intervals
-### Applications with Python - lifelines and pymc3
+### Applications with Python - lifelines and pymc
 systemFailure = mistat.load_data('SYSTEMFAILURE')
 systemFailure['Time stamp'] = systemFailure['Time stamp'] / 1_000_000 
 systemFailure['Young'] = [0 if v == 'Mature' else 1 

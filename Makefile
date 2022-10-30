@@ -20,6 +20,9 @@ images:
 	docker build -t mistat.m.python -f docker/Dockerfile.m.python .
 	docker build -t mistat.m.jupyter -f docker/Dockerfile.m.jupyter .
 
+# github-pages:
+# 	# docker run -it --rm -v $(PWD):/usr/src/app -p "4000:4000" starefossen/github-pages
+# 	docker run --rm -v $(PWD):/srv/jekyll -p 4000:4000 -it jekyll/jekyll:builder bash
 
 # # linter and mypy
 # MYPY_IMAGE=mypy

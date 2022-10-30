@@ -62,17 +62,21 @@ Instructions on installing Python and required packages are <a href="../doc/inst
 
 These Python packages are used in the code of _Industrial Statistics_: 
 - mistat (for access to data sets and additional functionality)
-- numpy 
-- scipy 
+- numpy
+- pandas
+- scipy
 - statsmodels
+- matplotlib==3.6.0
+- seaborn
 - pingouin
+- lifelines
 - dtreeviz
 - svglib
-- pydotplus
-- matplotlib
-- seaborn
-- lifelines
-- doepy
 - pwlf
 - pyDOE2
+- diversipy
+- pydotplus
+- matplotlib
 - pykriging (this works currently only with Python 3.9)
+- pymc
+- arviz

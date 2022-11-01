@@ -35,6 +35,9 @@ This part of the repository contains:
   [notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/solutions) - 
   [download all as solutions.zip](solutions.zip)
 - `all`: zip file with all files combined - [download all as all.zip](all.zip)
+- `datafiles`: zip file with all data files - [download all as data_files.zip](data_files.zip) - the `mistat` 
+  package gives you already access to all datafiles, you only need to download this file if you want to use it with 
+  different software
 
 All the Python applications referred to in this book are contained in a package called `mistat` available 
 for installation from the Python package index [https://pypi.org/project/mistat/](https://pypi.org/project/mistat/).

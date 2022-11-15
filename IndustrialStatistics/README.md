@@ -83,3 +83,5 @@ These Python packages are used in the code of _Industrial Statistics_:
 - pykriging (this works currently only with Python 3.9)
 - pymc
 - arviz
+
+If you have a problem with visualizing the decision tree or creating a network graph, follow the [installation instructions for graphviz in the dtreeviz github site](https://github.com/parrt/dtreeviz). On Windows, the problem is usually resolved by adding the path to the graphviz binaries to the PATH system variable.

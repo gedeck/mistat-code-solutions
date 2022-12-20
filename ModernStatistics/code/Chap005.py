@@ -99,10 +99,10 @@ mu_N = xDev.mean()
 sigma2_N = xDev.var(ddof=0)
 mu_3N = np.sum((xDev - mu_N) ** 3) / N
 mu_4N = np.sum((xDev - mu_N) ** 4) / N
-print(mu_N.round(4))
-print(sigma2_N.round(5))
-print(mu_3N.round(5))
-print(mu_4N.round(3))
+print(f'mu_N: {mu_N:.4f}')
+print(f'sigma2_N: {sigma2_N:.5f}')
+print(f'mu_3N: {mu_3N:.5f}')
+print(f'mu_4N: {mu_4N:.3f}')
 
 ### Properties of $\bar X_n$ and $S^2_n$ under RSWOR
 random.seed(1)

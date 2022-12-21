@@ -93,10 +93,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           
-      - name: Install graphviz
+      - name: Install Linux packages
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt install -y graphviz
+          sudo apt-get install libblas-dev liblapack-dev
 
       - name: Install dependencies
         run: |

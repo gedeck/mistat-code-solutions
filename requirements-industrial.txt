@@ -15,5 +15,6 @@ diversipy
 pykriging
 pymc
 arviz
+aesara
 #
 jupyter

@@ -209,7 +209,7 @@ mean_vibrations['upper'] = mean_vibrations['mean'] + mean_vibrations['std']
 mean_vibrations['lower'] = mean_vibrations['mean'] - mean_vibrations['std']
 
 fig, ax = plt.subplots()
-ax.fill_between(mean_vibrations.index, mean_vibrations['upper'], mean_vibrations['lower'], color='C0', alpha=0.5)
+ax.fill_between(list(mean_vibrations.index), mean_vibrations['upper'], mean_vibrations['lower'], color='C0', alpha=0.5)
 ax.plot(mean_vibrations.index, mean_vibrations['mean'], color='C0')
 scm_data.query('status').groupby('wheel').plot(x='time', y='vibrations', ax=ax, legend=None, color='black')
 ax.set_ylabel('Vibration')

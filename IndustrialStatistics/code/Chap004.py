@@ -273,7 +273,7 @@ pred_std = predictions.std(axis=0)
 fig, ax = plt.subplots(figsize=(12, 7))
 
 for f in (1, 2, 3):
-    ax.fill_between(scm_faulty['time'], pred_mean+f*pred_std, pred_mean-f*pred_std, color='grey', alpha=0.2)
+    ax.fill_between(np.array(scm_faulty['time']), pred_mean+f*pred_std, pred_mean-f*pred_std, color='grey', alpha=0.2)
 for scm_healthy in scm_healthy_predictions:
     ax.plot(scm_healthy['time'], scm_healthy['residual'], color='C5', alpha=0.3)
 

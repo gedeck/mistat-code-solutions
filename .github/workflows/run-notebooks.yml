@@ -6,7 +6,7 @@ on:
       - "docs/**"
       - "images/**"
       - "*.md"
-      - "IndustrialStatistics/**"
+      # - "IndustrialStatistics/**"
 
   pull_request:
     paths-ignore:

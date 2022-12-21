@@ -2,7 +2,8 @@ SRC=src
 RUN=docker run -it --rm -v $(PWD):/code -v $(PWD)/src:/src 
 
 jupyter-m: 
-	@ $(RUN) -p 8895:8895 mistat.m.jupyter jupyter notebook --allow-root --port=8895 --ip 0.0.0.0 --no-browser
+	# @ $(RUN) -p 8895:8895 mistat.m.jupyter jupyter notebook --allow-root --port=8895 --ip 0.0.0.0 --no-browser
+	@ $(RUN) -p 8895:8895 mistat.m.jupyter jupyter-lab --allow-root --port=8895 --ip 0.0.0.0 --no-browser
 
 bash-m:
 	@ $(RUN) mistat.m.python  bash

@@ -36,6 +36,9 @@ This part of the repository contains:
   [notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/IndustrialStatistics/solutions) - 
   [download all as solutions.zip](solutions.zip)
 - `all`: zip file with all files combined - [download all as all.zip](all.zip)
+- `datafiles`: zip file with all data files - [download all as data_files.zip](data_files.zip) - the `mistat`
+  package gives you already access to all datafiles, you only need to download this file if you want to use it with 
+  different software
 
 All the Python applications referred to in this book are contained in a package called `mistat` available 
 for installation from the Python package index [https://pypi.org/project/mistat/](https://pypi.org/project/mistat/).
@@ -62,17 +65,23 @@ Instructions on installing Python and required packages are <a href="../doc/inst
 
 These Python packages are used in the code of _Industrial Statistics_: 
 - mistat (for access to data sets and additional functionality)
-- numpy 
-- scipy 
+- numpy
+- pandas
+- scipy
 - statsmodels
+- matplotlib==3.6.0
+- seaborn
 - pingouin
+- lifelines
 - dtreeviz
 - svglib
-- pydotplus
-- matplotlib
-- seaborn
-- lifelines
-- doepy
 - pwlf
 - pyDOE2
+- diversipy
+- pydotplus
+- matplotlib
 - pykriging (this works currently only with Python 3.9)
+- pymc
+- arviz
+
+If you have a problem with visualizing the decision tree or creating a network graph, follow the [installation instructions for graphviz in the dtreeviz github site](https://github.com/parrt/dtreeviz). On Windows, the problem is usually resolved by adding the path to the graphviz binaries to the PATH system variable.

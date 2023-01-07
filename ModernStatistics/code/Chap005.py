@@ -9,6 +9,17 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Check the errata at (https://gedeck.github.io/mistat-code-solutions/ModernStatistics/) and the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues to see if the issue is known and a solution available.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
@@ -99,10 +110,10 @@ mu_N = xDev.mean()
 sigma2_N = xDev.var(ddof=0)
 mu_3N = np.sum((xDev - mu_N) ** 3) / N
 mu_4N = np.sum((xDev - mu_N) ** 4) / N
-print(mu_N.round(4))
-print(sigma2_N.round(5))
-print(mu_3N.round(5))
-print(mu_4N.round(3))
+print(f'mu_N: {mu_N:.4f}')
+print(f'sigma2_N: {sigma2_N:.5f}')
+print(f'mu_3N: {mu_3N:.5f}')
+print(f'mu_4N: {mu_4N:.3f}')
 
 ### Properties of $\bar X_n$ and $S^2_n$ under RSWOR
 random.seed(1)

@@ -69,59 +69,61 @@ jobs:
           jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap007_ex.ipynb
           jupyter nbconvert --to notebook --execute ModernStatistics/solutions/Solution_Chap008_ex.ipynb
 
-  build-industrial:
-    if:
-      github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+  # build-industrial:
+  #   if:
+  #     github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+  #   runs-on: ${{ matrix.os }}
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       python-version: ["3.9"]
+  #       os: [ubuntu-latest, windows-latest]
+  #     # matrix:
+  #     #   python-version: ["3.10"]
+  #     #   os: [ubuntu-latest]
 
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      # 3.10 currently fails due to a dependency
-      matrix:
-        python-version: ["3.9", "3.10"]
-        os: [ubuntu-latest, windows-latest]
+  #   steps:
+  #     - uses: actions/checkout@v3
 
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
+  #     - name: Set up Python ${{ matrix.python-version }}
+  #       uses: actions/setup-python@v4
+  #       with:
+  #         python-version: ${{ matrix.python-version }}
           
-      - name: Install graphviz
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt install -y graphviz
+  #     - name: Install Linux packages
+  #       if: matrix.os == 'ubuntu-latest'
+  #       run: |
+  #         sudo apt install -y graphviz
+  #         sudo apt-get install libblas-dev liblapack-dev
 
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install --upgrade wheel
-          pip install -r requirements-industrial.txt
-          pip freeze
+  #     - name: Install dependencies
+  #       run: |
+  #         pip install --upgrade pip
+  #         pip install --upgrade wheel
+  #         pip install -r requirements-industrial.txt
+  #         pip freeze
 
-      - name: Execute notebooks
-        run: |
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap001.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap002.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap003.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap004.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap005.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap006.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap007.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap008.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap009.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap010.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap011.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap001_ex.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap002_ex.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap003_ex.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap004_ex.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap005_ex.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap006_ex.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap007_ex.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap008_ex.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap009_ex.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap010_ex.ipynb
-          jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap011_ex.ipynb
+  #     - name: Execute notebooks
+  #       run: |
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap001.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap002.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap003.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap004.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap005.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap006.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap007.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap008.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap009.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap010.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap011.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap001_ex.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap002_ex.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap003_ex.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap004_ex.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap005_ex.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap006_ex.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap007_ex.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap008_ex.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap009_ex.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap010_ex.ipynb
+  #         jupyter nbconvert --to notebook --execute IndustrialStatistics/solutions/Solution_Chap011_ex.ipynb

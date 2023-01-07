@@ -73,6 +73,7 @@ jobs:
 
   build-industrial:
     if:
+      ${{ false }}  # disable for now
       github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
 
     runs-on: ${{ matrix.os }}

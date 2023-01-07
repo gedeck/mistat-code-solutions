@@ -2,6 +2,7 @@
 ---
 $color-1: #5DADE2;
 $color-2: #AED6F1;
+$color-footer: #f2f2f2;
 $font-grey: #1B4F72;
 
 body {
@@ -36,10 +37,5 @@ footer p, footer a {
 }
 
 #footer_wrap {
-    background: $color-2;
-    background: -moz-linear-gradient(top, $color-1, $color-2);
-    background: -webkit-linear-gradient(top, $color-1, $color-2);
-    background: -ms-linear-gradient(top, $color-1, $color-2);
-    background: -o-linear-gradient(top, $color-1, $color-2);
-    background: linear-gradient(to top, $color-1, $color-2);
+    background: $color-footer;
 }

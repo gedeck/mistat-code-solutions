@@ -16,7 +16,7 @@ Buy at
   <a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
   <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
 
-Errata: <a href="https://gedeck.github.io/mistat-code-solutions/ModernStatistics/errata">see list of known errata here</a>
+<!-- Errata: http://oreilly.com/catalog/errata.csp?isbn=9781492072942 -->
 </td>
 </tr>
 </table>

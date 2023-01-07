@@ -33,6 +33,9 @@
           {% if page.url contains "ModernStatistics" %}
             <h1 id="project_title">Modern Statistics</h1>
             <h2 id="project_tagline">A Computer Based Approach with Python</h2>
+          {% elsif page.url contains "IndustrialStatistics" %}
+            <h1 id="project_title">Industrial Statistics</h1>
+            <h2 id="project_tagline">A Computer Based Approach with Python</h2>
           {% else %}
             <h1 id="project_title">{{ site.title | default: site.github.repository_name }}</h1>
             <h2 id="project_tagline">{{ site.description | default: site.github.project_tagline }}</h2>

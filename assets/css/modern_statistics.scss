@@ -3,6 +3,16 @@
 $color-1: #5DADE2;
 $color-2: #AED6F1;
 
+body {
+    box-sizing: border-box;
+    color: $color-1;
+    background: $color-1;
+    font-size: 16px;
+    font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
 #header_wrap {
     background: $color-1;
     background: -moz-linear-gradient(top, $color-2, $color-1);

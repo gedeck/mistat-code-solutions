@@ -1,6 +1,6 @@
 mistat
-matplotlib==3.6.0
-numpy
+matplotlib
+numpy<1.24
 pandas
 scipy
 statsmodels
@@ -15,5 +15,6 @@ diversipy
 pykriging
 pymc
 arviz
+aesara
 #
 jupyter

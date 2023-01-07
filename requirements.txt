@@ -11,7 +11,7 @@ KDEpy
 seaborn
 pingouin
 bootstrapped
-dtreeviz
+dtreeviz<2
 svglib
 scikit-fda
 xgboost
@@ -19,6 +19,6 @@ networkx
 pgmpy
 pydotplus
 
-seaborn==0.11.2
+seaborn
 pyDOE2
 diversipy

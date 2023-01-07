@@ -26,6 +26,15 @@ footer p, footer a {
     }
 }
 
+#project_title {
+    color: $font-grey;
+    text-shadow: none;
+}
+
+#main_content_wrap {
+    color: black;
+}
+
 #footer_wrap {
     background: $color-2;
     background: -moz-linear-gradient(top, $color-1, $color-2);

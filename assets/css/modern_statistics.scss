@@ -1,10 +1,22 @@
 ---
 ---
+$color-1: #5DADE2;
+$color-2: #AED6F1;
+
 #header_wrap {
-    background: #5DADE2;
-    background: -moz-linear-gradient(top, #AED6F1, #5DADE2);
-    background: -webkit-linear-gradient(top, #AED6F1, #5DADE2);
-    background: -ms-linear-gradient(top, #AED6F1, #5DADE2);
-    background: -o-linear-gradient(top, #AED6F1, #5DADE2);
-    background: linear-gradient(to top, #AED6F1, #5DADE2);
+    background: $color-1;
+    background: -moz-linear-gradient(top, $color-2, $color-1);
+    background: -webkit-linear-gradient(top, $color-2, $color-1);
+    background: -ms-linear-gradient(top, $color-2, $color-1);
+    background: -o-linear-gradient(top, $color-2, $color-1);
+    background: linear-gradient(to top, $color-2, $color-1);
+}
+
+#footer_wrap {
+    background: $color-2;
+    background: -moz-linear-gradient(top, $color-1, $color-2);
+    background: -webkit-linear-gradient(top, $color-1, $color-2);
+    background: -ms-linear-gradient(top, $color-1, $color-2);
+    background: -o-linear-gradient(top, $color-1, $color-2);
+    background: linear-gradient(to top, $color-1, $color-2);
 }

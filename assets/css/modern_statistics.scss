@@ -2,15 +2,15 @@
 ---
 $color-1: #5DADE2;
 $color-2: #AED6F1;
+$font-grey: #1B4F72;
 
 body {
-    box-sizing: border-box;
-    color: $color-1;
+    color: $font-grey;
     background: $color-1;
-    font-size: 16px;
-    font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+}
+
+footer p, footer a {
+    color: $font-grey;
 }
 
 #header_wrap {
@@ -20,6 +20,10 @@ body {
     background: -ms-linear-gradient(top, $color-2, $color-1);
     background: -o-linear-gradient(top, $color-2, $color-1);
     background: linear-gradient(to top, $color-2, $color-1);
+    
+    a {
+        color: $font-grey;
+    }
 }
 
 #footer_wrap {

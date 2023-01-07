@@ -17,6 +17,7 @@
 # If you come across an issue with the code, please follow these steps
 # 
 # - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Check the errata at (https://gedeck.github.io/mistat-code-solutions/ModernStatistics/) and the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues to see if the issue is known and a solution available.
 # - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
 # - Paste the error message into Google and see if someone else already found a solution
 import os

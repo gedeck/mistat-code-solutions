@@ -20,7 +20,9 @@
   </head>
 
   <body>
-    {{ page }}
+    {% if page.url contains "ModernStatistics" %}
+    {{ page.url }}
+    {% endif %}
 
     <!-- HEADER -->
     <div id="header_wrap" class="outer">

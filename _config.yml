@@ -1,6 +1,7 @@
 theme: jekyll-theme-slate
 include: 
   - doc/installPython.md 
+  - ModernStatistics/errata.md
   - IndustrialStatistics/blogs/Chap001.md
   - IndustrialStatistics/blogs/Chap002.md  
   - IndustrialStatistics/blogs/Chap003.md  

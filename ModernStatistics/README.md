@@ -1,22 +1,26 @@
 ![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics)
 
 # Code repository
 <table>
 <tr>
 <td><img src="../img/ModernStatistics.png" width=250></td>
 <td>
-  <b>Modern Statistics: A Computer Based Approach with Python</b>
+  <p>
+    <b>Modern Statistics: A Computer Based Approach with Python</b>
 
-by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+    by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+  </p>
 
-Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer International Publishing; 1st edition (September 15, 2022)</a><br>
-ISBN-13: 978-3-031-07565-0 (print), ISBN-13: 978-3-031-07566-7 (eBook).<br>
-Buy at
+  <p>Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer International Publishing; 1st edition (September 15, 2022)</a><br>
+  ISBN-13: 978-3-031-07565-0 (print), ISBN-13: 978-3-031-07566-7 (eBook).<br>
+  Buy at
   <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer</a>, 
   <a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
   <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
+  </p>
 
-<!-- Errata: http://oreilly.com/catalog/errata.csp?isbn=9781492072942 -->
+  <p>Errata: <a href="errata">see list of known errata here</a></p>
 </td>
 </tr>
 </table>
@@ -62,7 +66,9 @@ These Python packages are used in the code examples of _Modern Statistics_:
 - svglib
 - pydotplus
 
-If you have a prolem with visualizing the decision tree or creating a network graph, follow the [installation instructions for graphviz in the dtreeviz github site](https://github.com/parrt/dtreeviz). On Windows, the problem is usually resolved by adding the path to the graphviz binaries to the PATH system variable.
+The notebook [InstallPackages.ipynb](InstallPackages.ipynb) contains the pip command to install the required packages. Note that some of the packages may need to be pinned to specific versions.
+
+If you have a problem with visualizing the decision tree or creating a network graph, follow the [installation instructions for graphviz in the dtreeviz github site](https://github.com/parrt/dtreeviz). On Windows, the problem is usually resolved by adding the path to the graphviz binaries to the PATH system variable.
 
 # Table of contents
 

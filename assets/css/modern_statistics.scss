@@ -1,0 +1,41 @@
+---
+---
+$color-1: #5DADE2;
+$color-2: #AED6F1;
+$color-footer: #f2f2f2;
+$font-grey: #1B4F72;
+
+body {
+    color: $font-grey;
+    background: $color-1;
+}
+
+footer p, footer a {
+    color: $font-grey;
+}
+
+#header_wrap {
+    background: $color-1;
+    background: -moz-linear-gradient(top, $color-2, $color-1);
+    background: -webkit-linear-gradient(top, $color-2, $color-1);
+    background: -ms-linear-gradient(top, $color-2, $color-1);
+    background: -o-linear-gradient(top, $color-2, $color-1);
+    background: linear-gradient(to top, $color-2, $color-1);
+    
+    a {
+        color: $font-grey;
+    }
+}
+
+#project_title, #project_tagline {
+    color: $font-grey;
+    text-shadow: none;
+}
+
+#main_content_wrap {
+    color: black;
+}
+
+#footer_wrap {
+    background: $color-footer;
+}

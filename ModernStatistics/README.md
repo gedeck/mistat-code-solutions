@@ -7,20 +7,22 @@
 <td><img src="../img/ModernStatistics.png" width=250></td>
 <td>
   <p>
-    <b>Modern Statistics: A Computer Based Approach with Python</b>
-
+    <b>Modern Statistics: A Computer Based Approach with Python</b><br>
     by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
   </p>
 
-  <p>Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer International Publishing; 1st edition (September 15, 2022)</a><br>
-  ISBN-13: 978-3-031-07565-0 (print), ISBN-13: 978-3-031-07566-7 (eBook).<br>
-  Buy at
-  <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer</a>, 
-  <a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
-  <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
+  <p>
+    Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer International Publishing; <br>
+    1st edition (September 15, 2022)</a><br>
+    ISBN-13: 978-3-031-07565-0 (print)<br>
+    ISBN-13: 978-3-031-07566-7 (eBook).<br>
+    Buy at
+    <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer</a>, 
+    <a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
+    <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
   </p>
 
-  <p>Errata: <a href="errata">see list of known errata here</a></p>
+  <p>Errata: <a href="errata">See known errata here</a></p>
 </td>
 </tr>
 </table>
@@ -46,6 +48,9 @@ This part of the repository contains:
 All the Python applications referred to in this book are contained in a package called `mistat` available 
 for installation from the Python package index [https://pypi.org/project/mistat/](https://pypi.org/project/mistat/).
 The `mistat` packages is maintained in a GitHub repository at [https://github.com/gedeck/mistat](https://github.com/gedeck/mistat).
+
+# Try the code
+You can explore the code on <a href="https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=ModernStatistics%2Fnotebooks%2Findex.ipynb" target="_blank">Binder <img src="https://mybinder.org/badge_logo.svg"></a>.
 
 # Installation instructions
 Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.

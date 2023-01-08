@@ -1,5 +1,7 @@
 ![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
 
+[Binder](https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics)
+
 # Code repository
 <table>
 <tr>

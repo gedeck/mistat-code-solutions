@@ -11,7 +11,7 @@ The errata list is a list of errors and their corrections that were found after 
     with
   ```
   print(f'Xbar {Xbar:.2f} / SX {SX:.3f}')
-  print(f'Ybar {Xbar:.2f} / SY {SX:.3f}')
+  print(f'Ybar {Ybar:.2f} / SY {SY:.3f}')
   ```
 
 ## Chapter 8

@@ -11,7 +11,7 @@
 
 by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 
-Publisher: Springer International Publishing; 1st edition (TBA)
+Publisher: [Springer International Publishing; 1st edition (July 2023)](https://link.springer.com/book/9783031284816)
 <!--
 ISBN-13: 978-3031075650
 Buy on 

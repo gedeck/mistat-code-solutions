@@ -5,7 +5,7 @@
 # Code repository
 <table>
 <tr>
-<td><!-- <img src="../img/IndustrialStatistics.png" width=250>--></td>
+<td><img src="../img/IndustrialStatistics.png" width=250></td>
 <td>
   <p>
     <b>Industrial Statistics: A Computer Based Approach with Python</b><br>

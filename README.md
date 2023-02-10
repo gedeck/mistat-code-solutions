@@ -22,7 +22,7 @@ Buy on
 </tr>
 
 <tr>
-<td><!--<img src="../img/IndustrialStatistics.png" width=250>--></td>
+<td><img src="img/IndustrialStatistics.png" width=300></td>
 <td>
   <b>Industrial Statistics: A Computer Based Approach with Python</b>
 

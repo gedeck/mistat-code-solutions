@@ -12,11 +12,11 @@
   </p>
 
   <p>
-    Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer International Publishing; <br>
-    1st edition (September 15, 2022)</a><br>
-    ISBN-13: 978-3-031-07565-0 (print)<br>
-    ISBN-13: 978-3-031-07566-7 (eBook).<br>
-    Buy at
+    Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer International Publishing; 1st edition (September 15, 2022)</a><br>
+    ISBN-13: 978-3-031-07565-0 (hardcover)<br>
+    ISBN-13: 978-3-031-07568-1 (softcover)<br>
+    ISBN-13: 978-3-031-28482-3 (eBook).<br>
+    Buy at 
     <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer</a>, 
     <a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
     <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>

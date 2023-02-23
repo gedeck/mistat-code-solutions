@@ -3,6 +3,11 @@
 The errata list is a list of errors and their corrections that were found after the product was released. Use the [Github issue tracker](https://github.com/gedeck/mistat-code-solutions/issues/new?assignees=&labels=&template=modern-statistics.md) to submit new errors.
 
 ## Chapter 3
+- p. 162, Equation 3.30 - Replace percentile for the first $\chi^2$:
+
+  $\left(\frac{(n-1)S^2}{\chi^2_{1-\alpha/2}[n-1]},
+         \frac{(n-1)S^2}{\chi^2_{\alpha/2}[n-1]}\right)$
+
 - p. 186, Figure 3.15 - Incorrect distribution used to create the Figure. The updated code creates the following Figure. The additional dashed lines show the approximated HPD.
   <img src='../img/MS-Fig-3.15.png'>
 - p. 196 - Code sample, the print statement needs to contain f-strings. Replace

@@ -21,6 +21,9 @@ The errata list is a list of errors and their corrections that were found after 
   print(f'Ybar {Ybar:.2f} / SY {SY:.3f}')
   ```
 
+## Chapter 4
+- Exercise 4.27: effects => affects
+
 ## Chapter 6
 - p. 357 - Correct value of PMSE
   > The empirical PMSE is 0.8505.

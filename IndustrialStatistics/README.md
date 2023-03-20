@@ -5,23 +5,30 @@
 # Code repository
 <table>
 <tr>
-<td><!--<img src="../img/IndustrialStatistics.png" width=250>--></td>
+<td><img src="../img/IndustrialStatistics.png" width=250></td>
 <td>
-  <b>Industrial Statistics: A Computer Based Approach with Python</b>
+  <p>
+    <b>Industrial Statistics: A Computer Based Approach with Python</b><br>
+    by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+  </p>
 
-by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+  <p>
+    Publisher: <a href="https://link.springer.com/book/9783031284816">Springer International Publishing; 
+    1st edition (August 5, 2023)</a><br>
+    ISBN-13: 978-3-031-28481-6 (hardcover)<br>
+    ISBN-13: 978-3-031-28484-7 (softcover)<br>
+    ISBN-13: 978-3-031-28482-3 (eBook).<br>
+    Buy at
+    <a href="https://link.springer.com/book/9783031284816">Springer</a>, 
+    <a href="https://www.amazon.com/Industrial-Statistics-Computer-Based-Technology-Engineering/dp/303128481X/">Amazon</a>,
+<!--    <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>-->
+  </p>
 
-Publisher: Springer International Publishing; 1st edition (TBA)
-<!--
-ISBN-13: 978-3031075650
-Buy on 
-<a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
-<a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
--->
-<!-- Errata: http://oreilly.com/catalog/errata.csp?isbn=9781492072942 -->
+  <!-- <p>Errata: <a href="errata">See known errata here</a></p> -->
 </td>
 </tr>
 </table>
+
 
 <p><i>Industrial Statistics: A Computer Based Approach with Python</i> is a companion volume to the book <a href="../ModernStatistics"><i>Modern Statistics: A Computer Based Approach with Python.</i></a></p>
 

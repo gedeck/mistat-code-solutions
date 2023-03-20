@@ -53,6 +53,11 @@ All the Python applications referred to in this book are contained in a package 
 for installation from the Python package index [https://pypi.org/project/mistat/](https://pypi.org/project/mistat/).
 The `mistat` packages is maintained in a GitHub repository at [https://github.com/gedeck/mistat](https://github.com/gedeck/mistat).
 
+# Try the code
+You can explore the code on <a href="https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-industrial-statistics?labpath=IndustrialStatistics%2Fnotebooks%2Findex.ipynb" target="_blank">Binder <img src="https://mybinder.org/badge_logo.svg"></a>.
+
+
+
 
 # Table of contents (with sample excerpts from chapters)
 

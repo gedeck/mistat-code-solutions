@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% if page.url contains "ModernStatistics" %}
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/modern_statistics.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% elsif page.url contains "BioMed_DataAnalyst_Course" %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/biomed_statistics.css?v=' | append: site.github.build_revision | relative_url }}">
     {% elsif page.url contains "IndustrialStatistics" %}
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/industrial_statistics.css?v=' | append: site.github.build_revision | relative_url }}">
     {% endif %}

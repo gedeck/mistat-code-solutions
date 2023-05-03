@@ -4,7 +4,9 @@
 # Code repository
 <table>
 <tr>
-<td><a href="../ModernStatistics/"><img src="../img/ModernStatistics.png" width=250></td></a>
+<td>
+  <a href="../ModernStatistics/"><img src="../img/ModernStatistics.png" width=250></a>
+</td>
 <td>
   <p>
     <b>A Biomed Data Analyst Training Program</b><br>

@@ -1,7 +1,7 @@
 ![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=BioMedicalCourse%2Fnotebooks%2Findex.ipynb)
 
-# Code repository
+# A Biomed Data Analyst Training Program
 <table>
 <tr>
 <td>
@@ -9,10 +9,23 @@
 </td>
 <td>
   <p>
-    <b>A Biomed Data Analyst Training Program</b><br>
-    based on <i><a href="../ModernStatistics/">Modern Statistics: A Computer Based Approach with Python</a></i><br>
+    <b><a href="../ModernStatistics/">Modern Statistics: A Computer Based Approach with Python</a></b><br>
     by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
   </p>
+
+
+  <p>
+    Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer International Publishing; 1st edition (September 15, 2022)</a><br>
+    ISBN-13: 978-3-031-07565-0 (hardcover)<br>
+    ISBN-13: 978-3-031-07568-1 (softcover)<br>
+    ISBN-13: 978-3-031-28482-3 (eBook).<br>
+    Buy at 
+    <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer</a>, 
+    <a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
+    <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
+  </p>
+
+  <p>Errata: <a href="../ModernStatistics/errata">See known errata here</a></p>
 </td>
 </tr>
 </table>
@@ -34,19 +47,6 @@ This part of the repository contains:
 - `notebooks`: Python code of individual chapters in 
   [Jupyter notebooks](https://github.com/gedeck/mistat-code-solutions/new/main/BioMed_DataAnalyst_Course/notebooks) - 
   [download all as notebooks.zip](notebooks.zip)
-<!--
-- `code`: Python code for solutions as plain 
-  [Python files](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/code) - 
-  [download all as code.zip](code.zip)
-- `solutions manual`: [Solutions_Modernstatistics.pdf](Solutions_Modernstatistics.pdf): solutions of exercises
-- `solutions`: Python code for solutions in Jupyter 
-  [notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/solutions) - 
-  [download all as solutions.zip](solutions.zip)
-- `all`: zip file with all files combined - [download all as all.zip](all.zip)
-- `datafiles`: zip file with all data files - [download all as data_files.zip](data_files.zip) - the `mistat` 
-  package gives you already access to all datafiles, you only need to download this file if you want to use it with 
-  different software
--->
 
 The Python package `mistat` contains datafiles and utility functions referred to in the <a href="ModernStatistics">Modern Statistics</a> book. It is available 
 for installation from the Python package index [https://pypi.org/project/mistat/](https://pypi.org/project/mistat/).

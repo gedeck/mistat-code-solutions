@@ -242,7 +242,7 @@ plt.show()
 # Text representation of tree
 print(export_text(clf, feature_names=list(X.columns)))
 
-from dtreeviz.trees import dtreeviz
+import dtreeviz
 
 # the dtreeviz methods requires the classifier to be trained with a numerical
 # representation of the classes
@@ -254,7 +254,7 @@ clf = DecisionTreeClassifier(ccp_alpha=0.012, random_state=0)
 clf.fit(X, y)
 
 warnings.simplefilter('ignore', category=UserWarning)
-viz = dtreeviz(clf, X, y,
+viz = dtreeviz.model(clf, X, y,
                target_name=outcome,
                feature_names=X.columns,
                class_names=['Fail', 'Pass'])
@@ -262,7 +262,7 @@ warnings.simplefilter('default', category=UserWarning)
 
 display(viz)
 
-from dtreeviz.trees import dtreeviz
+import dtreeviz
 
 def viz2pdf(viz, pdfFile):
   from svglib.svglib import svg2rlg
@@ -391,9 +391,9 @@ for ax, question in zip(axes, questions):
   response = abc[question]
   df = pd.DataFrame([
     {satisfaction: counts for satisfaction, counts
-      in response.value_counts().iteritems()},
+      in response.value_counts().items()},
     {satisfaction: counts for satisfaction, counts
-      in response[q1_5].value_counts().iteritems()},
+      in response[q1_5].value_counts().items()},
   ])
   df = df.transpose()  # flip columns and rows
   # add rows of 0 for missing satisfaction

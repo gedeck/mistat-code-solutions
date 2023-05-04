@@ -11,7 +11,7 @@ KDEpy
 seaborn
 pingouin
 bootstrapped
-dtreeviz<2
+dtreeviz
 svglib
 scikit-fda
 xgboost

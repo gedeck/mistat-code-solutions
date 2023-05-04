@@ -358,7 +358,6 @@ y_prior = stats.gamma.pdf(x, a=V0, scale=B0)
 y = stats.gamma.pdf(x, a=V1, scale=B1)
 
 conf_x = B1/2 * stats.chi2.ppf([0.025, 0.975], 2 * V1)
-print(conf_x)
 
 fig, ax = plt.subplots(figsize=[5, 5])
 # ax.plot(x, y_prior, c='lightgrey')
@@ -670,7 +669,7 @@ print('0.025%', np.quantile(B_025[1], 0.025))
 print('0.975%', np.quantile(B_975[1], 0.975))
 
 ### Distribution Free Tolerance Intervals
-## Non-Parametric Tests
+## Nonparametric Tests
 ### The Sign Test
 ### The Randomization Test
 from itertools import permutations

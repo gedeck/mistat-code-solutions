@@ -28,6 +28,18 @@ The errata list is a list of errors and their corrections that were found after 
 - p. 357 - Correct value of PMSE
   > The empirical PMSE is 0.8505.
 
+## Chapter 7
+- p. 379 - iteritems deprecated in pandas package; code change required:
+  ```
+  df = pd.DataFrame([
+    {satisfaction: counts for satisfaction, counts
+      in response.value_counts().items()},
+    {satisfaction: counts for satisfaction, counts
+      in response[q1_5].value_counts().items()},
+  ])
+  ```
+
+
 ## Chapter 8
 - p. 404 - In equation 8.2, the matrix $V$ needs to be transposed:<br>
   $DTM \approx U * S * V'$

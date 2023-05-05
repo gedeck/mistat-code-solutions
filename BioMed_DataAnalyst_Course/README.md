@@ -1,5 +1,5 @@
 ![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=BioMedicalCourse%2Fnotebooks%2Findex.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=BioMed_DataAnalyst_Course%2Fnotebooks%2Findex.ipynb)
 
 # A Biomed Data Analyst Training Program
 <table>
@@ -53,7 +53,7 @@ for installation from the Python package index [https://pypi.org/project/mistat/
 The `mistat` packages is maintained in a GitHub repository at [https://github.com/gedeck/mistat](https://github.com/gedeck/mistat).
 
 # Try the code
-You can explore the code on <a href="https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=BioMedicalCourse%2Fnotebooks%2Findex.ipynb" target="_blank">Binder <img src="https://mybinder.org/badge_logo.svg"></a>.
+You can explore the code on <a href="https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=BioMed_DataAnalyst_Course%2Fnotebooks%2Findex.ipynb" target="_blank">Binder <img src="https://mybinder.org/badge_logo.svg"></a>.
 
 # Installation instructions
 Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.

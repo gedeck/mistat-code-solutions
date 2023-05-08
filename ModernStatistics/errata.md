@@ -2,6 +2,18 @@
 
 The errata list is a list of errors and their corrections that were found after the product was released. Use the [Github issue tracker](https://github.com/gedeck/mistat-code-solutions/issues/new?assignees=&labels=&template=modern-statistics.md) to submit new errors.
 
+## Chapter 1
+- p. 12-13, code for Figure 1.7 and Figure 1.8 - `value_counts` creates now column named `proportion`:
+  ```
+  ...
+  X.loc[4, 'proportion'] = 0  # there are no samples with 4 blemishes add a row
+  X = X.sort_index()  # sort by number of blemishes
+  ax = X['proportion'].plot.bar(color='grey', legend=False)
+  ...
+  X['Cumulative Frequency'] = X['proportion'].cumsum()
+  ...
+  ```
+
 ## Chapter 3
 - p. 162, Equation 3.30 - Replace percentile for the first $\chi^2$:
 

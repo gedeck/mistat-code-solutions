@@ -4,6 +4,11 @@ $color-footer: #f2f2f2;
 $font-grey: #1B4F72;
 $color-1: #FF9F00;
 $color-2: #FFB347;
+$color-github-link: #4169E1;
+
+#forkme_banner {
+    background: $color-github-link;
+}
 
 body {
     color: $font-grey;

@@ -49,6 +49,10 @@ All the Python applications referred to in this book are contained in a package 
 for installation from the Python package index [https://pypi.org/project/mistat/](https://pypi.org/project/mistat/).
 The `mistat` packages is maintained in a GitHub repository at [https://github.com/gedeck/mistat](https://github.com/gedeck/mistat).
 
+
+# Teaching material
+Material is available for a <a href="../BioMed_DataAnalyst_Course/">Biomed Data Analyst Training Program</a>.
+
 # Try the code
 You can explore the code on <a href="https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=ModernStatistics%2Fnotebooks%2Findex.ipynb" target="_blank">Binder <img src="https://mybinder.org/badge_logo.svg"></a>.
 

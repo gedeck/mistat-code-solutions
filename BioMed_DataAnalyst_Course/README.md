@@ -1,3 +1,7 @@
+TODO: 
+- Notebook 7: Shapley values, reference and description dataset, warnings on column names 
+- Notebook 8: Text mining to use to two or three other datasets, Bayesian Network require Bioreactor dataset
+
 ![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=BioMed_DataAnalyst_Course%2Fnotebooks%2Findex.ipynb)
 

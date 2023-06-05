@@ -50,7 +50,7 @@ This part of the repository contains:
 
 - `notebooks`: Python code of individual chapters in 
   [Jupyter notebooks](https://github.com/gedeck/mistat-code-solutions/new/main/BioMed_DataAnalyst_Course/notebooks) - 
-  [download all as notebooks.zip](notebooks.zip)
+  [download notebooks and data as notebooks.zip](notebooks.zip)
 
 The Python package `mistat` contains datafiles and utility functions referred to in the <a href="ModernStatistics">Modern Statistics</a> book. It is available 
 for installation from the Python package index [https://pypi.org/project/mistat/](https://pypi.org/project/mistat/).

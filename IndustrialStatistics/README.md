@@ -37,7 +37,7 @@ This part of the repository contains:
 
 - `notebooks`: Python code of individual chapters in 
   [Jupyter notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/IndustrialStatistics/notebooks) - 
-  [download all as notebooks.zip](notebooks.zip)
+  [download notebooks and data as notebooks.zip](notebooks.zip)
 - `code`: Python code for solutions as plain 
   [Python files](https://github.com/gedeck/mistat-code-solutions/tree/main/IndustrialStatistics/code) - 
   [download all as code.zip](code.zip)

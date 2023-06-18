@@ -35,13 +35,13 @@
   </p>
 
   <p>
-    Publisher: <a href="https://link.springer.com/book/9783031284816">Springer International Publishing; 
+    Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-28482-3">Springer International Publishing; 
     1st edition (August 5, 2023)</a><br>
     ISBN-13: 978-3-031-28481-6 (hardcover)<br>
     ISBN-13: 978-3-031-28484-7 (softcover)<br>
     ISBN-13: 978-3-031-28482-3 (eBook).<br>
     Buy at
-    <a href="https://link.springer.com/book/9783031284816">Springer</a>, 
+    <a href="https://link.springer.com/book/10.1007/978-3-031-28482-3">Springer</a>, 
     <a href="https://www.amazon.com/Industrial-Statistics-Computer-Based-Technology-Engineering/dp/303128481X/">Amazon</a>
 <!--    <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>-->
   </p>

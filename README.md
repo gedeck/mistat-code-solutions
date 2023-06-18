@@ -27,7 +27,7 @@
 </tr>
 
 <tr>
-<td><img src="img/IndustrialStatistics.png" width=300></td>
+<td><a href="IndustrialStatistics"><img src="img/IndustrialStatistics.png" width=300></a></td>
 <td>
   <p>
     <b>Industrial Statistics: A Computer Based Approach with Python</b><br>

@@ -14,6 +14,12 @@ The errata list is a list of errors and their corrections that were found after 
   ...
   ```
 
+## Chapter 2
+- p. 55, Section 2.2.1.1 - Clarification: The `scipy` package uses the term _probability mass function_
+  instead of _probability distribution function_ for discrete distributions. Both terms are used 
+  in the literature. In _Modern Statistics_, we use the term _probability distribution function_ 
+  for both discrete and continuous distributions.
+  
 ## Chapter 3
 - p. 162, Equation 3.30 - Replace percentile for the first $\chi^2$:
 

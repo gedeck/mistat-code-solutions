@@ -260,7 +260,7 @@ viz = dtreeviz.model(clf, X, y,
                class_names=['Fail', 'Pass'])
 warnings.simplefilter('default', category=UserWarning)
 
-display(viz)
+viz.view(fontname='sans-serif')
 
 import dtreeviz
 
@@ -371,7 +371,7 @@ y = np.array([1 if s == 'Pass' else 0 for s in sensors[outcome]])
 
 # Train the model
 xgb = XGBClassifier(objective='binary:logistic', subsample=.63,
-                    eval_metric='logloss', use_label_encoder=False)
+                    eval_metric='logloss')
 xgb.fit(X, y)
 
 # actual in rows / predicted in columns

@@ -40,6 +40,8 @@ The errata list is a list of errors and their corrections that were found after 
   ```
 
 ## Chapter 4
+- p. 251: `Scale` in the regression summary output corresponds to $S_e^2$.
+  > The $S_e^2$ value is shown in the regression summary output as `Scale`.
 - Exercise 4.27: effects => affects
 
 ## Chapter 6

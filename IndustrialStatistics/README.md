@@ -25,7 +25,7 @@
 <!--    <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>-->
   </p>
 
-  <!-- <p>Errata: <a href="errata">See known errata here</a></p> -->
+  <p>Errata: <a href="errata">See known errata here</a></p>
 </td>
 </tr>
 </table>

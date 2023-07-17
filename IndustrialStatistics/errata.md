@@ -8,3 +8,11 @@ The errata list is a list of errors and their corrections that were found after 
   $\text{mean}(\exp\{X+Y\}, n=100) = 5.014902$
   
   $\text{mean}(\exp\{X+Y\}, n=1000) = 6.418258$
+
+
+## Chapter 10
+- p. 384, due to change in `pymc` the function `weibull_log_sf` needs to be changed (download notebooks to get more recent versions of code).
+```
+  def weibull_log_sf(y, nu, beta):
+      return - (y / beta) ** nu
+```

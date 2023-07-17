@@ -9,6 +9,16 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
@@ -59,7 +69,7 @@ plt.show()
 # Various methods
 designMethods = [
     ('Latin Hypercube design', doe.lhs),
-    ('space-filling Latin Hypercube design', doe.space_filling_lhs),
+    ('space filling Latin Hypercube design', doe.space_filling_lhs),
     ('random_k_means', doe.random_k_means),
     ('maximin', doe.maximin),
     ('halton', doe.halton),
@@ -209,7 +219,7 @@ print(f'MAE = {MAE:.4f}')
 print(f'r2 {R2:.3f}', )
 
 random.seed(1)
-# create a large latin hypercube design
+# create a large Latin hypercube design
 Design = doe.lhs(Factors, num_samples=500)
 
 # for each row in the design, predict the cycle time using the kriging model
@@ -305,6 +315,8 @@ ax = sns.stripplot(x=df['Method'], y=df['Integral'], color='black', ax=ax)
 ax.axhline(exact, linestyle=':', color='grey', zorder=0)
 ax.set_xlabel('Method / Sample size')
 plt.show()
+
+pd.DataFrame(integrals).groupby('Method').aggregate(['mean', 'median'])
 
 ## Chapter Highlights
 ## Exercises

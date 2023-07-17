@@ -9,6 +9,16 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
@@ -74,7 +84,7 @@ ax.set_ylim(ylim)
 plt.show()
 
 ## Modeling in Cybermanufacturing
-## Computational pipelines
+## Computational Pipelines
 ## Digital Twins
 # Individual measurements of cycle time with all factors at center
 midRange = {'m': 45, 's': 0.0125, 'k': 3_000, 't': 293, 'p0': 100_000, 'v0': 0.006, 't0': 350}
@@ -265,6 +275,7 @@ from statsmodels.tsa.api import SARIMAX
 p = d = q = range(0, 3)
 
 results = None
+best = None
 # generate all combinations of (p, d, q) triplets and keep the model 
 # with the lowest AIC
 for param in list(itertools.product(p, d, q)):
@@ -272,12 +283,13 @@ for param in list(itertools.product(p, d, q)):
     temp = mod.fit(method='nm', maxiter=600, disp=False)
     if results is None or results.aic > temp.aic:
         results = temp
-print('ARIMA{} - AIC:{}'.format(param, results.aic))
+        best = param
+print('ARIMA{} - AIC:{}'.format(best, results.aic))
 
 def addSARIMAX_predictions(predictions, ax, label=None, linestyle=None):
     pred_mean = predictions.predicted_mean
     pred_mean.index = pred_mean.index + 1
-    pred_mean.plot(ax=ax, label=label, alpha=.7, color='black', linestyle=linestyle)
+    pred_mean.plot(ax=ax, label=label, alpha=0.7, color='black', linestyle=linestyle)
     pred_ci = predictions.conf_int()
     pred_ci.index = pred_ci.index + 1
     ax.fill_between(pred_ci.index[1:],

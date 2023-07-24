@@ -45,6 +45,11 @@ The errata list is a list of errors and their corrections that were found after 
 - Exercise 4.27: effects => affects
 
 ## Chapter 6
+- p. 333 - naming inconsistency of formula for polynomial model with seasonality. Replace `poly_formula` with `formula`:
+  ```
+  formula = 'Dow_Jones_Index ~ C(month) + I(trend**3) + I(trend**2) + trend + 1'
+  model_3 = smf.ols(formula=formula, data=dow1941_df).fit()
+  ```
 - p. 357 - Correct value of PMSE
   > The empirical PMSE is 0.8505.
 

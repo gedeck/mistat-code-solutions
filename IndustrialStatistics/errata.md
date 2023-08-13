@@ -17,6 +17,11 @@ to the second factor, respectively._
   $\text{mean}(\exp\{X+Y\}, n=1000) = 6.418258$
 
 
+## Chapter 9
+- p. 351, the first line should read: 
+> Example 9.17 Using the censored data from **Example** 9.16, we estimate the ...
+
+
 ## Chapter 10
 - p. 384, due to change in `pymc` the function `weibull_log_sf` needs to be changed (download notebooks to get more recent versions of code).
 ```

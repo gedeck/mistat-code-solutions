@@ -346,29 +346,32 @@ plt.show()
 #lines(c(1/6, 1), c(5*1/6, 0), lwd=2)
 
 #### Bayesian Estimation
-np.random.seed(1)
-pois = [rv + 1 for rv in stats.poisson(mu=2).rvs(3)]
-
-V0 = 3
+n = 10
+sum_x = 15
+V0 = 2
 B0 = 1
-V1 = V0 + sum(pois)
-B1 = B0 / (1 + len(pois) * B0)
+V1 = V0 + sum_x
+B1 = B0 / (1 + n * B0)
 
 x = np.linspace(0, 6, 401)
 y_prior = stats.gamma.pdf(x, a=V0, scale=B0)
 y = stats.gamma.pdf(x, a=V1, scale=B1)
 
-conf_x = B1/2 * stats.chi2.ppf([0.1, 0.9], 2 * V1)
-# conf_y = stats.gamma.pdf(conf_x, a=V1, scale=B1)
+conf_x = B1/2 * stats.chi2.ppf([0.025, 0.975], 2 * V1)
 
 fig, ax = plt.subplots(figsize=[5, 5])
-ax.plot(x, y_prior, c='lightgrey')
+# ax.plot(x, y_prior, c='lightgrey')
 ax.plot(x, y, c='black')
 
 ax.fill_between(x[x<conf_x[0]], y[x<conf_x[0]], color="lightgrey")
 ax.fill_between(x[x>conf_x[1]], y[x>conf_x[1]], color="lightgrey")
 ax.set_xlabel('x')
 ax.set_ylabel('h')
+
+ax.plot([0.86, 0.86], [0, stats.gamma.pdf(0.86, a=V1, scale=B1)], 
+        color='black', lw=0.5, ls='--')
+ax.plot([2.29, 2.29], [0, stats.gamma.pdf(2.29, a=V1, scale=B1)], 
+        color='black', lw=0.5, ls='--')
 plt.show()
 
 ### Credibility Intervals For Real Parameters
@@ -475,8 +478,8 @@ Xbar = np.mean(X)
 Ybar = np.mean(Y)
 SX = np.std(X, ddof=1)
 SY = np.std(Y, ddof=1)
-print('Xbar {Xbar:.2f} / SX {SX:.3f}')
-print('Ybar {Xbar:.2f} / SY {SX:.3f}')
+print(f'Xbar {Xbar:.2f} / SX {SX:.3f}')
+print(f'Ybar {Ybar:.2f} / SY {SY:.3f}')
 
 def stat_func(x, y):
     return stats.ttest_ind(x, y, equal_var=False).statistic
@@ -666,7 +669,7 @@ print('0.025%', np.quantile(B_025[1], 0.025))
 print('0.975%', np.quantile(B_975[1], 0.975))
 
 ### Distribution Free Tolerance Intervals
-## Non-Parametric Tests
+## Nonparametric Tests
 ### The Sign Test
 ### The Randomization Test
 from itertools import permutations

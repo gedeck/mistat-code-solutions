@@ -242,7 +242,7 @@ plt.show()
 # Text representation of tree
 print(export_text(clf, feature_names=list(X.columns)))
 
-from dtreeviz.trees import dtreeviz
+import dtreeviz
 
 # the dtreeviz methods requires the classifier to be trained with a numerical
 # representation of the classes
@@ -254,15 +254,15 @@ clf = DecisionTreeClassifier(ccp_alpha=0.012, random_state=0)
 clf.fit(X, y)
 
 warnings.simplefilter('ignore', category=UserWarning)
-viz = dtreeviz(clf, X, y,
+viz = dtreeviz.model(clf, X, y,
                target_name=outcome,
                feature_names=X.columns,
                class_names=['Fail', 'Pass'])
 warnings.simplefilter('default', category=UserWarning)
 
-display(viz)
+viz.view(fontname='sans-serif')
 
-from dtreeviz.trees import dtreeviz
+import dtreeviz
 
 def viz2pdf(viz, pdfFile):
   from svglib.svglib import svg2rlg
@@ -371,7 +371,7 @@ y = np.array([1 if s == 'Pass' else 0 for s in sensors[outcome]])
 
 # Train the model
 xgb = XGBClassifier(objective='binary:logistic', subsample=.63,
-                    eval_metric='logloss', use_label_encoder=False)
+                    eval_metric='logloss')
 xgb.fit(X, y)
 
 # actual in rows / predicted in columns
@@ -391,9 +391,9 @@ for ax, question in zip(axes, questions):
   response = abc[question]
   df = pd.DataFrame([
     {satisfaction: counts for satisfaction, counts
-      in response.value_counts().iteritems()},
+      in response.value_counts().items()},
     {satisfaction: counts for satisfaction, counts
-      in response[q1_5].value_counts().iteritems()},
+      in response[q1_5].value_counts().items()},
   ])
   df = df.transpose()  # flip columns and rows
   # add rows of 0 for missing satisfaction

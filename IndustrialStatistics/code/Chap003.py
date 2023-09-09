@@ -9,6 +9,16 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
@@ -55,6 +65,48 @@ ax.axhline(qcc.center + 1.5 * st, linestyle=':', color='black')
 ax.axhline(qcc.center - 1.5 * st, linestyle=':', color='black')
 plt.show()
 
+def ARL(a, w, r, delta, n, sigma=1):
+    # standard deviation of means of n samples
+    sigma_n = sigma / np.sqrt(n)
+    # distribution of means from n samples; process shifted by delta*sigma
+    distribution = stats.norm(scale=sigma_n, loc=delta*sigma)
+
+    # calculate CDF at the +/-a*sigma_n and +/-w*sigma_n
+    limits = [a*sigma_n, -a*sigma_n, w*sigma_n, -w*sigma_n]
+    pa, ma, pw, mw = distribution.cdf(limits)
+
+    # probability to be outside of control limits
+    P = ma + (1-pa)
+    
+    # probability to be between warning and control limits
+    H = pa - pw
+    L = mw - ma
+    
+    # calculate ARL
+    H_r = H**r
+    L_r = L**r
+    return 1 / (P + H_r*(1-H)/(1-H_r) + L_r*(1-L)/(1-L_r))
+
+a = 3; n = 5; sigma = 1;
+data = {}
+for w in (1, 1.5, 2, 2.5):
+    for delta in np.arange(0, 2.5, 0.25):
+        data[(w, delta)] = {r: ARL(a, w, r, delta, n, sigma) 
+                            for r in range(2, 8)}
+df = pd.DataFrame.from_dict(data, orient='index').round(1)
+
+df.round(1)
+
+style = df.style
+style = style.format(precision=1)
+
+s = style.to_latex(hrules=True)
+s = s.replace('0000', '')
+s = s.replace('\\toprule', '\\toprule\n&&\\multicolumn{6}{c}{$r$}\\\\\\cmidrule{3-8}')
+s = s.replace(' &  & 2', '$w$ & $\delta$ & 2')
+s = s.replace('\\multirow[c]', '\\midrule\n\\multirow[c]')
+s = s.replace('\\midrule\n\\midrule', '\\midrule')
+print(s)
 ## The Size and Frequency of Sampling for Shewhart Control Charts
 ### The Economic Design for $\bar X$-charts
 ### Increasing The Sensitivity of $p$-charts
@@ -112,7 +164,7 @@ analysis = mistat.Cusum(thickdiff, center=0, std_dev=1, se_shift=6,
 analysis.plot()
 plt.show()
 
-### Average Run Length, Probability of False Alarm And Conditional Expected Delay
+### Average Run Length, Probability of False Alarm, and Conditional Expected Delay
 results = []
 for loc in (0, 0.5, 1.0, 1.5):
     arl = mistat.cusumArl(randFunc=stats.norm(loc=loc), N=100,

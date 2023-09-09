@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,maximum-scale=2">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% if page.url contains "ModernStatistics" %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/modern_statistics.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% elsif page.url contains "BioMed_DataAnalyst_Course" %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/biomed_statistics.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% elsif page.url contains "IndustrialStatistics" %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/industrial_statistics.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% endif %}
+    <link rel="shortcut icon" type="image/png" href="{{ "/assets/images/favicon.png"  | absolute_url }}">
     <script>
         MathJax = {
             tex: {
@@ -20,7 +28,6 @@
   </head>
 
   <body>
-
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
@@ -28,8 +35,19 @@
             <a id="forkme_banner" href="{{ site.github.repository_url }}">View on GitHub</a>
           {% endif %}
 
-          <h1 id="project_title">{{ site.title | default: site.github.repository_name }}</h1>
-          <h2 id="project_tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+          {% if page.url contains "ModernStatistics" %}
+            <h1 id="project_title">Modern Statistics</h1>
+            <h2 id="project_tagline">A Computer Based Approach with Python</h2>
+          {% elsif page.url contains "BioMed_DataAnalyst_Course" %}
+            <h1 id="project_title">A Biomed Data Analyst Training Program</h1>
+            <h2 id="project_tagline">Modern Statistics: A Computer Based Approach with Python</h2>
+          {% elsif page.url contains "IndustrialStatistics" %}
+            <h1 id="project_title">Industrial Statistics</h1>
+            <h2 id="project_tagline">A Computer Based Approach with Python</h2>
+          {% else %}
+            <h1 id="project_title">{{ site.title | default: site.github.repository_name }}</h1>
+            <h2 id="project_tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+          {% endif %}
 
           <div>{% include breadcrumbs.html %}</div>
           {% if site.show_downloads %}

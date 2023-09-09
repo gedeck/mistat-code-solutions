@@ -9,6 +9,16 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
@@ -26,8 +36,8 @@ import statsmodels.formula.api as smf
 import matplotlib.pyplot as plt
 import mistat
 
-## Off-Line Quality Control, Parameter Design and The Taguchi Method
-### Product and Process Optimization using Loss Functions
+## Offline Quality Control, Parameter Design and the Taguchi Method
+### Product and Process Optimization Using Loss Functions
 fig, ax = plt.subplots(figsize=[6, 4])
 
 ax.axhline(y=1.5**2, color='gray', ls=':')
@@ -96,7 +106,7 @@ model_S = smf.ols('S ~ A + B + C', data=response).fit()
 print(f'rsquared: {model_S.rsquared:.3f}')
 
 ### Performance Statistics
-## The Effects of Non-Linearity
+## The Effects of Non-linearity
 np.random.seed(seed=1)
 
 def Y(R, L, V, f):
@@ -228,7 +238,7 @@ plt.show()
 
 ## Quality by Design in the Pharmaceutical Industry
 ### Introduction to Quality by Design
-### A Quality by Design Case Study – the Full Factorial Design
+### A Quality by Design Case Study: The Full Factorial Design
 # data loading and preprocessing
 df = mistat.load_data('QBD')
 df.columns = [s.replace(' ', '_').replace('-', '_') for s in df.columns]
@@ -412,7 +422,7 @@ print(s)
 # restore default setting
 warnings.simplefilter('default', category=UserWarning)
 
-### A Quality by Design Case Study – the Desirability Function
+### A Quality by Design Case Study: The Desirability Function
 # define functions that generate a variety of profiles
 # note that the function returns a function profile(x)
 def rampProfile(lower, upper, reverse=False):
@@ -557,7 +567,7 @@ ax.set_yticks([])
 plt.tight_layout()
 plt.show()
 
-### A Quality by Design Case Study – the Design Space
+### A Quality by Design Case Study: The Design Space
 def plotSurface(models, target, f1, f2, ncontours=20, ax=None):
     if ax is None:
         _, ax = plt.subplots()
@@ -659,7 +669,7 @@ def groupAggregation(g):
     groupTolerances = g.iloc[0,:][tolerances]
     tc = 0.5 * sum(groupTolerances == 10) + 1 * sum(groupTolerances == 5)
     return {
-        'mean': g['response'].mean(),
+        'Mean': g['response'].mean(),
         'STD': g['response'].std(),
         'MSE': g['response'].var(ddof=0),
         'TC': tc,
@@ -667,19 +677,19 @@ def groupAggregation(g):
     }
 results = pd.DataFrame(list(Design.groupby('group').apply(groupAggregation)))
 
-table = results[['mean', 'STD', 'MSE', 'TC']]
+table = results[['Mean', 'STD', 'MSE', 'TC']]
 table.index = range(1, len(table) + 1)
-table = table.round({'mean': 2, 'STD': 4, 'MSE': 4})
+table = table.round({'Mean': 2, 'STD': 4, 'MSE': 4})
 table['TC'] = table['TC'].astype(np.int64)
 
 table.sort_values(by='MSE')
 
 style = table.sort_values(by='MSE').iloc[:16,:].style
-style = style.format(subset='mean', precision=2)
+style = style.format(subset='Mean', precision=2)
 style = style.format(subset=['STD', 'MSE'], precision=4)
 print(style.to_latex(hrules=True, column_format='rcccr'))
 style = table.sort_values(by='MSE').iloc[16:,:].style
-style = style.format(subset='mean', precision=2)
+style = style.format(subset='Mean', precision=2)
 style = style.format(subset=['STD', 'MSE'], precision=4)
 print(style.to_latex(hrules=True, column_format='rcccr'))
 ## Case Studies

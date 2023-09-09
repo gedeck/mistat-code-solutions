@@ -49,7 +49,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade wheel
-          pip install -r requirements.txt
+          pip install -r requirements-modern.txt
 
       - name: Execute notebooks
         run: |

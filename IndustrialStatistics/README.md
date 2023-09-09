@@ -1,25 +1,35 @@
 ![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-industrial-statistics)
+
+
 # Code repository
 <table>
 <tr>
-<td><!--<img src="../img/IndustrialStatistics.png" width=250>--></td>
+<td><img src="../img/IndustrialStatistics.png" width=250></td>
 <td>
-  <b>Industrial Statistics: A Computer Based Approach with Python</b>
+  <p>
+    <b>Industrial Statistics: A Computer Based Approach with Python</b><br>
+    by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+  </p>
 
-by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
+  <p>
+    Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-28482-3">Springer International Publishing; 
+    1st edition (August 5, 2023)</a><br>
+    ISBN-13: 978-3-031-28481-6 (hardcover)<br>
+    ISBN-13: 978-3-031-28484-7 (softcover)<br>
+    ISBN-13: 978-3-031-28482-3 (eBook).<br>
+    Buy at
+    <a href="https://link.springer.com/book/10.1007/978-3-031-28482-3">Springer</a>, 
+    <a href="https://www.amazon.com/Industrial-Statistics-Computer-Based-Technology-Engineering/dp/303128481X/">Amazon</a>,
+<!--    <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>-->
+  </p>
 
-Publisher: Springer International Publishing; 1st edition (TBA)
-<!--
-ISBN-13: 978-3031075650
-Buy on 
-<a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
-<a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
--->
-<!-- Errata: http://oreilly.com/catalog/errata.csp?isbn=9781492072942 -->
+  <p>Errata: <a href="errata">See known errata here</a></p>
 </td>
 </tr>
 </table>
+
 
 <p><i>Industrial Statistics: A Computer Based Approach with Python</i> is a companion volume to the book <a href="../ModernStatistics"><i>Modern Statistics: A Computer Based Approach with Python.</i></a></p>
 
@@ -27,7 +37,7 @@ This part of the repository contains:
 
 - `notebooks`: Python code of individual chapters in 
   [Jupyter notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/IndustrialStatistics/notebooks) - 
-  [download all as notebooks.zip](notebooks.zip)
+  [download notebooks and data as notebooks.zip](notebooks.zip)
 - `code`: Python code for solutions as plain 
   [Python files](https://github.com/gedeck/mistat-code-solutions/tree/main/IndustrialStatistics/code) - 
   [download all as code.zip](code.zip)
@@ -43,6 +53,11 @@ This part of the repository contains:
 All the Python applications referred to in this book are contained in a package called `mistat` available 
 for installation from the Python package index [https://pypi.org/project/mistat/](https://pypi.org/project/mistat/).
 The `mistat` packages is maintained in a GitHub repository at [https://github.com/gedeck/mistat](https://github.com/gedeck/mistat).
+
+# Try the code
+You can explore the code on <a href="https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-industrial-statistics?labpath=IndustrialStatistics%2Fnotebooks%2Findex.ipynb" target="_blank">Binder <img src="https://mybinder.org/badge_logo.svg"></a>.
+
+
 
 
 # Table of contents (with sample excerpts from chapters)

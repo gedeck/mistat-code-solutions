@@ -9,6 +9,16 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
@@ -146,7 +156,7 @@ ax.get_lines()[0].set_markerfacecolor('none')
 ax.get_lines()[1].set_color('black')
 ax.get_lines()[2].set_color('black')
 ax.get_lines()[3].set_color('grey')
-ax.get_lines()[4].set_color('grey')
+# ax.get_lines()[4].set_color('grey')
 plt.show()
 
 np.random.seed(1)
@@ -170,7 +180,7 @@ ax.get_lines()[0].set_markerfacecolor('none')
 ax.get_lines()[1].set_color('black')
 ax.get_lines()[2].set_color('black')
 ax.get_lines()[3].set_color('grey')
-ax.get_lines()[4].set_color('grey')
+# ax.get_lines()[4].set_color('grey')
 plt.show()
 
 np.random.seed(1)
@@ -194,7 +204,7 @@ print(f'sample median = {np.median(rv):.3f}')
 print(f'sample mean = {np.mean(rv):.3f}')
 print(f'sample std = {np.std(rv):.3f}')
 
-## Non-Parametric Estimation of Reliability
+## Nonparametric Estimation of Reliability
 ## Estimation of Life Characteristics
 ### Maximum Likelihood Estimators for Exponential TTF Distribution
 failtime = mistat.load_data('FAILTIME.csv')

@@ -26,12 +26,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
+      # 3.11-dev fails due to compilation of scipy
+      # 
       matrix:
-        python-version: ["3.9", "3.10"]
+        python-version: ["3.9", "3.10", "3.11"]
         os: [ubuntu-latest, windows-latest]
-      # matrix:
-      #   python-version: ["3.9"]
-      #   os: [ubuntu-latest]
 
     steps:
       - uses: actions/checkout@v3
@@ -74,7 +73,6 @@ jobs:
   # build-industrial:
   #   if:
   #     github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
-
   #   runs-on: ${{ matrix.os }}
   #   strategy:
   #     fail-fast: false

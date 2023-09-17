@@ -5,7 +5,7 @@ The errata list is a list of errors and their corrections that were found after 
 
 ## Chapter 4
 - p. 135, error at end of page: The sentence starting with "Abadie et al."  should read:
-> Abadie et al. (2015) estimated the weights using $𝑊 \gg 0$ and $\sum_1^{m} w_j = 1$ as an additional constraint.
+> Abadie et al. (2015) estimated the weights using $𝑊 \gg 0$ and ...
 
 ## Chapter 5
 - p. 185, clarify use rendering of interactions

@@ -13,7 +13,7 @@ svglib
 pwlf
 pyDOE2
 diversipy
-pykriging
+pylibkriging
 pymc
 arviz
 aesara

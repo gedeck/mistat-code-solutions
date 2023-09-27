@@ -28,6 +28,11 @@ The errata list is a list of errors and their corrections that were found after 
 
 - p. 186, Figure 3.15 - Incorrect distribution used to create the Figure. The updated code creates the following Figure. The additional dashed lines show the approximated HPD.
   <img src='../img/MS-Fig-3.15.png'>
+- p. 190 - Code sample, the `compute_bootci` function cannot identify `np.mean` as a function (see [PR](https://github.com/raphaelvallat/pingouin/pull/380)). Replace with
+```
+B = pg.compute_bootci(etchrate, func=lambda x: np.mean(x), n_boot=1000,
+                      confidence=0.95, return_dist=True, seed=1)
+```
 - p. 196 - Code sample, the print statement needs to contain f-strings. Replace
   ```
   print('Xbar {Xbar:.2f} / SX {SX:.3f}')

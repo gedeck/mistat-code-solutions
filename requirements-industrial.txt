@@ -1,6 +1,7 @@
 mistat
 matplotlib
 numpy<1.24
+# numpy
 pandas
 scipy
 statsmodels

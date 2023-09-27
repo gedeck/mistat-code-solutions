@@ -422,7 +422,7 @@ for k, v in counts:
 ### The Bootstrap Method
 etchrate = mistat.load_data('ETCHRATE')
 
-B = pg.compute_bootci(etchrate, func=np.mean, n_boot=1000,
+B = pg.compute_bootci(etchrate, func=lambda x: np.mean(x), n_boot=1000,
                       confidence=0.95, return_dist=True, seed=1)
 
 ci, distribution = B

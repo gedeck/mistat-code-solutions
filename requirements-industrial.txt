@@ -1,6 +1,7 @@
 mistat
 matplotlib
-numpy<1.24
+# numpy<1.24
+numpy
 pandas
 scipy
 statsmodels
@@ -12,7 +13,7 @@ svglib
 pwlf
 pyDOE2
 diversipy
-pykriging
+pylibkriging
 pymc
 arviz
 aesara

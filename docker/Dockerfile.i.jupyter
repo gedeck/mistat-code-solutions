@@ -1,4 +1,4 @@
-FROM mistat.m.python
+FROM mistat.i.python
 RUN pip install jupyter jupyterlab
 
 WORKDIR /code

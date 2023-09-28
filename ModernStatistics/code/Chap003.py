@@ -44,7 +44,7 @@ import mistat
 np.random.seed(seed=1)
 
 x = stats.norm(loc=50, scale=25).rvs(100)
-ci, mean_results = pg.compute_bootci(x, func=np.mean, n_boot=100, return_dist=True, seed=1)
+ci, mean_results = pg.compute_bootci(x, func=lambda x: np.mean(x), n_boot=100, return_dist=True, seed=1)
 
 ax = pd.Series(mean_results).hist(bins=9, color='grey')
 ax.set_xlabel(r'$\bar{x}$')
@@ -52,7 +52,7 @@ ax.set_ylabel('Frequency')
 plt.show()
 
 # The book figure was created using a different bootstrapping code and therefore looks different.
-B = pg.compute_bootci(x, func=np.var, n_boot=100, return_dist=True, seed=1)
+B = pg.compute_bootci(x, func=lambda x: np.var(x), n_boot=100, return_dist=True, seed=1)
 
 ax = pd.Series(B[1]).hist(bins=8, color='grey')
 ax.set_xlabel(r'$S^2$')
@@ -119,7 +119,7 @@ plt.annotate("", xy=(1.5, 0.035), xytext=(3,0.12), arrowprops=prop)
 ax.text(2.5, 0.2, r'rejection')
 ax.text(2.5, 0.16, r'probability $\alpha$')
 
-ax.set_xlim(-4.2, 4,2)
+ax.set_xlim(-4.2, 4.2)
 ax.set_ylim(-0.2, 0.5)
 
 options = {'horizontalalignment': 'center'}
@@ -422,7 +422,7 @@ for k, v in counts:
 ### The Bootstrap Method
 etchrate = mistat.load_data('ETCHRATE')
 
-B = pg.compute_bootci(etchrate, func=np.mean, n_boot=1000,
+B = pg.compute_bootci(etchrate, func=lambda x: np.mean(x), n_boot=1000,
                       confidence=0.95, return_dist=True, seed=1)
 
 ci, distribution = B

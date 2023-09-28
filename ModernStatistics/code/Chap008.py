@@ -161,15 +161,6 @@ for ax in axes:
 plt.tight_layout()
 plt.show()
 
-from skfda.inference.anova import oneway_anova
-stat, p_val = oneway_anova(fd[labels==0], fd[labels==1], random_state=1)
-print("Statistic: {:.3f}".format(stat))
-print("p-value: {:.3f}".format(p_val))
-
-qstat, p_val = oneway_anova(fd_registered[labels==0], fd_registered[labels==1], random_state=1)
-print("Statistic: {:.3f}".format(stat))
-print("p-value: {:.3f}".format(p_val))
-
 from skfda.preprocessing.dim_reduction.projection import FPCA
 fpca = FPCA(n_components=2)
 fpca.fit(fd)

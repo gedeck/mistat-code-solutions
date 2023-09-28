@@ -21,6 +21,7 @@ to the second factor, respectively._
   
   $\text{mean}(\exp(X+Y), n=1000) = 6.418258$
 
+- p. 275-277, the `pyKriging` package no longer works with the latest version of `numpy`. In the notebooks, we replace it with the [`pylibkriging`](https://pypi.org/project/pylibkriging/) package. See the notebooks for details and this <a href="replacement/Ch07-Kriging.pdf">PDF</a> for the update book section.
 
 ## Chapter 9
 - p. 351, the first line should read: 

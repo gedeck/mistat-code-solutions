@@ -60,6 +60,7 @@ You can explore the code on <a href="https://mybinder.org/v2/gh/gedeck/mistat-co
 
 
 
+
 # Table of contents (with sample excerpts from chapters)
 
 Chapter 1: Introduction to Industrial Statistics (<a href="blogs/Chap001">sample 1</a>)<br>
@@ -79,24 +80,27 @@ Chapter 11: Sampling Plans for Batch and Sequential Inspection (<a href="blogs/C
 Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
 
 These Python packages are used in the code of _Industrial Statistics_: 
+
 - mistat (for access to data sets and additional functionality)
-- numpy
-- pandas
-- scipy
-- statsmodels
-- matplotlib==3.6.0
-- seaborn
-- pingouin
-- lifelines
-- dtreeviz
-- svglib
-- pwlf
-- pyDOE2
-- diversipy
-- pydotplus
-- matplotlib
-- pykriging (this works currently only with Python 3.9)
+- matplotlib 
+- numpy 
+- pandas 
+- scipy 
+- statsmodels 
+- seaborn 
+- pingouin 
+- lifelines 
+- dtreeviz 
+- svglib 
+- pwlf 
+- pyDOE2 
+- diversipy 
+- pylibkriging 
+- inspyred
 - pymc
 - arviz
+- aesara
+
+The notebook [InstallPackages.ipynb](InstallPackages.ipynb) contains the pip command to install the required packages. Note that some of the packages may need to be pinned to specific versions.
 
 If you have a problem with visualizing the decision tree or creating a network graph, follow the [installation instructions for graphviz in the dtreeviz github site](https://github.com/parrt/dtreeviz). On Windows, the problem is usually resolved by adding the path to the graphviz binaries to the PATH system variable.

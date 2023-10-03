@@ -9,6 +9,16 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
@@ -29,7 +39,7 @@ import matplotlib.pyplot as plt
 
 ## Basic Steps and Guiding Principles
 ## Blocking and Randomization
-## Additive and Non-Additive Linear Models
+## Additive and Non-additive Linear Models
 ## The Analysis of Randomized Complete Block Designs
 ### Several Blocks, Two Treatments per Block:  Paired Comparison
 #### The $t$-Test
@@ -126,7 +136,6 @@ model = smf.ols('seconds ~ C(k) * C(s)', data=result).fit()
 print(anova.anova_lm(model).round(4))
 
 from matplotlib.ticker import FormatStrFormatter
-
 
 fig, axes = plt.subplots(ncols=2)
 result.boxplot('seconds', by='k', color='black', ax=axes[0])
@@ -592,7 +601,7 @@ factor_direction = {x2factor[code]: toFactor(code, d)
 
 # predict along the steps in direction and collect results
 result = pd.DataFrame({
-    'distance': distance,
+    'Distance': distance,
     **direction,
     **factor_direction,
     'yhat': model.get_prediction(exog=direction).predicted_mean,
@@ -607,7 +616,7 @@ ax.plot(center['s'], center['v0'], 'o', color='black')
 
 plt.show()
 
-table = result[['distance', 'x1', 'x2', 'x3', 'x4', 's', 'v0', 'k', 't0', 'yhat']]
+table = result[['Distance', 'x1', 'x2', 'x3', 'x4', 's', 'v0', 'k', 't0', 'yhat']]
 
 table.round(3)
 
@@ -615,7 +624,7 @@ for column in ['k', 't0']:
   table[column] = table[column].astype(np.int64)
 
 style = table.style.hide(axis='index')
-style = style.format(subset=['distance'], precision=1)
+style = style.format(subset=['Distance'], precision=1)
 style = style.format(subset=['s', 'v0'], precision=4)
 style = style.format(subset=['yhat'], precision=3)
 style = style.format(subset=['k', 't0'], precision=0)

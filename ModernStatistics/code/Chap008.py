@@ -161,15 +161,6 @@ for ax in axes:
 plt.tight_layout()
 plt.show()
 
-from skfda.inference.anova import oneway_anova
-stat, p_val = oneway_anova(fd[labels==0], fd[labels==1], random_state=1)
-print("Statistic: {:.3f}".format(stat))
-print("p-value: {:.3f}".format(p_val))
-
-qstat, p_val = oneway_anova(fd_registered[labels==0], fd_registered[labels==1], random_state=1)
-print("Statistic: {:.3f}".format(stat))
-print("p-value: {:.3f}".format(p_val))
-
 from skfda.preprocessing.dim_reduction.projection import FPCA
 fpca = FPCA(n_components=2)
 fpca.fit(fd)
@@ -278,16 +269,16 @@ est = HillClimbSearch(data=abc)
 model = est.estimate(max_indegree=4, max_iter=int(1e4), show_progress=False,
                      scoring_method='k2score')
 
-import pydotplus
+import graphviz
+from tempfile import TemporaryDirectory
+from IPython.display import Image
 
 def layoutGraph(dot_data, pdfFile=None):
-    graph = pydotplus.graph_from_dot_data(dot_data)
-    if pdfFile is not None:
-        with open(pdfFile, 'wb') as f:
-          f.write(graph.create_pdf())
-    else:
-        from IPython.display import Image
-        return Image(graph.create_png())
+    graph = graphviz.Source(dot_data)
+    with TemporaryDirectory() as tempdir:
+        if pdfFile is not None:
+            graph.render('dot', directory=tempdir, format='pdf', outfile=pdfFile)
+        return Image(graph.render('dot', directory=tempdir, format='png'))
 
 def createGraph(G, pdfFile=None):
     sortedNodes = list(nx.topological_sort(G))

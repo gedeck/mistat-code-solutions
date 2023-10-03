@@ -82,7 +82,6 @@ ax.set_yticks([-0.002, 0, 0.002, 0.004])
 ax.yaxis.labelpad = 15
 ax.zaxis.labelpad = 20
 ax.tick_params(axis='z', which='major', pad=10)
-ax.dist = 13
 plt.show()
 
 ### Multiple Box-Plots

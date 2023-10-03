@@ -98,8 +98,8 @@ plt.show()
 
 dow1941_df = tsatools.add_trend(dow1941_ts, trend='ct')
 dow1941_df['month'] = dow1941_df.index.month
-poly_formula = 'Dow_Jones_Index ~ C(month) + I(trend**3) + I(trend**2) + trend + 1'
-model_3 = smf.ols(formula=poly_formula, data=dow1941_df).fit()
+formula = 'Dow_Jones_Index ~ C(month) + I(trend**3) + I(trend**2) + trend + 1'
+model_3 = smf.ols(formula=formula, data=dow1941_df).fit()
 print(model_3.params)
 print(f'r2-adj: {model_3.rsquared_adj:.3f}')
 

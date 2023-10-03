@@ -9,6 +9,16 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
@@ -59,7 +69,7 @@ plt.show()
 # Various methods
 designMethods = [
     ('Latin Hypercube design', doe.lhs),
-    ('space-filling Latin Hypercube design', doe.space_filling_lhs),
+    ('space filling Latin Hypercube design', doe.space_filling_lhs),
     ('random_k_means', doe.random_k_means),
     ('maximin', doe.maximin),
     ('halton', doe.halton),
@@ -91,7 +101,9 @@ for nmethod, (label, _) in enumerate(designMethods):
 plt.show()
 
 from mistat.design import doe
+random.seed(123)
 np.random.seed(1)
+
 Factors = {
     'm': [30, 60],
     's': [0.005, 0.02],
@@ -101,7 +113,7 @@ Factors = {
     't': [290, 296],
     't0': [340, 360],
 }
-Design = doe.lhs(Factors, num_samples=14)
+Design = doe.lhs(Factors, num_samples=14, random_state=1)
 
 # Randomize and create replicates
 nrepeat = 50
@@ -126,7 +138,7 @@ style = style.format(subset=['s'], precision=4)
 style = style.format(subset=['v0'], precision=5)
 print(style.to_latex(hrules=True))
 np.random.seed(1)
-Design = doe.lhs(Factors, num_samples=14)
+Design = doe.lhs(Factors, num_samples=14, random_state=1)
 
 def panelPlot(x, y, **kwargs):
     plt.scatter(x, y, **kwargs,
@@ -144,63 +156,30 @@ for idx, column in enumerate(Factors):
             verticalalignment='center', horizontalalignment='center')
 
 ## Analyzing Computer Experiments
-from pyKriging.krige import kriging
-random.seed(1)
-
+import pylibkriging as lk
 outcome = 'seconds'
 predictors = ['m', 's', 'v0', 'k', 'p0', 't', 't0']
 
-model = kriging(mean_result[predictors].values, mean_result[outcome].values)
-model.train()
+model = lk.Kriging(mean_result[outcome], mean_result[predictors], 'gauss')
 
-# use precalculated values to skip jackknife
-validation = pd.DataFrame({'actual': {0: 0.05441877891968666,
-  1: 0.03727837011155499,
-  2: 0.1651319040375938,
-  3: 0.047593258114843086,
-  4: 0.01456573521939926,
-  5: 0.0655038377359666,
-  6: 0.019871385950919314,
-  7: 0.11022122791225683,
-  8: 0.07294231445090985,
-  9: 0.04356622464674687,
-  10: 0.10830895867381393,
-  11: 0.009048596833718543,
-  12: 0.05076351774449578,
-  13: 0.02298875168903235},
- 'predicted': {0: 0.05095935548701239,
-  1: 0.058740234719276106,
-  2: 0.1284175012474648,
-  3: 0.043225924165150004,
-  4: 0.004876412005997776,
-  5: 0.07103701426464179,
-  6: 0.017284071531404925,
-  7: 0.09788530171452367,
-  8: 0.06587533561671288,
-  9: 0.03994568846369216,
-  10: 0.12620555835653657,
-  11: 0.012938892361934535,
-  12: 0.04721028883379725,
-  13: 0.028418579391554052}})
-ax = validation.plot.scatter(x='predicted', y='actual', color='black')
-ax.plot([0, 0.175], [0, 0.175], color='lightgrey')
-ax.set_xlabel('Leave-one-out predicted value')
-ax.set_ylabel('Actual value')
-plt.show()
-
-def looValidation(data, seed=123):
-    random.seed(seed)
+def looValidation(data):
     jackknife  = []
     for i, row in data.iterrows():
         subset = data.drop(i)
-        model = kriging(subset[predictors].values, subset[outcome].values)
-        model.train()
+        model = lk.Kriging(subset[outcome], subset[predictors], 'gauss')
+        y_pred = model.predict([row[predictors]], True, False, False)
         jackknife.append({
             'actual': row[outcome],
-            'predicted': model.predict(row[predictors].values),
+            'predicted': y_pred[0],
         })
     return pd.DataFrame(jackknife)
 validation = looValidation(mean_result)
+
+ax = validation.plot.scatter(x='predicted', y='actual', color='black')
+ax.plot([0, 0.16], [0, 0.16], color='lightgrey')
+ax.set_xlabel('Leave-one-out predicted value')
+ax.set_ylabel('Actual value')
+plt.show()
 
 from sklearn import metrics
 MAE = metrics.mean_absolute_error(validation['actual'], validation['predicted'])
@@ -209,13 +188,14 @@ print(f'MAE = {MAE:.4f}')
 print(f'r2 {R2:.3f}', )
 
 random.seed(1)
-# create a large latin hypercube design
-Design = doe.lhs(Factors, num_samples=500)
+
+# create a large Latin hypercube design
+Design = doe.lhs(Factors, num_samples=500, random_state=1)
 
 # for each row in the design, predict the cycle time using the kriging model
 predictions = []
 for _, row in Design.iterrows():
-    predictions.append(model.predict(row[predictors].values))
+    predictions.append(model.predict([row[predictors]], True, False, False)[0])
 Design['seconds'] = predictions
 
 # determine and plot the marginal distribution using lowess regression
@@ -246,7 +226,9 @@ def plotSurface(model, data, f1, f2, ncontours=20):
             continue
         grid[f] = np.mean(Factors[f])
     df = pd.DataFrame(grid)
-    responses = np.array([model.predict(v.values) for _, v in df[predictors].iterrows()])
+    responses = np.array([
+      model.predict([v.values], True, False, False)[0]
+      for _, v in df[predictors].iterrows()])
 
     # display in factor co-ordinates
     svalues = x1
@@ -305,6 +287,8 @@ ax = sns.stripplot(x=df['Method'], y=df['Integral'], color='black', ax=ax)
 ax.axhline(exact, linestyle=':', color='grey', zorder=0)
 ax.set_xlabel('Method / Sample size')
 plt.show()
+
+pd.DataFrame(integrals).groupby('Method').aggregate(['mean', 'median'])
 
 ## Chapter Highlights
 ## Exercises

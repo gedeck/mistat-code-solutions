@@ -1,58 +1,66 @@
-# Chapter 4
+## Chapter 4
 #
 # Industrial Statistics: A Computer Based Approach with Python<br>
 # by Ron Kenett, Shelemyahu Zacks, Peter Gedeck
-#
+# 
 # Publisher: Springer International Publishing; 1st edition (2023) <br>
 # <!-- ISBN-13: 978-3031075650 -->
-#
+# 
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
-#
+# 
 # The code needs to be executed in sequence.
-from sklearn.linear_model import LinearRegression, Lasso
-from sklearn import metrics
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
-import pandas as pd
-import mistat
-from collections import defaultdict
-from outdated import OutdatedPackageWarning
-import warnings
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
+import warnings
+from outdated import OutdatedPackageWarning
 warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings('ignore', category=OutdatedPackageWarning)
 
 # Multivariate Statistical Process Control
+from collections import defaultdict
+import mistat
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn import metrics
+from sklearn.linear_model import LinearRegression, Lasso
+import seaborn as sns
 
-# Introduction
+## Introduction
 almpin = mistat.load_data('ALMPIN')
 
-base = almpin.iloc[:30, ]
-newdata = almpin.iloc[30:, ]
+base = almpin.iloc[:30,]
+newdata = almpin.iloc[30:,]
 
 mqcc = mistat.MultivariateQualityControlChart(base, qcc_type='T2single',
-                                              confidence_level=0.997, newdata=newdata)
+           confidence_level=0.997, newdata=newdata)
 mqcc.plot()
 plt.show()
 
-# A Review Multivariate Data Analysis
+## A Review Multivariate Data Analysis
 place = mistat.load_data('PLACE')
 place['code'] = [*['lDev'] * 9 * 16, *['mDev'] * 3 * 16, *['hDev'] * 14 * 16, ]
-
 
 def plotOffdiagonal(x, y, label=None, color=None):
     sns.kdeplot(x=x, y=y, color=color, alpha=0.4)
     plt.scatter(x=x, y=y, color=color, alpha=0.5)
 
-
 def hide_current_axis(*args, **kwds):
     plt.gca().set_visible(False)
 
-
 g = sns.PairGrid(place.drop(columns=['crcBrd']), hue='code', height=4,
-                 palette=['#888888', '#cccccc', '#333333'])
+                palette=['#888888', '#cccccc', '#333333'])
 g.map_upper(hide_current_axis)
 g.map_lower(plotOffdiagonal)
 for i in range(3):
@@ -99,10 +107,10 @@ dy = 0.1 * (max(place2['Deviation']) - min(place2['Deviation']))
 ax.set_ylim(min(place2['Deviation']) - dy, max(place2['Deviation']) + dy)
 plt.show()
 
-# Multivariate Process Capability Indices
-# Advanced Applications of Multivariate Control Charts
-# Multivariate Control Charts Scenarios
-# Internally Derived Target
+## Multivariate Process Capability Indices
+## Advanced Applications of Multivariate Control Charts
+### Multivariate Control Charts Scenarios
+### Internally Derived Target
 place = mistat.load_data('PLACE')
 
 columns = ['xDev', 'yDev', 'tDev']
@@ -110,21 +118,21 @@ calibration = place[place.crcBrd <= 9][columns]
 newdata = place[place.crcBrd > 9][columns]
 
 mqcc = mistat.MultivariateQualityControlChart(calibration,
-                                              qcc_type='T2single', newdata=newdata,
-                                              confidence_level=(1-0.0000152837)**3)
+        qcc_type='T2single', newdata=newdata,
+        confidence_level=(1-0.0000152837)**3)
 mqcc.plot()
 plt.show()
 
-# External Reference Sample
-# Externally Assigned Target
-# Measurement Units Considered as Batches
-# Variable Decomposition and Monitoring Indices
-# Multivariate Tolerance Specifications
+### External Reference Sample
+### Externally Assigned Target
+### Measurement Units Considered as Batches
+### Variable Decomposition and Monitoring Indices
+## Multivariate Tolerance Specifications
 diss = mistat.load_data('DISS')
 columns = ['batch', 'min15', 'min90']
 
 mahalanobisT2 = mistat.MahalanobisT2(diss[columns], 'batch',
-                                     compare_to=[15, 15], conf_level=0.95)
+    compare_to=[15,15], conf_level=0.95)
 mahalanobisT2.summary()
 
 diss = mistat.load_data('DISS')
@@ -137,11 +145,8 @@ ax.legend(handles=handles[1:], labels=labels[1:])
 
 plt.show()
 
-
 def to_coord_rep(coord):
     return f'({coord[0]:.2f}, {coord[1]:.2f})'
-
-
 center_s = to_coord_rep(mahalanobisT2.coord.loc['Center', :])
 lcr_s = to_coord_rep(mahalanobisT2.coord.loc['LCR', :])
 ucr_s = to_coord_rep(mahalanobisT2.coord.loc['UCR', :])
@@ -151,26 +156,23 @@ axes[0].set_ylim(-5.5, 0.5)
 axes[0].set_xlim(-0.5, 30.5)
 
 delta = np.array([1, 0.3])
-axes[0].text(*(mahalanobisT2.coord.loc['LCR', :]-delta), '1', ha='center', va='center')
-axes[0].text(*(mahalanobisT2.coord.loc['UCR', :]+delta), '2', ha='center', va='center')
+axes[0].text(*(mahalanobisT2.coord.loc['LCR',:]-delta), '1', ha='center', va='center')
+axes[0].text(*(mahalanobisT2.coord.loc['UCR',:]+delta), '2', ha='center', va='center')
 
 plt.show()
 
-# Tracking structural changes
-# The Synthetic Control Method
+## Tracking Structural Changes
+### The Synthetic Control Method
 timeseries = mistat.load_data('SCM_TIMESERIES')
 columns = ['Healthy', '10 mm', '20 mm']
 index = list(range(len(timeseries['Healthy'])))
 # convert from wide to long format
-timeseries = pd.concat([pd.DataFrame({'index': index, 'sensor': timeseries[value], 'type': value})
+timeseries = pd.concat([pd.DataFrame({'index': index, 'sensor': timeseries[value], 'type': value}) 
                         for value in columns])
-
 
 def plotTimeSeries(index, data, *args, **kwargs):
     p = sns.histplot(x=index, y=data, **kwargs)
-    plt.setp(p.lines, alpha=.5)
-
-
+    plt.setp(p.lines, alpha=0.5)
 g = sns.FacetGrid(timeseries, col="type")
 g.map(plotTimeSeries, "index", "sensor", bins=90)
 axes = g.axes.flatten()
@@ -181,8 +183,6 @@ g.set_axis_labels(x_var="Time", y_var="Vibration sensor")
 plt.tight_layout()
 
 order_psd = mistat.load_data('ORDER_PSD')
-
-
 def plotVibrations(colname, title, ax, ylabel=None):
     ydata = order_psd[colname]
     order_psd.plot(x='Order', y=colname, ax=ax, ylabel=ylabel, title=title)
@@ -192,8 +192,7 @@ def plotVibrations(colname, title, ax, ylabel=None):
     ax.axhline(ydata.median(), color='black')
     ax.axhline(ydata.quantile(q=0.75), color='grey')
     ax.axhline(ydata.quantile(q=0.25), color='grey')
-
-
+    
 fig, axes = plt.subplots(ncols=3, figsize=[10, 3])
 plotVibrations('Log[Healthy]', 'Healthy', axes[0], ylabel='Log[Vibration]')
 plotVibrations('Log[PSD - 10 mm]', 'Wheel flat 10 mm', axes[1])
@@ -220,8 +219,7 @@ mean_vibrations['upper'] = mean_vibrations['mean'] + mean_vibrations['std']
 mean_vibrations['lower'] = mean_vibrations['mean'] - mean_vibrations['std']
 
 fig, ax = plt.subplots()
-ax.fill_between(np.array(mean_vibrations.index), np.array(mean_vibrations['upper']), np.array(mean_vibrations['lower']),
-                color='C0', alpha=0.5)
+ax.fill_between(mean_vibrations.index, mean_vibrations['upper'], mean_vibrations['lower'], color='C0', alpha=0.5)
 ax.plot(mean_vibrations.index, mean_vibrations['mean'], color='C0')
 scm_data.query('status').groupby('wheel').plot(x='time', y='vibrations', ax=ax, legend=None, color='black')
 ax.set_ylabel('Vibration')
@@ -230,19 +228,18 @@ ax.set_xlabel('Time')
 plt.tight_layout()
 plt.show()
 
-
 def train_predict_SCM_model(scm_data, wheel, event):
-    # convert data into a table with vibration and sensor data in rows and
+    # convert data into a table with vibration and sensor data in rows and 
     # wheels in columns
     features = ['vibrations']
     full_data = scm_data.pivot(index='wheel', columns='time')[features].T
 
     # filter pre-damage event period (make a slice on the multi-index)
     pre_event = full_data.loc[('vibrations', 1):('vibrations', event)]
-
+    
     # train regularized regression model
     X = pre_event.drop(columns=wheel).values  # other wheels
-    y = pre_event[wheel].values  # selected wheel
+    y = pre_event[wheel].values # selected wheel
     model = Lasso(fit_intercept=False, max_iter=10_000, alpha=2, selection='random', random_state=1)
     model.fit(X, y)
 
@@ -254,7 +251,6 @@ def train_predict_SCM_model(scm_data, wheel, event):
         'synthetic': pred_y,
         'residual': scm_data.query(f'wheel == {wheel}')['vibrations'] - pred_y,
     })
-
 
 scm_faulty = train_predict_SCM_model(scm_data, 1, 60)
 ax = scm_faulty.plot(x='time', y='synthetic', label='Synthetic data')
@@ -273,7 +269,7 @@ pred_std = predictions.std(axis=0)
 fig, ax = plt.subplots(figsize=(12, 7))
 
 for f in (1, 2, 3):
-    ax.fill_between(np.array(scm_faulty['time']), pred_mean+f*pred_std, pred_mean-f*pred_std, color='grey', alpha=0.2)
+    ax.fill_between(scm_faulty['time'], pred_mean+f*pred_std, pred_mean-f*pred_std, color='grey', alpha=0.2)
 for scm_healthy in scm_healthy_predictions:
     ax.plot(scm_healthy['time'], scm_healthy['residual'], color='C5', alpha=0.3)
 
@@ -285,5 +281,5 @@ ax.set_ylabel('Residual of predictions')
 ax.set_xlabel('Time')
 plt.show()
 
-# Chapter Highlights
-# Exercises
+## Chapter Highlights
+## Exercises

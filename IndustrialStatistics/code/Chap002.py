@@ -9,6 +9,16 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
@@ -47,7 +57,7 @@ ax.get_lines()[0].set_markerfacecolor('none')
 ax.get_lines()[1].set_color('black')
 ax.get_lines()[2].set_color('black')
 ax.get_lines()[3].set_color('grey')
-ax.get_lines()[4].set_color('grey')
+# ax.get_lines()[4].set_color('grey')
 plt.show()
 
 simulator = mistat.PistonSimulator(n_simulation=20, n_replicate=5, seed=1)
@@ -124,7 +134,7 @@ figsize = (8, 3.8)
 fig, ax = plt.subplots(figsize=figsize)
 qcc.plot(ax=ax)
 ax.plot(11, qcc.stats.statistics[10], 'r', marker='s')
-fig.suptitle('Chart with special case at 11-th observation')
+fig.suptitle('Chart with special case at 11th observation')
 
 np.random.seed(1)
 X = stats.norm(10, 1).rvs(100)
@@ -236,14 +246,14 @@ for group in (3, 26):
 plt.show()
 
 ### Control Charts for Variables
-#### $\bar X$-charts
+#### $\bar X$-Charts
 contactlen = mistat.load_data('CONTACTLEN')
 
 qcc = mistat.QualityControlChart(contactlen, qcc_type='xbar')
 ax = qcc.plot(title='for contact lens data')
 plt.show()
 
-#### $S$-charts and $R$-charts
+#### $S$-Charts and $R$-Charts
 qcc = mistat.QualityControlChart(contactlen, qcc_type='S')
 ax = qcc.plot(title='for contact lens data')
 plt.show()
@@ -252,8 +262,8 @@ qcc = mistat.QualityControlChart(contactlen, qcc_type='R')
 ax = qcc.plot(title='for contact lens data')
 plt.show()
 
-## Process analysis with data segments
-### Data segments based on decision trees
+## Process Analysis with Data Segments
+### Data Segments Based on Decision Trees
 # Ignore user warning thrown here
 warnings.filterwarnings('ignore', category=UserWarning)
 
@@ -291,7 +301,7 @@ plotSegmentAnalysis(sensorX, 'X', axes[0])
 plotSegmentAnalysis(sensorZ, 'Z', axes[1])
 plt.tight_layout()
 
-from dtreeviz.trees import dtreeviz
+import dtreeviz
 def viz2pdf(viz, pdfFile):
   from svglib.svglib import svg2rlg
   from reportlab.graphics import renderPDF
@@ -308,16 +318,16 @@ def segmentTreeVisualization(model, series, label, filename=None):
     'Time': np.arange(len(series)),
     'values': series,
   })
-  viz = dtreeviz(model, df[['Time']], df['values'],
+  viz = dtreeviz.model(model, df[['Time']], df['values'],
                  target_name=label,
                  feature_names=['Time'])
   if filename is not None:
     viz2pdf(viz, filename)
   return viz
 
-segmentTreeVisualization(modelX, data['X'], 'X')
+segmentTreeVisualization(modelX, data['X'], 'X').view(fontname='sans-serif')
 
-segmentTreeVisualization(modelZ, data['Z'], 'Z')
+segmentTreeVisualization(modelZ, data['Z'], 'Z').view(fontname='sans-serif')
 
 def statisticsSegmentAnalysis(sensor):
     uniqueValues = list(sensor['predicted'].unique())
@@ -359,7 +369,7 @@ statisticsZ
 # Restore display of user warning
 warnings.filterwarnings('default', category=UserWarning)
 
-### Data segments based on functional data analysis
+### Data Segments Based on Functional Data Analysis
 def fitPiecewiseLinearFit(sensor, segments):
   model = pwlf.PiecewiseLinFit(sensor['Time'], sensor['values'], degree=0)
   model.fit(segments)

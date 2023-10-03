@@ -14,18 +14,18 @@
   </p>
 
   <p>
-    Publisher: <a href="https://link.springer.com/book/9783031284816">Springer International Publishing; 
+    Publisher: <a href="https://link.springer.com/book/10.1007/978-3-031-28482-3">Springer International Publishing; 
     1st edition (August 5, 2023)</a><br>
     ISBN-13: 978-3-031-28481-6 (hardcover)<br>
     ISBN-13: 978-3-031-28484-7 (softcover)<br>
     ISBN-13: 978-3-031-28482-3 (eBook).<br>
     Buy at
-    <a href="https://link.springer.com/book/9783031284816">Springer</a>, 
+    <a href="https://link.springer.com/book/10.1007/978-3-031-28482-3">Springer</a>, 
     <a href="https://www.amazon.com/Industrial-Statistics-Computer-Based-Technology-Engineering/dp/303128481X/">Amazon</a>,
 <!--    <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>-->
   </p>
 
-  <!-- <p>Errata: <a href="errata">See known errata here</a></p> -->
+  <p>Errata: <a href="errata">See known errata here</a></p>
 </td>
 </tr>
 </table>
@@ -37,7 +37,7 @@ This part of the repository contains:
 
 - `notebooks`: Python code of individual chapters in 
   [Jupyter notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/IndustrialStatistics/notebooks) - 
-  [download all as notebooks.zip](notebooks.zip)
+  [download notebooks and data as notebooks.zip](notebooks.zip)
 - `code`: Python code for solutions as plain 
   [Python files](https://github.com/gedeck/mistat-code-solutions/tree/main/IndustrialStatistics/code) - 
   [download all as code.zip](code.zip)
@@ -60,6 +60,38 @@ You can explore the code on <a href="https://mybinder.org/v2/gh/gedeck/mistat-co
 
 
 
+# Installation instructions
+Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
+
+These Python packages are used in the code of _Industrial Statistics_: 
+
+- mistat (for access to data sets and additional functionality)
+- matplotlib 
+- numpy 
+- pandas 
+- scipy 
+- statsmodels 
+- seaborn 
+- pingouin 
+- lifelines 
+- dtreeviz 
+- svglib 
+- pwlf 
+- pyDOE2 
+- diversipy 
+- pylibkriging 
+- inspyred
+- pymc
+- arviz
+- aesara
+
+The notebook [InstallPackages.ipynb](InstallPackages.ipynb) contains the pip command to install the required packages. Note that some of the packages may need to be pinned to specific versions.
+
+If you have a problem with visualizing the decision tree or creating a network graph, follow the [installation instructions for graphviz in the dtreeviz github site](https://github.com/parrt/dtreeviz). On Windows, the problem is usually resolved by adding the path to the graphviz binaries to the PATH system variable.
+
+
+
+
 # Table of contents (with sample excerpts from chapters)
 
 Chapter 1: Introduction to Industrial Statistics (<a href="blogs/Chap001">sample 1</a>)<br>
@@ -74,29 +106,3 @@ Chapter 9: Reliability Analysis (<a href="blogs/Chap009">sample 9</a>)<br>
 Chapter 10: Bayesian Reliability Estimation and Prediction (<a href="blogs/Chap010">sample 10</a>)<br>
 Chapter 11: Sampling Plans for Batch and Sequential Inspection (<a href="blogs/Chap011">sample 11</a>)<br>
 
-
-# Installation instructions
-Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.
-
-These Python packages are used in the code of _Industrial Statistics_: 
-- mistat (for access to data sets and additional functionality)
-- numpy
-- pandas
-- scipy
-- statsmodels
-- matplotlib==3.6.0
-- seaborn
-- pingouin
-- lifelines
-- dtreeviz
-- svglib
-- pwlf
-- pyDOE2
-- diversipy
-- pydotplus
-- matplotlib
-- pykriging (this works currently only with Python 3.9)
-- pymc
-- arviz
-
-If you have a problem with visualizing the decision tree or creating a network graph, follow the [installation instructions for graphviz in the dtreeviz github site](https://github.com/parrt/dtreeviz). On Windows, the problem is usually resolved by adding the path to the graphviz binaries to the PATH system variable.

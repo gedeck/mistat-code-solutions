@@ -9,6 +9,16 @@
 # (c) 2022 Ron Kenett, Shelemyahu Zacks, Peter Gedeck
 # 
 # The code needs to be executed in sequence.
+# 
+# Python packages and Python itself change over time. This can cause warnings or errors. We
+# "Warnings" are for information only and can usually be ignored. 
+# "Errors" will stop execution and need to be fixed in order to get results. 
+# 
+# If you come across an issue with the code, please follow these steps
+# 
+# - Check the repository (https://gedeck.github.io/mistat-code-solutions/) to see if the code has been upgraded. This might solve the problem.
+# - Report the problem using the issue tracker at https://github.com/gedeck/mistat-code-solutions/issues
+# - Paste the error message into Google and see if someone else already found a solution
 import os
 os.environ['OUTDATED_IGNORE'] = '1'
 import warnings
@@ -69,7 +79,7 @@ print(f'Updated beta distributions:\n{result.distributions}')
 ### Distribution-Free Reliability Estimation
 ### Exponential Reliability Estimation
 ### Prediction Intervals
-### Applications with Python - lifelines and pymc
+### Applications with Python: Lifelines and pymc
 systemFailure = mistat.load_data('SYSTEMFAILURE')
 systemFailure['Time stamp'] = systemFailure['Time stamp'] / 1_000_000 
 systemFailure['Young'] = [0 if v == 'Mature' else 1 
@@ -97,7 +107,7 @@ print(f'Mean of failure rates at 3,000,000: {failureRate:.3f}')
 print(f'95%-confidence interval at 3,000,000: [{fr_low:.3f}, {fr_high:.3f}]')
 
 def weibull_log_sf(y, nu, beta):
-    return - T.exp(nu * T.log(y / beta))
+    return - (y / beta) ** nu
 
 # extract observed and censored observations a numpy arrays
 censored = systemFailure['Censor'].values == 1
@@ -165,7 +175,7 @@ def sampleFailureRates(model, model_trace, nu_var='nu', beta_var='beta'):
     with model:
         pp_trace = pm.sample_posterior_predictive(model_trace, 
             var_names=[nu_var, beta_var], progressbar=False, random_seed=123)
-    sampled = az.extract_dataset(pp_trace.posterior_predictive)
+    sampled = az.extract(pp_trace.posterior_predictive)
     curves = [stats.weibull_min.cdf(t_plot, nu, scale=beta) 
              for beta, nu in zip(sampled[beta_var], sampled[nu_var])]
     curves = np.array(curves)

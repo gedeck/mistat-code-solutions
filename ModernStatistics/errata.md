@@ -71,8 +71,23 @@ B = pg.compute_bootci(etchrate, func=lambda x: np.mean(x), n_boot=1000,
 
 
 ## Chapter 8
+- p. 400 - Import from `from skfda.preprocessing.dim_reduction.projection` is deprecated. Use 
+  ```
+  from skfda.preprocessing.dim_reduction import FPCA
+  ```
 - p. 404 - In equation 8.2, the matrix $V$ needs to be transposed:<br>
   $DTM \approx U * S * V'$
+- p. 408 - estimating the network using HillClimbSearch now requires setting `max_indegree` to 1
+  ```
+  est = HillClimbSearch(data=abc)
+  model = est.estimate(max_indegree=1, max_iter=int(1e4), show_progress=False,
+                      scoring_method='k2score')
+  ```
+  the updated code creates the following Figure 8.11 on p. 414 
+  <img src='../img/MS-Fig-8.11.png'>
+  and requires adjustment of the text in Example 8.4
+  > We can see that changes to the _Equipment_ and _Suppliers_ have the largest ATE.
+
 
 ## Index
 - P-value, 152, 215

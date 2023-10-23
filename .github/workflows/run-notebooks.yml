@@ -40,10 +40,12 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           
-      - name: Install graphviz
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt install -y graphviz
+      # - name: Install graphviz
+      #   if: matrix.os == 'ubuntu-latest'
+      #   run: |
+      #     sudo apt install -y graphviz
+      - name: Setup Graphviz
+        uses: ts-graphviz/setup-graphviz@v1
 
       - name: Install dependencies
         run: |
@@ -52,6 +54,8 @@ jobs:
           pip install -r requirements-modern.txt
 
       - name: Execute notebooks
+        env:
+          PYDEVD_DISABLE_FILE_VALIDATION: 1 
         run: |
           jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap001.ipynb
           jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap002.ipynb
@@ -102,6 +106,8 @@ jobs:
           pip freeze
 
       - name: Execute notebooks
+        env:
+          PYDEVD_DISABLE_FILE_VALIDATION: 1 
         run: |
           jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap001.ipynb
           jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap002.ipynb

@@ -266,7 +266,7 @@ abc = mistat.load_data('ABC2.csv')
 abc = abc.drop(columns=['ID'])
 
 est = HillClimbSearch(data=abc)
-model = est.estimate(max_indegree=4, max_iter=int(1e4), show_progress=False,
+model = est.estimate(max_indegree=1, max_iter=int(1e4), show_progress=False,
                      scoring_method='k2score')
 
 import graphviz

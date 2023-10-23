@@ -52,6 +52,8 @@ jobs:
           pip install -r requirements-modern.txt
 
       - name: Execute notebooks
+        env:
+          PYDEVD_DISABLE_FILE_VALIDATION: 1 
         run: |
           jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap001.ipynb
           jupyter nbconvert --to notebook --execute ModernStatistics/notebooks/Chap002.ipynb
@@ -102,6 +104,8 @@ jobs:
           pip freeze
 
       - name: Execute notebooks
+        env:
+          PYDEVD_DISABLE_FILE_VALIDATION: 1 
         run: |
           jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap001.ipynb
           jupyter nbconvert --to notebook --execute IndustrialStatistics/notebooks/Chap002.ipynb

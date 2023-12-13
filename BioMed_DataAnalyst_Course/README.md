@@ -25,8 +25,8 @@
     ISBN-13: 978-3-031-07568-1 (softcover)<br>
     ISBN-13: 978-3-031-28482-3 (eBook).<br>
     Buy at 
+    <a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/?&_encoding=UTF8&tag=petergedeck-20&linkCode=ur2&linkId=84f11d31518ed35288c8fcd790f5516f&camp=1789&creative=9325">Amazon</a>,
     <a href="https://link.springer.com/book/10.1007/978-3-031-07566-7">Springer</a>, 
-    <a href="https://www.amazon.com/Modern-Statistics-Computer-Based-Technology-Engineering/dp/303107565X/">Amazon</a>, 
     <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>
   </p>
 

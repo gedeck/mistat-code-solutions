@@ -52,6 +52,7 @@ jobs:
           pip install --upgrade pip
           pip install --upgrade wheel
           pip install -r requirements-modern.txt
+          cat requirements-modern.txt
 
       - name: Execute notebooks
         env:

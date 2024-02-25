@@ -20,8 +20,8 @@
     ISBN-13: 978-3-031-28484-7 (softcover)<br>
     ISBN-13: 978-3-031-28482-3 (eBook).<br>
     Buy at
-    <a href="https://link.springer.com/book/10.1007/978-3-031-28482-3">Springer</a>, 
-    <a href="https://www.amazon.com/Industrial-Statistics-Computer-Based-Technology-Engineering/dp/303128481X/">Amazon</a>,
+    <a href="https://www.amazon.com/Industrial-Statistics-Computer-Based-Technology-Engineering/dp/303128481X/?&_encoding=UTF8&tag=petergedeck-20&linkCode=ur2&linkId=189b1ce486c141101cec8046039d2120&camp=1789&creative=9325">Amazon</a>,
+    <a href="https://link.springer.com/book/10.1007/978-3-031-28482-3">Springer</a>
 <!--    <a href="https://www.barnesandnoble.com/w/modern-statistics-ron-kenett/1141391736">Barnes & Noble</a>-->
   </p>
 

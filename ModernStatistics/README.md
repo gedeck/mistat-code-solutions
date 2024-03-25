@@ -31,7 +31,7 @@
 This part of the repository contains:
 
 - `notebooks`: Python code of individual chapters in 
-  [Jupyter notebooks](https://github.com/gedeck/mistat-code-solutions/new/main/ModernStatistics/notebooks/index.ipynb) - 
+  [Jupyter notebooks](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/notebooks/index.ipynb) -
   [download notebooks and data as notebooks.zip](notebooks.zip)
 - `code`: Python code for solutions as plain 
   [Python files](https://github.com/gedeck/mistat-code-solutions/tree/main/ModernStatistics/code/index.ipynb) - 

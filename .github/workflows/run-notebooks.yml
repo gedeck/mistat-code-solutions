@@ -43,7 +43,7 @@ jobs:
       - name: Windows specific setup
         if: matrix.os == 'windows-latest'
         run: |
-          BLAS="C:/Program Files/R/R-4.3.3/bin/x64Rblas.dll"      
+          set(BLAS "C:/Program Files/R/R-4.3.3/bin/x64Rblas.dll") 
       # - name: Install graphviz
       #   if: matrix.os == 'ubuntu-latest'
       #   run: |

@@ -7,10 +7,10 @@ RUN apt-get update && \
 
 RUN apt -y install graphviz
 RUN apt-get update
-RUN apt -y install build-essential
+RUN apt -y install build-essential pkg-config libhdf5-dev
 
 
-RUN pip install torch
+RUN pip install torch h5py
 COPY ./requirements-industrial.txt /requirements.txt
 RUN pip install --requirement /requirements.txt
 

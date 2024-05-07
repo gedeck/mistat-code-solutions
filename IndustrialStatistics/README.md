@@ -77,7 +77,7 @@ These Python packages are used in the code of _Industrial Statistics_:
 - dtreeviz 
 - svglib 
 - pwlf 
-- pyDOE2 
+- pyDOE3
 - diversipy 
 - pylibkriging 
 - inspyred

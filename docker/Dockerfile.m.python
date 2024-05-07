@@ -7,7 +7,7 @@ RUN apt-get update && \
 
 RUN apt -y install graphviz
 RUN apt-get update
-RUN apt -y install build-essential
+RUN apt -y install build-essential libopenblas-dev
 
 RUN pip install torch
 COPY ./requirements-modern.txt /requirements.txt

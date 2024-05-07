@@ -6,12 +6,13 @@ pandas
 scipy
 statsmodels
 seaborn
+outdated
 pingouin
 lifelines
 dtreeviz
 svglib
 pwlf
-pyDOE2
+pyDOE3
 diversipy
 pylibkriging
 pymc

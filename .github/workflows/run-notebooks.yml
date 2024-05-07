@@ -55,6 +55,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade wheel
+          pip install scipy
           pip install -r requirements-modern.txt
           cat requirements-modern.txt
 
@@ -107,6 +108,7 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install --upgrade wheel
+          pip install scipy
           pip install -r requirements-industrial.txt
           pip freeze
 

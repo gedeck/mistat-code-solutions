@@ -62,7 +62,7 @@ jobs:
           conda install conda-forge::fdasrsf
           pip install --upgrade pip
           pip install --upgrade wheel
-          # pip install scipy
+          pip install --upgrade jinja2
           pip install -r requirements-modern.txt
           cat requirements-modern.txt
 
@@ -99,11 +99,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+      - uses: conda-incubator/setup-miniconda@v3
         with:
+          auto-update-conda: true
           python-version: ${{ matrix.python-version }}
+
+      # - name: Set up Python ${{ matrix.python-version }}
+      #   uses: actions/setup-python@v4
+      #   with:
+      #     python-version: ${{ matrix.python-version }}
           
       - name: Install Linux packages
         if: matrix.os == 'ubuntu-latest'
@@ -113,9 +117,11 @@ jobs:
 
       - name: Install dependencies
         run: |
+          conda install scipy
+          # conda install conda-forge::fdasrsf
           pip install --upgrade pip
           pip install --upgrade wheel
-          pip install scipy
+          pip install --upgrade jinja2
           pip install -r requirements-industrial.txt
           pip freeze
 

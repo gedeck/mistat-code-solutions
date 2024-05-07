@@ -460,13 +460,13 @@ def renderDesign(design, mainEffects, to_latex=False):
     style = style.format(precision=0)
     return style.to_latex(hrules=True, column_format='c'+'r'*(len(columns)-1))
 
-from pyDOE2 import fracfact
+from pyDOE3 import fracfact
 design = pd.DataFrame(fracfact('A B C ABC'), columns='A B C ABC'.split())
 
 renderDesign(design, 'A B C'.split())
 
 print(renderDesign(design, 'A B C'.split(), to_latex=True))
-from pyDOE2 import fracfact
+from pyDOE3 import fracfact
 # define the generator
 generator = 'A B C ABC'
 design = pd.DataFrame(fracfact(generator), columns=generator.split())

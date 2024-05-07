@@ -20,5 +20,5 @@ pgmpy
 pydotplus
 
 seaborn
-pyDOE2
+pyDOE3
 diversipy

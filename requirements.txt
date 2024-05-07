@@ -10,7 +10,7 @@ lifelines
 dtreeviz
 svglib
 pwlf
-pyDOE2
+pyDOE3
 diversipy
 pylibkriging
 pymc

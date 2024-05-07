@@ -34,17 +34,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+      - uses: conda-incubator/setup-miniconda@v3
         with:
+          auto-update-conda: true
           python-version: ${{ matrix.python-version }}
 
-      - name: Windows specific setup
-        if: matrix.os == 'windows-latest'
-        run: |
-          set BLAS=C:/Program Files/R/R-4.3.3/bin/x64Rblas.dll
-          set BLAS=C:/Program Files/R/R-4.3.3/bin
+      # - name: Set up Python ${{ matrix.python-version }}
+      #   uses: actions/setup-python@v4
+      #   with:
+      #     python-version: ${{ matrix.python-version }}
+
+      # - name: Windows specific setup
+      #   if: matrix.os == 'windows-latest'
+      #   run: |
+      #     set BLAS=C:/Program Files/R/R-4.3.3/bin/x64Rblas.dll
+      #     set BLAS=C:/Program Files/R/R-4.3.3/bin
       # - name: Install graphviz
       #   if: matrix.os == 'ubuntu-latest'
       #   run: |
@@ -54,9 +58,10 @@ jobs:
 
       - name: Install dependencies
         run: |
+          conda install scipy.
           pip install --upgrade pip
           pip install --upgrade wheel
-          pip install scipy
+          # pip install scipy
           pip install -r requirements-modern.txt
           cat requirements-modern.txt
 

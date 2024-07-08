@@ -1,5 +1,6 @@
 ![Python](https://github.com/gedeck/mistat-code-solutions/actions/workflows/run-notebooks.yml/badge.svg)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=ModernStatistics%2Fnotebooks%2Findex.ipynb)
+<a href="https://colab.research.google.com/github/gedeck/mistat-code-solutions/blob/main/ModernStatistics/notebooks/index.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 # Code repository
 <table>
@@ -54,7 +55,9 @@ The `mistat` packages is maintained in a GitHub repository at [https://github.co
 Material is available for a <a href="../BioMed_DataAnalyst_Course/">Biomed Data Analyst Training Program</a>.
 
 # Try the code
-You can explore the code on <a href="https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=ModernStatistics%2Fnotebooks%2Findex.ipynb" target="_blank">Binder <img src="https://mybinder.org/badge_logo.svg"></a>.
+You can explore the code on 
+- <a href="https://colab.research.google.com/github/gedeck/mistat-code-solutions/blob/main/ModernStatistics/notebooks/index.ipynb" target="_parent">Google Colab<img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+- <a href="https://mybinder.org/v2/gh/gedeck/mistat-code-solutions/binder-modern-statistics?labpath=ModernStatistics%2Fnotebooks%2Findex.ipynb" target="_blank">Binder <img src="https://mybinder.org/badge_logo.svg"></a>.
 
 # Installation instructions
 Instructions on installing Python and required packages are <a href="../doc/installPython">here</a>.

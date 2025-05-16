@@ -32,7 +32,7 @@ executing==1.2.0
 fastjsonschema==2.16.2
 fastprogress==1.0.3
 filelock==3.8.0
-fonttools==4.38.0
+fonttools==4.43.0
 formulaic==0.5.2
 future==0.18.2
 graphviz==0.20.1

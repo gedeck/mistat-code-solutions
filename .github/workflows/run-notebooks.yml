@@ -72,7 +72,7 @@ jobs:
           pip install --upgrade pip
           pip install --upgrade wheel
           pip install --upgrade jinja2
-          pip install --cache-dir cache -r requirements-modern.txt
+          pip install --no-cache-dir -r requirements-modern.txt
           cat requirements-modern.txt
 
       - name: Execute notebooks

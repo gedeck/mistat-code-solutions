@@ -60,6 +60,7 @@ jobs:
         run: |
           conda install scipy
           conda install conda-forge::fdasrsf
+          conda install conda-forge::cairo
           pip install --upgrade pip
           pip install --upgrade wheel
           pip install --upgrade jinja2
@@ -119,6 +120,7 @@ jobs:
         run: |
           conda install scipy
           # conda install conda-forge::fdasrsf
+          conda install conda-forge::cairo
           pip install --upgrade pip
           pip install --upgrade wheel
           pip install --upgrade jinja2

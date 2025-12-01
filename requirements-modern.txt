@@ -6,6 +6,7 @@ astroid
 outdated
 matplotlib
 scipy
+fdasrsf==2.5.2
 statsmodels
 KDEpy
 seaborn

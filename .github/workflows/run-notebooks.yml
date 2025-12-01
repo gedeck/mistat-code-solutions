@@ -56,6 +56,11 @@ jobs:
       - name: Setup Graphviz
         uses: ts-graphviz/setup-graphviz@v1
 
+      - name: Install Linux packages
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get install libcairo2-dev
+
       - name: Install dependencies
         run: |
           conda install scipy

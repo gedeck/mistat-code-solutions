@@ -7,6 +7,10 @@ The errata list is a list of errors and their corrections that were found after 
 - p. 135, error at end of page: The sentence starting with "Abadie et al."  should read:
 > Abadie et al. (2015) estimated the weights using $𝑊 \gg 0$ and ...
 
+- p. 120, at start of 4.3 chapter references should be:
+> Chapter 2 introduced process capability studies that are a prerequisite to the
+setup of control limits in control charts.
+
 ## Chapter 5
 - p. 185, clarify use rendering of interactions
 >  For the interaction part, lower factor levels are identified 

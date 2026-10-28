@@ -4,6 +4,8 @@ The errata list is a list of errors and their corrections that were found after 
 
 
 ## Chapter 4
+- p. 120, first line of section 4.3 should read:
+> Chapter 2 introduced process capability studies
 - p. 135, error at end of page: The sentence starting with "Abadie et al."  should read:
 > Abadie et al. (2015) estimated the weights using $𝑊 \gg 0$ and ...
 
